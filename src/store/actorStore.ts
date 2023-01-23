@@ -1,20 +1,29 @@
 import { proxy } from 'valtio'
-import { Actor } from './schema'
-import {nanoid} from "nanoid"
+import { nanoid} from "nanoid"
+import { cloneDeep } from 'lodash-es';
+import { Actor } from '../pages/main/components/wiget-list/BaseWidget';
 type ActorStore = {
     actors: Array<Actor>;
+    activeActor: Actor | null;
 }
 const _state:ActorStore = {
-    actors: []
+    actors: [],
+    activeActor: null,
 }
-
 
 const state = proxy(_state)
 export default state
 
 export const ActorActions = {
     addActor: (schema: Actor)=>{
-        schema.id = nanoid();
-        state.actors.push(schema)
+        const instance = cloneDeep(schema);
+        instance.id = nanoid(10);
+        state.actors.push(instance)
+    },
+
+    activeActor: (id: string)=>{
+        const target = cloneDeep(state.actors).find(actor => actor.id == id);
+        if(target == null) return;
+        state.activeActor = target;
     }
 }
