@@ -3,6 +3,7 @@ type DragItemProps = {
   id: string;
   index: number;
   className: string;
+  onClick: () => void;
 };
 function DragItem(props: React.PropsWithChildren<DragItemProps>) {
   const { children: item, id, index, className } = props;
@@ -10,7 +11,10 @@ function DragItem(props: React.PropsWithChildren<DragItemProps>) {
     <Draggable draggableId={id} index={index}>
       {(provided) => (
         <div
-          className={className}
+          onClick={() => {
+            props.onClick();
+          }}
+          className={`${className} `}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}

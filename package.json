@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "svgr": "svgr -d src/Icons/ assets/icons",
+    "svgr": "svgr -d src/Icons/ src/assets/icons --icon 1em --typescript --jsx-runtime automatic --index-template index-template.cjs",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/pro-components": "^2.3.52",
     "@types/lodash-es": "^4.17.6",
     "@types/nanoid": "^3.0.0",
     "@types/react-beautiful-dnd": "^13.1.3",
