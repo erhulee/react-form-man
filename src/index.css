@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#root{
+  height: 100vh;
+  overflow: hidden;
+
+  font-family: "PaytoneOne";
+}
+
+
+@font-face {
+  font-family: "PaytoneOne";
+  src: url("./assets/PaytoneOne-Regular.ttf");
+}
