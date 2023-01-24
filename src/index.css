@@ -17,3 +17,14 @@
 /* .ant-form-item{
   margin: 0;
 } */
+.ant-tabs-nav-list{
+  width: 100%;
+}
+.ant-tabs-tab{
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+
+  margin: 0 !important;
+}

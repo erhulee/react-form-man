@@ -1,4 +1,4 @@
-import actorStore from "../../../../store/actorStore";
+import actorStore, { ActorActions } from "../../../../store/actorStore";
 import { useUpdate } from "../../../../hooks/useUpdate";
 import useSubscribe from "../../../../hooks/useSubscribe";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
@@ -8,6 +8,8 @@ import { useSnapshot } from "valtio";
 import ToolKits from "./tool-kit";
 import { Actor } from "../wiget-list/BaseWidget";
 import WrapDecorator from "./wrap-decorator";
+import useDeleteKeyBoard from "../../../../hooks/useDeleteKeyBoard";
+import { useRef } from "react";
 const onDragStart = () => {
   /*...*/
 };
@@ -27,8 +29,26 @@ function ActorCanvas() {
   useSubscribe(actorStore, update);
   const snap: any = useSnapshot(actorStore);
   const active = snap.activeActor;
+  // useDeleteKeyBoard(() => {
+  //   if (blurRef.current == false) {
+  //     ActorActions.deleteActiveActor;
+  //   }
+  // });
+
+  const blurRef = useRef(true);
   return (
-    <div>
+    <div
+      onFocusCapture={(e) => console.log("focuse Capture:", e)}
+      onBlur={(e) => {
+        console.log("blur", e);
+        blurRef.current = false;
+      }}
+      onFocus={(e) => {
+        console.log("focus:", e);
+        blurRef.current = true;
+      }}
+      tabIndex={1}
+    >
       {/* <ToolKits></ToolKits> */}
       <div className=" mt-4 mx-2">
         <DragDropContext

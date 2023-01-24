@@ -1,7 +1,9 @@
-import { Layout } from "antd";
+import { Layout, Tabs } from "antd";
+import { ComponentIcon, TemplateIcon } from "../../Icons";
 import ActorCanvas from "./components/actor-canvas";
+import Header from "./components/actor-header";
 import ActorSetting from "./components/actor-setting";
-import Header from "./components/header";
+import FormShop from "./components/form-shop";
 import WigetList from "./components/wiget-list";
 
 const Sider = Layout.Sider;
@@ -15,7 +17,29 @@ export default function MainPage() {
       </Layout.Header>
       <Layout>
         <Sider theme="light" width={"350px"}>
-          <WigetList></WigetList>
+          <Tabs
+            items={[
+              {
+                label: (
+                  <span className=" flex items-center">
+                    <ComponentIcon className=" mr-2"></ComponentIcon> 组件
+                  </span>
+                ),
+                key: "组件",
+
+                children: <WigetList></WigetList>,
+              },
+              {
+                label: (
+                  <span className=" flex items-center">
+                    <TemplateIcon className=" mr-2"></TemplateIcon>模版
+                  </span>
+                ),
+                key: "模版",
+                children: <FormShop></FormShop>,
+              },
+            ]}
+          ></Tabs>
         </Sider>
         <Content>
           <ActorCanvas></ActorCanvas>

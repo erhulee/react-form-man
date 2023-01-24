@@ -1,34 +1,17 @@
-import { Input, InputNumber, Switch, Radio, Checkbox } from "antd";
 import {
+  CardIcon,
   CheckboxIcon,
+  ColContainerIcon,
+  HorizontalLineIcon,
   InputIcon,
   NumberIcon,
   RadioIcon,
+  RowContainerIcon,
   SwitchIcon,
   TextareaIcon,
+  VerticalLineIcon,
 } from "../../Icons";
 import { WigetItemProps } from "./components/wiget-list";
-
-export const schema2ActorCreator: any = {
-  input: (props: any) => {
-    return <Input {...props}></Input>;
-  },
-  textarea: (props: any) => {
-    return <Input.TextArea {...props}></Input.TextArea>;
-  },
-  number: (props: any) => {
-    return <InputNumber {...props}></InputNumber>;
-  },
-  switch: (props: any) => {
-    return <Switch {...props}></Switch>;
-  },
-  radio: (props: any) => {
-    return <Radio.Group {...props}></Radio.Group>;
-  },
-  checkbox: (props: any) => {
-    return <Checkbox.Group {...props}></Checkbox.Group>;
-  },
-};
 
 export const wigetList: Array<WigetItemProps> = [
   {
@@ -93,6 +76,56 @@ export const wigetList: Array<WigetItemProps> = [
           },
         ],
       },
+    },
+  },
+];
+
+export const containerList: Array<WigetItemProps> = [
+  {
+    icon: <RowContainerIcon />,
+    name: "纵向排列",
+    schemaInfo: {
+      type: "input",
+      props: {
+        id: "",
+      },
+    },
+  },
+  {
+    icon: <ColContainerIcon />,
+    name: "横向排列",
+    schemaInfo: {
+      type: "textarea",
+      props: {},
+    },
+  },
+  {
+    icon: <CardIcon></CardIcon>,
+    name: "卡片容器",
+    schemaInfo: {
+      type: "textarea",
+      props: {},
+    },
+  },
+];
+
+export const decoratorList: Array<WigetItemProps> = [
+  {
+    icon: <HorizontalLineIcon></HorizontalLineIcon>,
+    name: "纵向分割线",
+    schemaInfo: {
+      type: "input",
+      props: {
+        id: "",
+      },
+    },
+  },
+  {
+    icon: <VerticalLineIcon></VerticalLineIcon>,
+    name: "横向分割线",
+    schemaInfo: {
+      type: "textarea",
+      props: {},
     },
   },
 ];
