@@ -18,6 +18,7 @@ export const ActorActions = {
     addActor: (schema: Actor)=>{
         const instance = cloneDeep(schema);
         instance.id = nanoid(10);
+        
         state.actors.push(instance)
     },
 
@@ -25,5 +26,17 @@ export const ActorActions = {
         const target = cloneDeep(state.actors).find(actor => actor.id == id);
         if(target == null) return;
         state.activeActor = target;
+    },
+
+    deleteActiveActor: ()=>{
+        ActorActions.deleteActor(state.activeActor?.id);
+        state.activeActor = null
+    },
+
+    deleteActor:(id?: string)=>{
+        if(id == null) return;
+        const idx = state.actors.findIndex((actor)=> actor.id == id);
+        if(idx == -1) return;
+        state.actors.splice(idx, 1)
     }
 }

@@ -1,9 +1,10 @@
-import { schema2ActorCreator } from "../../constant";
 import DragItem from "./draw";
 import { Form } from "antd";
 import { ActorActions } from "../../../../store/actorStore";
 import { cloneDeep } from "lodash-es";
-import { Actor } from "../wiget-list/BaseWidget";
+import { Actor } from "../wiget-list/share/BaseWidget";
+import { wigetKitMap } from "../wiget-list/form-widget";
+import clearFormItemProps from "../wiget-list/share/clearFormItemProps";
 
 type ActorItemProps = {
   actor: Actor;
@@ -13,15 +14,11 @@ type ActorItemProps = {
 
 function ActorItem(props: ActorItemProps) {
   const { actor, index, id } = props;
-  const Item = schema2ActorCreator[props.actor.type];
-  const itemProps = cloneDeep(actor.props);
-  const { label, name, required } = itemProps;
+  const wigetKit = wigetKitMap[props.actor.type];
+  const nativeProps = cloneDeep(actor.props);
+  const formItemProps = clearFormItemProps(nativeProps);
+  const Item = wigetKit.createInstance;
 
-  delete itemProps.label;
-  delete itemProps.name;
-  delete itemProps.required;
-
-  console.log("actorItem Rerender:", itemProps);
   return (
     <DragItem
       onClick={() => ActorActions.activeActor(id)}
@@ -29,8 +26,8 @@ function ActorItem(props: ActorItemProps) {
       id={id}
       className={`p-2 bg-slate-200 mt-2 `}
     >
-      <Form.Item label={label || "标题"} name={name} required={required}>
-        <Item {...itemProps}></Item>
+      <Form.Item {...formItemProps}>
+        <Item {...nativeProps}></Item>
       </Form.Item>
     </DragItem>
   );

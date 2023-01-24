@@ -1,5 +1,5 @@
 import { ActorActions } from "../../../../store/actorStore";
-import { wigetList } from "../../constant";
+import { containerList, decoratorList, wigetList } from "../../constant";
 import { Actor } from "./BaseWidget";
 
 export type WigetItemProps = {
@@ -32,6 +32,24 @@ function WigetList() {
           ))}
         </div>
       </div>
+      {/* 
+      <div className=" m-2">
+        <p className=" font-semibold m-2 text-lg">容器组件</p>
+        <div className=" grid grid-cols-2 gap-2">
+          {containerList.map((item) => (
+            <WigetItem {...item} className="mb-2"></WigetItem>
+          ))}
+        </div>
+      </div>
+
+      <div className=" m-2">
+        <p className=" font-semibold m-2 text-lg">装饰组件</p>
+        <div className=" grid grid-cols-2 gap-2">
+          {decoratorList.map((item) => (
+            <WigetItem {...item} className="mb-2"></WigetItem>
+          ))}
+        </div>
+      </div> */}
     </div>
   );
 }

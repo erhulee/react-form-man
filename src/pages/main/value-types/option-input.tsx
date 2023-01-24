@@ -1,5 +1,6 @@
 import { Button, Form, Input } from "antd";
 import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
+import { cloneDeep } from "lodash-es";
 type Props = {
   fieldProps: {
     value: Array<{
@@ -22,15 +23,12 @@ function OptionInput(props: Props) {
 
   const handleAddItem = () => {
     const options = form.getFieldValue("options");
-    options.push({ label: "label", value: "value" });
-    form.setFieldValue("options", options);
-    onChange(options);
+    onChange([...options, { label: "label", value: "value" }]);
   };
 
   const handleDelete = (index: number) => {
-    const options = form.getFieldValue("options");
+    const options = cloneDeep(form.getFieldValue("options"));
     options.splice(index, 1);
-    form.setFieldValue("options", options);
     onChange(options);
   };
   return (
