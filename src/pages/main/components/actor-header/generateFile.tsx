@@ -9,9 +9,10 @@ function generateFile(
   const useForm = Form.useForm;
   function CustomForm() {
     const [form] = useForm();
-    return <Form form = {form}>
+    return (
+      <Form form = {form}>
         ${codes.join(" ")}
-    </Form>;
+      </Form>);
   }
   
   export default CustomForm

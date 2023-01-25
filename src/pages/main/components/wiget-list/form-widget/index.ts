@@ -5,8 +5,9 @@ import { NumberWigetKit } from "./number-widget";
 import { radioWigetKit } from "./radio-widget";
 import { switchWigetKit } from "./switch-widget";
 import { TextareaWigetKit } from "./textarea-widget";
-export { inputWigetKit } from "./input-widget";
+import { dividerWigetKit } from "./divider-widget"
 
+export type { DividerActor } from "./divider-widget"
 export type { InputActor } from "./input-widget";
 export type { CheckboxActor } from "./checkbox-widget";
 export type { NumberActor } from "./number-widget";
@@ -22,5 +23,6 @@ export const wigetKitMap: {
     "number":   NumberWigetKit,
     "switch":   switchWigetKit,
     "radio":    radioWigetKit,
-    "checkbox": checkboxWigetKit
+    "checkbox": checkboxWigetKit,
+    "divider": dividerWigetKit
 }
