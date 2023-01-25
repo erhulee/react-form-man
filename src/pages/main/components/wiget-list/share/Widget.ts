@@ -17,6 +17,8 @@ export interface BaseActor {
     props: {
       defaultValue?: any
       disabled?: boolean
+      name?: string
+      label?: string 
     }
 }
 export const baseColumns: any = [
