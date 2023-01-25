@@ -13,8 +13,10 @@ function splitProps(props:any): string{
             result.push(`${key} = "${value}"`)
         }else if(typeof value == "object"){
             result.push(`${key} = {${JSON.stringify(value)}}`)
+        }else if(typeof value == "boolean"){
+            result.push(`${key} = {${value.toString()}}`)
         }else{
-            console.warn("props 打散失败")
+
         }
     })
     return result.join(" ")

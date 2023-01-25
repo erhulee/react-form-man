@@ -1,7 +1,7 @@
 import { Button, message, Modal, Tabs } from "antd";
 import { useRef, useState } from "react";
 import useModal from "../../../../hooks/useModal";
-import { FormIcon, ReactIcon } from "../../../../Icons";
+import { FormIcon, GithubIcon, ReactIcon } from "../../../../Icons";
 import actorStore from "../../../../store/actorStore";
 import { wigetKitMap } from "../wiget-list/form-widget";
 import generateFile from "./generateFile";
@@ -60,7 +60,7 @@ function Header() {
         React 表单侠
       </span>
 
-      <div className=" flex">
+      <div className=" flex items-center">
         <Button
           type="primary"
           className=" flex items-center justify-center bg-blue-800 mr-4"
@@ -77,6 +77,14 @@ function Header() {
           <ReactIcon className=" mr-2"></ReactIcon>
           导出Laf
         </Button>
+
+        <a
+          className=" h-fit flex items-center ml-3"
+          href="https://github.com/erhulee/react-form-man"
+          target="_blank"
+        >
+          <GithubIcon className=" text-4xl border border-white border-solid rounded-full p-1"></GithubIcon>
+        </a>
       </div>
       <Modal
         open={visible}

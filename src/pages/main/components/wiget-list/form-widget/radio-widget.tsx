@@ -13,7 +13,9 @@ import { FormWigetKit } from "../share/type";
 
 export type RadioActor = BaseActor & {
   type: WidgetType.Radio;
-  props: BaseOptions;
+  props: BaseOptions & {
+    options: Array<{ label: string; value: string }>;
+  };
 };
 export const radioWigetKit: FormWigetKit = {
   columns: [...baseColumns, ...OptionLikeColumns],
