@@ -160,7 +160,9 @@ export const decoratorList: Array<WigetItemProps> = [
     name: "文本",
     schemaInfo: {
       type: WidgetType.Text,
-      props: {},
+      props: {
+        content: "",
+      },
     },
   },
 ];
