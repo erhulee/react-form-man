@@ -11,6 +11,11 @@ import WigetList from "./components/wiget-list";
 const Sider = Layout.Sider;
 const Content = Layout.Content;
 
+const contentStyle: React.CSSProperties = {
+  paddingBottom: '16px',
+  overflow: 'auto'
+};
+
 export default function MainPage() {
   return (
     <Layout style={{ width: "100%", height: "100vh" }}>
@@ -43,7 +48,7 @@ export default function MainPage() {
             ]}
           ></Tabs>
         </Sider>
-        <Content onClick={() => ActorActions.activeActor(null)}>
+        <Content onClick={() => ActorActions.activeActor(null)} style={contentStyle}>
           <ActorCanvas></ActorCanvas>
         </Content>
         <Sider theme="light" width={"350px"}>
