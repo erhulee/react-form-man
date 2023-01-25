@@ -19,7 +19,9 @@ export const textWigetKit: FormWigetKit = {
   ],
   generate(_props: any) {
     const props = cloneDeep(_props);
-    return `<div>${props.content}</div>`;
+    return `
+    <div>${props.content}</div>
+    `;
   },
   createInstance: (props: TextActor["props"]) => {
     return <div>{props.content}</div>;
