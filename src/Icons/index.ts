@@ -14,6 +14,8 @@ export { default as RadioIcon } from "./Radio";
 export { default as RateIcon } from "./Rate";
 export { default as ReactIcon } from "./React";
 export { default as RowContainerIcon } from "./RowContainer";
+export { default as SelectIcon } from "./Select";
+export { default as SliderIcon } from "./Slider";
 export { default as SwitchIcon } from "./Switch";
 export { default as TemplateIcon } from "./Template";
 export { default as TextareaIcon } from "./Textarea";
