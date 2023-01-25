@@ -29,32 +29,47 @@ export interface BaseActor {
 }
 export const baseColumns: any = [
     {
-      title: "label",
+      title: "标签",
       dataIndex: "label",
       valueType: "input",
+      formItemProps: {
+        tooltip: "label",
+      }
     },
     {
-      title: "name",
+      title: "字段索引",
       dataIndex: "name",
       valueType: "input",
+      formItemProps: {
+        tooltip: "name",
+      }
     },
     {
-      title: "required",
+      title: "必需",
       dataIndex: "required",
       valueType: "switch",
+      formItemProps: {
+        tooltip: "required",
+      }
     },
     {
-      title: "requireMessage",
+      title: "未填提示",
       dataIndex: "requireMessage",
       valueType: "input",
+      formItemProps: {
+        tooltip: "requireMessage",
+      }
     },
 ];
 
 export const InputLikeColumns: any = [
   {
-    title: "placeholder",
+    title: "缺省值",
     dataIndex: "placeholder",
     valueType: "input",
+    formItemProps: {
+      tooltip: "placeholder",
+    }
   },
 ]
 

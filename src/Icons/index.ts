@@ -21,4 +21,5 @@ export { default as TemplateIcon } from "./Template";
 export { default as TextIcon } from "./Text";
 export { default as TextareaIcon } from "./Textarea";
 export { default as TrashIcon } from "./Trash";
+export { default as TreeIcon } from "./Tree";
 export { default as VerticalLineIcon } from "./VerticalLine";

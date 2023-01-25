@@ -21,7 +21,6 @@ function ActorSetting() {
   const activeActor = snap.activeActor;
 
   useSubscribe(actorStore, (op) => {
-    console.log("op:", op, op[0][1] == "activeActor");
     if (op[0][1] == "activeActor") {
       update();
       form.resetFields();
@@ -56,10 +55,11 @@ function ActorSetting() {
           columns={wigetKitMap[activeActor.type].columns}
           layout="horizontal"
           submitter={false}
-          grid={true}
-          rowProps={{
-            gutter: [16, 16],
+          labelAlign="left"
+          labelCol={{
+            span: 8,
           }}
+          labelWidth={10}
           onValuesChange={handleValueChange}
         />
       </Card>

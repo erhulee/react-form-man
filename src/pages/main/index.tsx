@@ -1,9 +1,10 @@
 import { Layout, Tabs } from "antd";
-import { ComponentIcon, TemplateIcon } from "../../Icons";
+import { ComponentIcon, TemplateIcon, TreeIcon } from "../../Icons";
 import { ActorActions } from "../../store/actorStore";
 import ActorCanvas from "./components/actor-canvas";
 import Header from "./components/actor-header";
 import ActorSetting from "./components/actor-setting";
+import ActorTree from "./components/actor-tree";
 import FormShop from "./components/form-shop";
 import WigetList from "./components/wiget-list";
 
@@ -33,11 +34,11 @@ export default function MainPage() {
               {
                 label: (
                   <span className=" flex items-center">
-                    <TemplateIcon className=" mr-2"></TemplateIcon>模版
+                    <TreeIcon className=" mr-2"></TreeIcon>组件树
                   </span>
                 ),
-                key: "模版",
-                children: <FormShop></FormShop>,
+                key: "组件树",
+                children: <ActorTree></ActorTree>,
               },
             ]}
           ></Tabs>
