@@ -15,29 +15,34 @@ type DataItem = {
 
 function ActorSetting() {
   const update = useUpdate();
-  useSubscribe(actorStore, update);
   const snap = useSnapshot(actorStore);
-  const activeActor = snap.activeActor;
   const [form] = Form.useForm();
+
+  const activeActor = snap.activeActor;
+
+  useSubscribe(actorStore, (op) => {
+    if (op[0][1] == "activeActor") {
+      update();
+      form.resetFields();
+      syncWithStore();
+    }
+  });
+
   const handleValueChange = (v: any) => {
     const props = form.getFieldsValue();
-
     actorStore.activeActor && (actorStore.activeActor.props = props);
     const target = actorStore.actors.find(
       (actor) => actor.id == activeActor?.id
     );
-
     if (target) {
       Object.assign(target.props, props);
     }
-    console.log("after change:", target);
   };
 
   const syncWithStore = () => {
     form.setFieldsValue(actorStore.activeActor?.props);
   };
 
-  syncWithStore();
   if (activeActor == null) return <GlobalSettingForm></GlobalSettingForm>;
 
   return (
