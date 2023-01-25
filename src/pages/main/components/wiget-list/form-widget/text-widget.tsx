@@ -1,8 +1,8 @@
 import { cloneDeep } from "lodash-es";
 import { FormWigetKit } from "../share/type";
-import { WidgetType } from "../share/Widget";
+import { BaseActor, WidgetType } from "../share/Widget";
 
-export type TextActor = {
+export type TextActor = BaseActor & {
   type: WidgetType.Text;
   props: {
     content: string;
