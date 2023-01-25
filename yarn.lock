@@ -2286,7 +2286,7 @@ react-redux@^7.2.0:
 
 "react-router-dom@^6.7.0":
   "integrity" "sha512-jQtXUJyhso3kFw430+0SPCbmCmY1/kJv8iRffGHwHy3CkoomGxeYzMkmeSPYo6Egzh3FKJZRAL22yg5p2tXtfg=="
-  "resolved" "https://registry.npmmirror.com/react-router-dom/-/react-router-dom-6.7.0.tgz"
+  "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.7.0.tgz"
   "version" "6.7.0"
   dependencies:
     "@remix-run/router" "1.3.0"
