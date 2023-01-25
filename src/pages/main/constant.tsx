@@ -12,6 +12,7 @@ import {
   VerticalLineIcon,
 } from "../../Icons";
 import { WigetItemProps } from "./components/wiget-list";
+import { WidgetType } from "./components/wiget-list/share/Widget";
 
 export const wigetList: Array<WigetItemProps> = [
   {
@@ -114,18 +115,10 @@ export const decoratorList: Array<WigetItemProps> = [
     icon: <HorizontalLineIcon></HorizontalLineIcon>,
     name: "纵向分割线",
     schemaInfo: {
-      type: "input",
+      type: WidgetType.Divider,
       props: {
-        id: "",
+        type: "horizontal" as const,
       },
-    },
-  },
-  {
-    icon: <VerticalLineIcon></VerticalLineIcon>,
-    name: "横向分割线",
-    schemaInfo: {
-      type: "textarea",
-      props: {},
     },
   },
 ];

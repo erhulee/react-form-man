@@ -6,7 +6,7 @@ import ActorItem from "./actor-item";
 import { cloneDeep } from "lodash-es";
 import { useSnapshot } from "valtio";
 import ToolKits from "./tool-kit";
-import { Actor } from "../wiget-list/BaseWidget";
+import { Actor } from "../wiget-list/share/Widget";
 import WrapDecorator from "./wrap-decorator";
 import useDeleteKeyBoard from "../../../../hooks/useDeleteKeyBoard";
 import { useRef } from "react";

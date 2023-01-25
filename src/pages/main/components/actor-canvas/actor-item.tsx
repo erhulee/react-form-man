@@ -2,7 +2,7 @@ import DragItem from "./draw";
 import { Form } from "antd";
 import { ActorActions } from "../../../../store/actorStore";
 import { cloneDeep } from "lodash-es";
-import { Actor } from "../wiget-list/share/BaseWidget";
+import { Actor } from "../wiget-list/share/Widget";
 import { wigetKitMap } from "../wiget-list/form-widget";
 import clearFormItemProps from "../wiget-list/share/clearFormItemProps";
 

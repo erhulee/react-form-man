@@ -1,6 +1,6 @@
 import { ActorActions } from "../../../../store/actorStore";
 import { containerList, decoratorList, wigetList } from "../../constant";
-import { Actor } from "./BaseWidget";
+import { Actor } from "./share/Widget";
 
 export type WigetItemProps = {
   icon: JSX.Element;
@@ -41,6 +41,7 @@ function WigetList() {
           ))}
         </div>
       </div>
+      */}
 
       <div className=" m-2">
         <p className=" font-semibold m-2 text-lg">装饰组件</p>
@@ -49,7 +50,7 @@ function WigetList() {
             <WigetItem {...item} className="mb-2"></WigetItem>
           ))}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

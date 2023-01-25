@@ -1,7 +1,7 @@
 import { Checkbox, Input } from "antd";
 import { cloneDeep } from "lodash";
 import { BaseOptions } from "../../actor-setting/type";
-import { BaseActor, baseColumns, OptionLikeColumns } from "../share/BaseWidget";
+import { BaseActor, baseColumns, OptionLikeColumns } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWigetKit } from "../share/type";
@@ -16,11 +16,9 @@ export const checkboxWigetKit: FormWigetKit = {
   generate(_props: any) {
     const props = cloneDeep(_props);
     const formItemProps = clearFormItemProps(props);
-    return `
-        <Form.Item ${splitProps(formItemProps)}>
+    return `<Form.Item ${splitProps(formItemProps)}>
           <Checkbox.Group ${splitProps(props)}/>
-        </Form.Item>
-      `;
+        </Form.Item>`;
   },
   createInstance: (props: any) => {
     return <Checkbox.Group {...props}></Checkbox.Group>;
