@@ -1,12 +1,15 @@
 import { proxy } from "valtio"
 
-type GlobalFormSetting = {
-    collectionName: string
+export type GlobalFormSetting = {
+    collectionName?: string,
+    labelCol?: number,
+    labelAlign: "left" | "right",
     [index: string]: any
 }
 
 const state: GlobalFormSetting = {
-    collectionName: ""
+    collectionName: "",
+    labelAlign: "left"
 }
 
 const globalFormSetting = proxy(state);

@@ -8,7 +8,6 @@ import generateFile from "./generateFile";
 import CodeEditor from "../../../components/code-editor";
 import { generateAddCode } from "./generateLafCode";
 import globalFormSetting from "../../../../store/globalFormSetting";
-import logo from "../../../../assets/formLogo.png";
 function Header() {
   const [fileCode, setFileCode] = useState("");
   const [lafCold, setLafCode] = useState(["", "", "", "", ""]);
@@ -24,7 +23,7 @@ function Header() {
     });
     displayTsxRef.current = true;
 
-    const fileCode = generateFile(codes);
+    const fileCode = generateFile(codes, globalFormSetting);
     setFileCode(fileCode);
     toggle();
   };

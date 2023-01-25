@@ -1,6 +1,6 @@
 export function generateAddCode(
   instanceKeys: string[],
-  collectionName: string
+  collectionName: string = "collection"
 ) {
   return `import cloud from '@/cloud-sdk'
 exports.main = async function (ctx: FunctionContext) {

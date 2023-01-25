@@ -21,7 +21,9 @@ export const wigetList: Array<WigetItemProps> = [
     name: "单行输入",
     schemaInfo: {
       type: WidgetType.Input,
-      props: {},
+      props: {
+        label: "标签",
+      },
     },
   },
   {
@@ -29,7 +31,9 @@ export const wigetList: Array<WigetItemProps> = [
     name: "多行输入",
     schemaInfo: {
       type: WidgetType.Textarea,
-      props: {},
+      props: {
+        label: "标签",
+      },
     },
   },
   {
@@ -37,7 +41,9 @@ export const wigetList: Array<WigetItemProps> = [
     name: "数字输入",
     schemaInfo: {
       type: WidgetType.Number,
-      props: {},
+      props: {
+        label: "标签",
+      },
     },
   },
   {
@@ -45,7 +51,9 @@ export const wigetList: Array<WigetItemProps> = [
     name: "开关",
     schemaInfo: {
       type: WidgetType.Switch,
-      props: {},
+      props: {
+        label: "标签",
+      },
     },
   },
   {
@@ -54,6 +62,7 @@ export const wigetList: Array<WigetItemProps> = [
     schemaInfo: {
       type: WidgetType.Radio,
       props: {
+        label: "标签",
         options: [
           {
             label: "Apple",
@@ -69,6 +78,7 @@ export const wigetList: Array<WigetItemProps> = [
     schemaInfo: {
       type: WidgetType.Checkbox,
       props: {
+        label: "标签",
         options: [
           {
             label: "Apple",
@@ -84,6 +94,7 @@ export const wigetList: Array<WigetItemProps> = [
     schemaInfo: {
       type: WidgetType.Rate,
       props: {
+        label: "标签",
         count: 5,
         allowClear: false,
         allowHalf: false,
@@ -95,7 +106,9 @@ export const wigetList: Array<WigetItemProps> = [
     name: "滑动条",
     schemaInfo: {
       type: WidgetType.Slider,
-      props: {},
+      props: {
+        label: "标签",
+      },
     },
   },
   {
@@ -104,6 +117,7 @@ export const wigetList: Array<WigetItemProps> = [
     schemaInfo: {
       type: WidgetType.Select,
       props: {
+        label: "标签",
         options: [
           {
             label: "苹果",
