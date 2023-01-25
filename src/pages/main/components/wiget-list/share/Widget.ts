@@ -1,4 +1,4 @@
-import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor } from "../form-widget";
+import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor, TextActor } from "../form-widget";
 import { SelectActor } from "../form-widget/select-widget";
 
 export enum WidgetType {
@@ -9,10 +9,13 @@ export enum WidgetType {
   Radio = "radio",
   Checkbox = "checkbox",
 
-  Divider = "divider",
   Rate = "rate",
   Slider = "slider",
-  Select = "select"
+  Select = "select",
+
+  Text = "text",
+  Divider = "divider"
+
 }
 export interface BaseActor {
     id?: string // 保证唯一
@@ -64,6 +67,6 @@ export const OptionLikeColumns: any = [
 ]
 
 export type Actor = InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor 
-  | DividerActor | RateActor | SliderActor | SelectActor;
+  | DividerActor | RateActor | SliderActor | SelectActor | TextActor; 
 
 

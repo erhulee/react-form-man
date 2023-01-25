@@ -10,6 +10,7 @@ import {
   SliderIcon,
   SwitchIcon,
   TextareaIcon,
+  TextIcon,
 } from "../../Icons";
 import { WigetItemProps } from "./components/wiget-list";
 import { WidgetType } from "./components/wiget-list/share/Widget";
@@ -152,6 +153,14 @@ export const decoratorList: Array<WigetItemProps> = [
       props: {
         type: "horizontal" as const,
       },
+    },
+  },
+  {
+    icon: <TextIcon></TextIcon>,
+    name: "文本",
+    schemaInfo: {
+      type: WidgetType.Text,
+      props: {},
     },
   },
 ];
