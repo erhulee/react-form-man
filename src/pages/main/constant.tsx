@@ -1,13 +1,13 @@
 import {
   CardIcon,
   CheckboxIcon,
-  ColContainerIcon,
   HorizontalLineIcon,
   InputIcon,
   NumberIcon,
   RadioIcon,
   RateIcon,
-  RowContainerIcon,
+  SelectIcon,
+  SliderIcon,
   SwitchIcon,
   TextareaIcon,
 } from "../../Icons";
@@ -89,6 +89,29 @@ export const wigetList: Array<WigetItemProps> = [
       },
     },
   },
+  {
+    icon: <SliderIcon></SliderIcon>,
+    name: "滑动条",
+    schemaInfo: {
+      type: WidgetType.Slider,
+      props: {},
+    },
+  },
+  {
+    icon: <SelectIcon></SelectIcon>,
+    name: "下拉选择",
+    schemaInfo: {
+      type: WidgetType.Select,
+      props: {
+        options: [
+          {
+            label: "苹果",
+            value: "apple",
+          },
+        ],
+      },
+    },
+  },
 ];
 
 // export const containerList: Array<WigetItemProps> = [
@@ -123,7 +146,7 @@ export const wigetList: Array<WigetItemProps> = [
 export const decoratorList: Array<WigetItemProps> = [
   {
     icon: <HorizontalLineIcon></HorizontalLineIcon>,
-    name: "纵向分割线",
+    name: "分割线",
     schemaInfo: {
       type: WidgetType.Divider,
       props: {
