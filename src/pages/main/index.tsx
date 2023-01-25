@@ -42,7 +42,7 @@ export default function MainPage() {
             ]}
           ></Tabs>
         </Sider>
-        <Content onClick={() => ActorActions.activeActor(null)}>
+        <Content onClick={() => ActorActions.activeActor(null)} style={{ overflow:"auto" }}>
           <ActorCanvas></ActorCanvas>
         </Content>
         <Sider theme="light" width={"350px"}>
