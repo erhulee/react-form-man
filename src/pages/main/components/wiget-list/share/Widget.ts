@@ -27,11 +27,6 @@ export const baseColumns: any = [
       valueType: "input",
     },
     {
-      title: "placeholder",
-      dataIndex: "placeholder",
-      valueType: "input",
-    },
-    {
       title: "required",
       dataIndex: "required",
       valueType: "switch",
@@ -42,6 +37,14 @@ export const baseColumns: any = [
       valueType: "input",
     },
 ];
+
+export const InputLikeColumns: any = [
+  {
+    title: "placeholder",
+    dataIndex: "placeholder",
+    valueType: "input",
+  },
+]
 
 export const OptionLikeColumns: any = [
     {

@@ -3,6 +3,7 @@ export { default as CheckboxIcon } from "./Checkbox";
 export { default as CodeIcon } from "./Code";
 export { default as ColContainerIcon } from "./ColContainer";
 export { default as ComponentIcon } from "./Component";
+export { default as FormIcon } from "./Form";
 export { default as GoBackIcon } from "./GoBack";
 export { default as GoOnIcon } from "./GoOn";
 export { default as HorizontalLineIcon } from "./HorizontalLine";
