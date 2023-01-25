@@ -13,7 +13,9 @@ import { FormWigetKit } from "../share/type";
 
 export type CheckboxActor = BaseActor & {
   type: WidgetType.Checkbox;
-  props: BaseOptions;
+  props: BaseOptions & {
+    options: Array<{ label: string; value: string }>;
+  };
 };
 
 export const checkboxWigetKit: FormWigetKit = {

@@ -1,4 +1,5 @@
-import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor } from "../form-widget";
+import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor, TextActor } from "../form-widget";
+import { SelectActor } from "../form-widget/select-widget";
 
 export enum WidgetType {
   Input = "input",
@@ -8,41 +9,67 @@ export enum WidgetType {
   Radio = "radio",
   Checkbox = "checkbox",
 
+  Rate = "rate",
+  Slider = "slider",
+  Select = "select",
+
+  Text = "text",
   Divider = "divider"
+
 }
 export interface BaseActor {
     id?: string // 保证唯一
     type: WidgetType
-    props: any
+    props: {
+      defaultValue?: any
+      disabled?: boolean
+      name?: string
+      label?: string 
+    }
 }
 export const baseColumns: any = [
     {
-      title: "label",
+      title: "标签",
       dataIndex: "label",
       valueType: "input",
+      formItemProps: {
+        tooltip: "label",
+      }
     },
     {
-      title: "name",
+      title: "字段索引",
       dataIndex: "name",
       valueType: "input",
+      formItemProps: {
+        tooltip: "name",
+      }
     },
     {
-      title: "required",
+      title: "必需",
       dataIndex: "required",
       valueType: "switch",
+      formItemProps: {
+        tooltip: "required",
+      }
     },
     {
-      title: "requireMessage",
+      title: "未填提示",
       dataIndex: "requireMessage",
       valueType: "input",
+      formItemProps: {
+        tooltip: "requireMessage",
+      }
     },
 ];
 
 export const InputLikeColumns: any = [
   {
-    title: "placeholder",
+    title: "缺省值",
     dataIndex: "placeholder",
     valueType: "input",
+    formItemProps: {
+      tooltip: "placeholder",
+    }
   },
 ]
 
@@ -54,6 +81,7 @@ export const OptionLikeColumns: any = [
     }
 ]
 
-export type Actor = InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor | DividerActor;
+export type Actor = InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor 
+  | DividerActor | RateActor | SliderActor | SelectActor | TextActor; 
 
 

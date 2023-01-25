@@ -1,14 +1,16 @@
 import {
   CardIcon,
   CheckboxIcon,
-  ColContainerIcon,
   HorizontalLineIcon,
   InputIcon,
   NumberIcon,
   RadioIcon,
-  RowContainerIcon,
+  RateIcon,
+  SelectIcon,
+  SliderIcon,
   SwitchIcon,
   TextareaIcon,
+  TextIcon,
 } from "../../Icons";
 import { WigetItemProps } from "./components/wiget-list";
 import { WidgetType } from "./components/wiget-list/share/Widget";
@@ -76,6 +78,41 @@ export const wigetList: Array<WigetItemProps> = [
       },
     },
   },
+  {
+    icon: <RateIcon></RateIcon>,
+    name: "评分",
+    schemaInfo: {
+      type: WidgetType.Rate,
+      props: {
+        count: 5,
+        allowClear: false,
+        allowHalf: false,
+      },
+    },
+  },
+  {
+    icon: <SliderIcon></SliderIcon>,
+    name: "滑动条",
+    schemaInfo: {
+      type: WidgetType.Slider,
+      props: {},
+    },
+  },
+  {
+    icon: <SelectIcon></SelectIcon>,
+    name: "下拉选择",
+    schemaInfo: {
+      type: WidgetType.Select,
+      props: {
+        options: [
+          {
+            label: "苹果",
+            value: "apple",
+          },
+        ],
+      },
+    },
+  },
 ];
 
 // export const containerList: Array<WigetItemProps> = [
@@ -110,11 +147,21 @@ export const wigetList: Array<WigetItemProps> = [
 export const decoratorList: Array<WigetItemProps> = [
   {
     icon: <HorizontalLineIcon></HorizontalLineIcon>,
-    name: "纵向分割线",
+    name: "分割线",
     schemaInfo: {
       type: WidgetType.Divider,
       props: {
         type: "horizontal" as const,
+      },
+    },
+  },
+  {
+    icon: <TextIcon></TextIcon>,
+    name: "文本",
+    schemaInfo: {
+      type: WidgetType.Text,
+      props: {
+        content: "",
       },
     },
   },
