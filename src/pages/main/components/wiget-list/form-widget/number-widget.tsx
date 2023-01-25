@@ -1,7 +1,12 @@
 import { cloneDeep } from "lodash";
 import { InputNumber } from "antd";
 import { BaseOptions } from "../../actor-setting/type";
-import { BaseActor, baseColumns, WidgetType } from "../share/Widget";
+import {
+  BaseActor,
+  baseColumns,
+  InputLikeColumns,
+  WidgetType,
+} from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWigetKit } from "../share/type";
@@ -12,7 +17,7 @@ export type NumberActor = BaseActor & {
 };
 
 export const NumberWigetKit: FormWigetKit = {
-  columns: [...baseColumns],
+  columns: [...baseColumns, ...InputLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
     const formItemProps = clearFormItemProps(props);

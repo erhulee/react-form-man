@@ -1,13 +1,14 @@
 import { Button, message, Modal, Tabs } from "antd";
 import { useRef, useState } from "react";
 import useModal from "../../../../hooks/useModal";
-import { ReactIcon } from "../../../../Icons";
+import { FormIcon, ReactIcon } from "../../../../Icons";
 import actorStore from "../../../../store/actorStore";
 import { wigetKitMap } from "../wiget-list/form-widget";
 import generateFile from "./generateFile";
 import CodeEditor from "../../../components/code-editor";
 import { generateAddCode } from "./generateLafCode";
 import globalFormSetting from "../../../../store/globalFormSetting";
+import logo from "../../../../assets/formLogo.png";
 function Header() {
   const [fileCode, setFileCode] = useState("");
   const [lafCold, setLafCode] = useState(["", "", "", "", ""]);
@@ -54,7 +55,10 @@ function Header() {
   };
   return (
     <div className="flex justify-between items-center h-full">
-      <span className=" text-white font-semibold text-xl">React Form Man</span>
+      <span className=" text-white font-semibold text-xl flex items-center">
+        <FormIcon className=" text-3xl mr-2"></FormIcon>
+        React 表单侠
+      </span>
 
       <div className=" flex">
         <Button
