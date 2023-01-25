@@ -6,6 +6,7 @@ import {
   InputIcon,
   NumberIcon,
   RadioIcon,
+  RateIcon,
   RowContainerIcon,
   SwitchIcon,
   TextareaIcon,
@@ -73,6 +74,18 @@ export const wigetList: Array<WigetItemProps> = [
             value: "Apple",
           },
         ],
+      },
+    },
+  },
+  {
+    icon: <RateIcon></RateIcon>,
+    name: "评分",
+    schemaInfo: {
+      type: WidgetType.Rate,
+      props: {
+        count: 5,
+        allowClear: false,
+        allowHalf: false,
       },
     },
   },

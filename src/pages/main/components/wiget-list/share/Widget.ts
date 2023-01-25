@@ -1,4 +1,4 @@
-import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor } from "../form-widget";
+import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor } from "../form-widget";
 
 export enum WidgetType {
   Input = "input",
@@ -8,12 +8,16 @@ export enum WidgetType {
   Radio = "radio",
   Checkbox = "checkbox",
 
-  Divider = "divider"
+  Divider = "divider",
+  Rate = "rate"
 }
 export interface BaseActor {
     id?: string // 保证唯一
     type: WidgetType
-    props: any
+    props: {
+      defaultValue?: any
+      disabled?: boolean
+    }
 }
 export const baseColumns: any = [
     {
@@ -54,6 +58,7 @@ export const OptionLikeColumns: any = [
     }
 ]
 
-export type Actor = InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor | DividerActor;
+export type Actor = InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor 
+  | DividerActor | RateActor;
 
 
