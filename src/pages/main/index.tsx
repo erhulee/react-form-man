@@ -1,5 +1,6 @@
 import { Layout, Tabs } from "antd";
 import { ComponentIcon, TemplateIcon } from "../../Icons";
+import { ActorActions } from "../../store/actorStore";
 import ActorCanvas from "./components/actor-canvas";
 import Header from "./components/actor-header";
 import ActorSetting from "./components/actor-setting";
@@ -41,7 +42,7 @@ export default function MainPage() {
             ]}
           ></Tabs>
         </Sider>
-        <Content>
+        <Content onClick={() => ActorActions.activeActor(null)}>
           <ActorCanvas></ActorCanvas>
         </Content>
         <Sider theme="light" width={"350px"}>

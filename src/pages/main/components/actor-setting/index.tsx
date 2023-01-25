@@ -8,6 +8,7 @@ import actorStore from "../../../../store/actorStore";
 import GlobalSettingForm from "./global-setting-form";
 import { valueType } from "../../value-types/index";
 import { wigetKitMap } from "../wiget-list/form-widget";
+import { cloneDeep } from "lodash";
 type DataItem = {
   name: string;
   state: string;
@@ -17,10 +18,10 @@ function ActorSetting() {
   const update = useUpdate();
   const snap = useSnapshot(actorStore);
   const [form] = Form.useForm();
-
   const activeActor = snap.activeActor;
 
   useSubscribe(actorStore, (op) => {
+    console.log("op:", op, op[0][1] == "activeActor");
     if (op[0][1] == "activeActor") {
       update();
       form.resetFields();
@@ -29,14 +30,16 @@ function ActorSetting() {
   });
 
   const handleValueChange = (v: any) => {
-    const props = form.getFieldsValue();
+    const props = cloneDeep(form.getFieldsValue());
     actorStore.activeActor && (actorStore.activeActor.props = props);
-    const target = actorStore.actors.find(
+    const targetIndex = actorStore.actors.findIndex(
       (actor) => actor.id == activeActor?.id
     );
-    if (target) {
-      Object.assign(target.props, props);
-    }
+
+    if (targetIndex == -1) return;
+    const target = cloneDeep(actorStore.actors[targetIndex]);
+    target.props = props;
+    actorStore.actors[targetIndex] = target;
   };
 
   const syncWithStore = () => {

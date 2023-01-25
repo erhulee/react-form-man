@@ -9,7 +9,6 @@ import {
   RowContainerIcon,
   SwitchIcon,
   TextareaIcon,
-  VerticalLineIcon,
 } from "../../Icons";
 import { WigetItemProps } from "./components/wiget-list";
 import { WidgetType } from "./components/wiget-list/share/Widget";
@@ -19,17 +18,15 @@ export const wigetList: Array<WigetItemProps> = [
     icon: <InputIcon />,
     name: "单行输入",
     schemaInfo: {
-      type: "input",
-      props: {
-        id: "",
-      },
+      type: WidgetType.Input,
+      props: {},
     },
   },
   {
     icon: <TextareaIcon />,
     name: "多行输入",
     schemaInfo: {
-      type: "textarea",
+      type: WidgetType.Textarea,
       props: {},
     },
   },
@@ -37,7 +34,7 @@ export const wigetList: Array<WigetItemProps> = [
     icon: <NumberIcon />,
     name: "数字输入",
     schemaInfo: {
-      type: "number",
+      type: WidgetType.Number,
       props: {},
     },
   },
@@ -45,7 +42,7 @@ export const wigetList: Array<WigetItemProps> = [
     icon: <SwitchIcon></SwitchIcon>,
     name: "开关",
     schemaInfo: {
-      type: "switch",
+      type: WidgetType.Switch,
       props: {},
     },
   },
@@ -53,7 +50,7 @@ export const wigetList: Array<WigetItemProps> = [
     icon: <RadioIcon></RadioIcon>,
     name: "单选",
     schemaInfo: {
-      type: "radio",
+      type: WidgetType.Radio,
       props: {
         options: [
           {
@@ -68,7 +65,7 @@ export const wigetList: Array<WigetItemProps> = [
     icon: <CheckboxIcon></CheckboxIcon>,
     name: "多选",
     schemaInfo: {
-      type: "checkbox",
+      type: WidgetType.Checkbox,
       props: {
         options: [
           {
@@ -81,34 +78,34 @@ export const wigetList: Array<WigetItemProps> = [
   },
 ];
 
-export const containerList: Array<WigetItemProps> = [
-  {
-    icon: <RowContainerIcon />,
-    name: "纵向排列",
-    schemaInfo: {
-      type: "input",
-      props: {
-        id: "",
-      },
-    },
-  },
-  {
-    icon: <ColContainerIcon />,
-    name: "横向排列",
-    schemaInfo: {
-      type: "textarea",
-      props: {},
-    },
-  },
-  {
-    icon: <CardIcon></CardIcon>,
-    name: "卡片容器",
-    schemaInfo: {
-      type: "textarea",
-      props: {},
-    },
-  },
-];
+// export const containerList: Array<WigetItemProps> = [
+//   {
+//     icon: <RowContainerIcon />,
+//     name: "纵向排列",
+//     schemaInfo: {
+//       type: "input",
+//       props: {
+//         id: "",
+//       },
+//     },
+//   },
+//   {
+//     icon: <ColContainerIcon />,
+//     name: "横向排列",
+//     schemaInfo: {
+//       type: "textarea",
+//       props: {},
+//     },
+//   },
+//   {
+//     icon: <CardIcon></CardIcon>,
+//     name: "卡片容器",
+//     schemaInfo: {
+//       type: "textarea",
+//       props: {},
+//     },
+//   },
+// ];
 
 export const decoratorList: Array<WigetItemProps> = [
   {

@@ -1,5 +1,5 @@
 import { ActorActions } from "../../../../store/actorStore";
-import { containerList, decoratorList, wigetList } from "../../constant";
+import { decoratorList, wigetList } from "../../constant";
 import { Actor } from "./share/Widget";
 
 export type WigetItemProps = {

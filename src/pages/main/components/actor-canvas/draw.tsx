@@ -11,8 +11,9 @@ function DragItem(props: React.PropsWithChildren<DragItemProps>) {
     <Draggable draggableId={id} index={index}>
       {(provided) => (
         <div
-          onClick={() => {
+          onClick={(e) => {
             props.onClick();
+            e.stopPropagation();
           }}
           className={`${className} `}
           ref={provided.innerRef}
