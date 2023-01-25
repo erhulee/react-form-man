@@ -1,4 +1,3 @@
-import { Input, Radio, Switch } from "antd";
 import { cloneDeep } from "lodash";
 import { BaseOptions } from "../../actor-setting/type";
 import {
@@ -10,23 +9,24 @@ import {
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWigetKit } from "../share/type";
+import { Select } from "antd";
 
-export type RadioActor = BaseActor & {
-  type: WidgetType.Radio;
+export type SelectActor = BaseActor & {
+  type: WidgetType.Select;
   props: BaseOptions & {
     options: Array<{ label: string; value: string }>;
   };
 };
-export const radioWigetKit: FormWigetKit = {
+export const selectWigetKit: FormWigetKit = {
   columns: [...baseColumns, ...OptionLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
     const formItemProps = clearFormItemProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
-          <Radio.Group ${splitProps(props)}/>
+            <Select ${splitProps(props)}/>
         </Form.Item>`;
   },
   createInstance: (props: any) => {
-    return <Radio.Group {...props}></Radio.Group>;
+    return <Select {...props}></Select>;
   },
 };
