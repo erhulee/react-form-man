@@ -1,8 +1,6 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "antd/dist/reset.css";
 import "./index.css";
-
 import MainPage from "./pages/main";
 import NotFound from './pages/notfound';
 
@@ -33,6 +31,6 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   // <React.StrictMode>
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
   // </React.StrictMode>
 );

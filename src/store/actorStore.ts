@@ -2,7 +2,7 @@ import { proxy } from 'valtio'
 import { nanoid} from "nanoid"
 import { cloneDeep } from 'lodash-es';
 import { Actor } from '../pages/main/components/wiget-list/share/Widget';
-type ActorStore = {
+export type ActorStore = {
     actors: Array<Actor>;
     activeActor: Actor | null;
 }
