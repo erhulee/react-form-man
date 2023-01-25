@@ -18,6 +18,7 @@ export { default as SelectIcon } from "./Select";
 export { default as SliderIcon } from "./Slider";
 export { default as SwitchIcon } from "./Switch";
 export { default as TemplateIcon } from "./Template";
+export { default as TextIcon } from "./Text";
 export { default as TextareaIcon } from "./Textarea";
 export { default as TrashIcon } from "./Trash";
 export { default as VerticalLineIcon } from "./VerticalLine";
