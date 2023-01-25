@@ -22,7 +22,12 @@ export const ActorActions = {
         state.actors.push(instance)
     },
 
-    activeActor: (id: string)=>{
+    activeActor: (id: string | null)=>{
+        console.log("hell")
+        if(id == null){
+            state.activeActor = null;
+            return
+        }
         const target = cloneDeep(state.actors).find(actor => actor.id == id);
         if(target == null) return;
         state.activeActor = target;

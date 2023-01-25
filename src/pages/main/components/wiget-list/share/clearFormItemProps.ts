@@ -6,6 +6,8 @@ function clearFormItemProps(props:any){
         result[target] = props[target];
         delete props[target];
     })
+
+    delete props.id
     return result
 }
 

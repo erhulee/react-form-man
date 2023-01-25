@@ -1,13 +1,13 @@
 import { cloneDeep } from "lodash";
 import { InputNumber } from "antd";
 import { BaseOptions } from "../../actor-setting/type";
-import { BaseActor, baseColumns } from "../share/Widget";
+import { BaseActor, baseColumns, WidgetType } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWigetKit } from "../share/type";
 
 export type NumberActor = BaseActor & {
-  type: "number";
+  type: WidgetType.Number;
   props: BaseOptions;
 };
 

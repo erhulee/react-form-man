@@ -1,13 +1,13 @@
 import { Input } from "antd";
 import { cloneDeep } from "lodash";
 import { BaseOptions } from "../../actor-setting/type";
-import { BaseActor, baseColumns } from "../share/Widget";
+import { BaseActor, baseColumns, WidgetType } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWigetKit } from "../share/type";
 
 export type TextareaActor = BaseActor & {
-  type: "textarea";
+  type: WidgetType.Textarea;
   props: BaseOptions;
 };
 
