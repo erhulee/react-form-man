@@ -11,9 +11,10 @@ import WigetList from "./components/wiget-list";
 const Sider = Layout.Sider;
 const Content = Layout.Content;
 
-const contentStyle: React.CSSProperties = {
+const scrollStyle: React.CSSProperties = {
   paddingBottom: '16px',
-  overflow: 'auto'
+  // 不占据空间，auto 会因为tab的触碰到边缘，不断滚动
+  overflow: 'overlay'
 };
 
 export default function MainPage() {
@@ -23,7 +24,7 @@ export default function MainPage() {
         <Header></Header>
       </Layout.Header>
       <Layout>
-        <Sider theme="light" width={"350px"}>
+        <Sider theme="light" width={"350px"} style={scrollStyle}>
           <Tabs
             items={[
               {
@@ -48,10 +49,10 @@ export default function MainPage() {
             ]}
           ></Tabs>
         </Sider>
-        <Content onClick={() => ActorActions.activeActor(null)} style={contentStyle}>
+        <Content onClick={() => ActorActions.activeActor(null)} style={scrollStyle}>
           <ActorCanvas></ActorCanvas>
         </Content>
-        <Sider theme="light" width={"350px"}>
+        <Sider theme="light" width={"350px"} style={scrollStyle}>
           <ActorSetting></ActorSetting>
         </Sider>
       </Layout>
