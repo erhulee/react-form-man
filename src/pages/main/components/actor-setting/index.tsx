@@ -49,7 +49,7 @@ function ActorSetting() {
 
   return (
     <ProConfigProvider valueTypeMap={valueType}>
-      <Card title="组件设置">
+      <Card>
         <BetaSchemaForm<DataItem>
           form={form}
           columns={wigetKitMap[activeActor.type].columns}

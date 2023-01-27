@@ -1,4 +1,4 @@
-import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor, TextActor } from "../form-widget";
+import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor, TextActor,  TimeActor } from "../form-widget";
 import { SelectActor } from "../form-widget/select-widget";
 
 export enum WidgetType {
@@ -12,6 +12,7 @@ export enum WidgetType {
   Rate = "rate",
   Slider = "slider",
   Select = "select",
+  Time = "time",
 
   Text = "text",
   Divider = "divider"
@@ -69,6 +70,11 @@ export const baseColumns: any = [
       title: "初始值",
       dataIndex: "initialValue",
       valueType: "input"
+    },
+    {
+      title: "禁用",
+      dataIndex: "disabled",
+      valueType: "switch"
     }
 ];
 
@@ -91,7 +97,32 @@ export const OptionLikeColumns: any = [
     }
 ]
 
+export function createTitleDividerColumns(title: string, withDivier?:boolean){
+  if(withDivier){
+    return [
+      {
+        valueType: "divider"
+      }, 
+      {
+        valueType: "title",
+        fieldProps:{
+          title: title
+        }
+      }
+    ]
+  }
+  return [
+    {
+      valueType: "title",
+      fieldProps:{
+        title: title
+      }
+    }
+  ]
+
+}
+
 export type Actor = InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor 
-  | DividerActor | RateActor | SliderActor | SelectActor | TextActor; 
+  | DividerActor | RateActor | SliderActor | SelectActor | TextActor | TimeActor; 
 
 

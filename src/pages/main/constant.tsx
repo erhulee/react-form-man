@@ -1,5 +1,4 @@
 import {
-  CardIcon,
   CheckboxIcon,
   HorizontalLineIcon,
   InputIcon,
@@ -11,6 +10,7 @@ import {
   SwitchIcon,
   TextareaIcon,
   TextIcon,
+  TimeIcon,
 } from "../../Icons";
 import { WigetItemProps } from "./components/wiget-list";
 import { WidgetType } from "./components/wiget-list/share/Widget";
@@ -124,6 +124,23 @@ export const wigetList: Array<WigetItemProps> = [
             value: "apple",
           },
         ],
+      },
+    },
+  },
+  {
+    icon: <TimeIcon></TimeIcon>,
+    name: "时间",
+    schemaInfo: {
+      type: WidgetType.Time,
+      props: {
+        label: "标签",
+        // disabledTime: `
+        // //type DisabledTime = (now: Dayjs) => {
+        // //  disabledHours?: () => number[];
+        // //  disabledMinutes?: (selectedHour: number) => number[];
+        // //  disabledSeconds?: (selectedHour: number, selectedMinute: number) => number[];
+        // //};`,
+        format: "HH:mm:ss",
       },
     },
   },

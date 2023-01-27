@@ -20,6 +20,7 @@ export { default as SwitchIcon } from "./Switch";
 export { default as TemplateIcon } from "./Template";
 export { default as TextIcon } from "./Text";
 export { default as TextareaIcon } from "./Textarea";
+export { default as TimeIcon } from "./Time";
 export { default as TrashIcon } from "./Trash";
 export { default as TreeIcon } from "./Tree";
 export { default as VerticalLineIcon } from "./VerticalLine";

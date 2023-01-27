@@ -6,25 +6,31 @@ import "ace-builds/src-min-noconflict/mode-json"; //
 import "ace-builds/src-min-noconflict/mode-css"; //
 import "ace-builds/src-min-noconflict/theme-sqlserver"; // 新设主题
 import { useRef } from "react";
-function CodeEditor(props: { code: string }) {
-  const code = props.code;
-  const aceEditorRef = useRef();
+type Props = {
+  readonly?: boolean;
+  width?: string;
+  code: string;
+  onChange: (v: string) => void;
+};
+function CodeEditor(props: Props) {
+  const { code, onChange: parentChange, width, readonly } = props;
+
+  const aceEditorRef: any = useRef(null);
   const editorProps: IEditorProps = {
     $blockScrolling: true,
     highlightActiveLine: true,
   };
-  function onChange(newValue: any) {
-    console.log("change", newValue);
-  }
 
   return (
     <AceEditor
+      ref={aceEditorRef}
+      width="100%"
       mode="javascript"
       theme="github"
-      onChange={onChange}
+      onChange={parentChange}
       name="UNIQUE_ID_OF_DIV"
       editorProps={editorProps}
-      readOnly={true}
+      readOnly={readonly}
       value={code}
     />
   );
