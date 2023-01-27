@@ -10,10 +10,10 @@ type Props = {
   readonly?: boolean;
   width?: string;
   code: string;
-  onChange: (v: string) => void;
+  onChange?: (v: string) => void;
 };
 function CodeEditor(props: Props) {
-  const { code, onChange: parentChange, width, readonly } = props;
+  const { code, onChange: parentChange = () => {}, width, readonly } = props;
 
   const aceEditorRef: any = useRef(null);
   const editorProps: IEditorProps = {
