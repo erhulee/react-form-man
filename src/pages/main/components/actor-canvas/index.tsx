@@ -6,12 +6,11 @@ import ActorItem from "./actor-item";
 import { cloneDeep } from "lodash-es";
 import { useSnapshot } from "valtio";
 import { Actor } from "../wiget-list/share/Widget";
-import WrapDecorator from "./wrap-decorator";
 import { useRef } from "react";
 import globalFormSetting from "../../../../store/globalFormSetting";
 import { Form } from "antd";
 import getFormProps from "../wiget-list/share/getFormProps";
-
+import "./index.scss";
 const onDragStart = () => {
   /*...*/
 };
@@ -43,6 +42,7 @@ function ActorCanvas() {
   const blurRef = useRef(true);
   return (
     <div
+      className="actor-canvas"
       onBlur={(e) => {
         blurRef.current = false;
       }}
@@ -73,17 +73,14 @@ function ActorCanvas() {
               {(provided, snapshot) => (
                 <div ref={provided.innerRef} {...provided.droppableProps}>
                   {snap.actors.map((actor: Actor, index: number) => (
-                    <WrapDecorator
+                    <ActorItem
                       isActive={active && active.id === actor.id}
                       title={actor.type}
-                    >
-                      <ActorItem
-                        key={actor.id}
-                        actor={actor}
-                        id={actor.id!}
-                        index={index}
-                      ></ActorItem>
-                    </WrapDecorator>
+                      key={actor.id}
+                      actor={actor}
+                      id={actor.id!}
+                      index={index}
+                    ></ActorItem>
                   ))}
                   {provided.placeholder}
                 </div>

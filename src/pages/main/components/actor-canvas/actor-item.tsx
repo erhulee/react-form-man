@@ -5,11 +5,14 @@ import { cloneDeep } from "lodash-es";
 import { Actor } from "../wiget-list/share/Widget";
 import { wigetKitMap } from "../wiget-list/form-widget";
 import clearFormItemProps from "../wiget-list/share/clearFormItemProps";
+import WrapDecorator from "./wrap-decorator";
 
 type ActorItemProps = {
   actor: Actor;
   index: number;
   id: string;
+  title: string;
+  isActive: boolean;
 };
 
 function ActorItem(props: ActorItemProps) {
@@ -24,11 +27,15 @@ function ActorItem(props: ActorItemProps) {
       onClick={() => ActorActions.activeActor(id)}
       index={index}
       id={id}
-      className={`p-2 bg-slate-200 mt-2 `}
+      className={` bg-slate-200`}
     >
-      <Form.Item {...formItemProps}>
-        <Item {...nativeProps}></Item>
-      </Form.Item>
+      <div className=" relative">
+        <WrapDecorator title={props.title} isActive={props.isActive}>
+          <Form.Item {...formItemProps}>
+            <Item {...nativeProps}></Item>
+          </Form.Item>
+        </WrapDecorator>
+      </div>
     </DragItem>
   );
 }

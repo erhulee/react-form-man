@@ -60,6 +60,16 @@ export const baseColumns: any = [
         tooltip: "requireMessage",
       }
     },
+    {
+      title: "tooltip提示",
+      dataIndex: "tooltip",
+      valueType: "input",
+    },
+    {
+      title: "初始值",
+      dataIndex: "initialValue",
+      valueType: "input"
+    }
 ];
 
 export const InputLikeColumns: any = [

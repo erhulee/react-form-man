@@ -2,7 +2,7 @@ import { Draggable } from "react-beautiful-dnd";
 type DragItemProps = {
   id: string;
   index: number;
-  className: string;
+  className?: string;
   onClick: () => void;
 };
 function DragItem(props: React.PropsWithChildren<DragItemProps>) {
@@ -15,7 +15,7 @@ function DragItem(props: React.PropsWithChildren<DragItemProps>) {
             props.onClick();
             e.stopPropagation();
           }}
-          className={`${className} `}
+          className={`${className} my-2 `}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}

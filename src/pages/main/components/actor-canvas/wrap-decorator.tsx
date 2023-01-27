@@ -15,7 +15,7 @@ function WrapDecorator(props: React.PropsWithChildren<Props>) {
       tabIndex={1}
       className={`${
         isActive ? "border border-blue-500 border-solid" : ""
-      } relative rounded `}
+      } relative rounded p-2`}
     >
       {isActive && (
         <span className=" absolute top-0 left-0 bg-blue-500 px-1 py-1 text-white z-30">

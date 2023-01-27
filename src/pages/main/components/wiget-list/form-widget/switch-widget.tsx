@@ -5,6 +5,7 @@ import { BaseActor, baseColumns, WidgetType } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWigetKit } from "../share/type";
+import { overLoadColumns } from "../share/overLoadColumns";
 
 export type SwitchActor = BaseActor & {
   type: WidgetType.Switch;
@@ -12,11 +13,22 @@ export type SwitchActor = BaseActor & {
 };
 
 export const switchWigetKit: FormWigetKit = {
-  columns: [...baseColumns],
+  columns: overLoadColumns([
+    ...baseColumns,
+    {
+      title: "初始值",
+      dataIndex: "initialValue",
+      valueType: "switch",
+    },
+  ]),
   generate(_props: any) {
     const props = cloneDeep(_props);
     const formItemProps = clearFormItemProps(props);
-    return `<Form.Item ${splitProps(formItemProps)}>
+    const needValuePropName = formItemProps.initialValue != null;
+    if (needValuePropName) {
+      formItemProps.valuePropName = "checked";
+    }
+    return `<Form.Item ${splitProps(formItemProps)} >
           <Switch ${splitProps(props)}/>
         </Form.Item>`;
   },
