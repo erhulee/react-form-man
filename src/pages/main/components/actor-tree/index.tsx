@@ -1,5 +1,5 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Tree } from "antd";
+import { Tag, Tree } from "antd";
 import type { TreeProps } from "antd/es/tree";
 import { useSnapshot } from "valtio";
 import useSubscribe from "../../../../hooks/useSubscribe";
@@ -13,7 +13,12 @@ function generateTree(store: ActorStore) {
   const actors = store.actors;
   return actors.map((actor) => {
     return {
-      title: `${actor.type} (${actor.id})`,
+      title: (
+        <div className="p-1">
+          <Tag color="#108ee9">{actor.type}</Tag>
+          {actor.props.name || "defaultName"}{" "}
+        </div>
+      ),
       key: actor.id || "",
     };
   });
