@@ -8,6 +8,7 @@ import generateFile from "./generateFile";
 import CodeEditor from "../../../components/code-editor";
 import { generateAddCode } from "./generateLafCode";
 import globalFormSetting from "../../../../store/globalFormSetting";
+import generateAntdProSchema from "./generateAntdProSchema";
 function Header() {
   const [fileCode, setFileCode] = useState("");
   const [lafCold, setLafCode] = useState(["", "", "", "", ""]);
@@ -47,6 +48,12 @@ function Header() {
     toggle();
   };
 
+  const handleExportAntdPro = () => {
+    const code = generateAntdProSchema(actorStore.actors);
+    setFileCode(code);
+    toggle();
+  };
+
   const handleOk = async () => {
     await navigator.clipboard.writeText(fileCode);
     message.success("复制成功");
@@ -62,7 +69,7 @@ function Header() {
       <div className=" flex items-center">
         <Button
           type="primary"
-          className=" flex items-center justify-center bg-blue-800 mr-4"
+          className=" flex items-center justify-center bg-blue-800 "
           onClick={() => handleExport()}
         >
           <ReactIcon className=" mr-2"></ReactIcon>
@@ -70,11 +77,19 @@ function Header() {
         </Button>
         <Button
           type="primary"
-          className=" flex items-center justify-center bg-blue-800 "
+          className=" flex items-center justify-center bg-blue-800 mx-4 "
           onClick={() => handleExportLaf()}
         >
           <ReactIcon className=" mr-2"></ReactIcon>
           导出Laf
+        </Button>
+
+        <Button
+          type="primary"
+          onClick={() => handleExportAntdPro()}
+          className="bg-blue-800"
+        >
+          导出 Antd Pro
         </Button>
 
         <a

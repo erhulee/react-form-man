@@ -1,4 +1,5 @@
 import {
+  CalendarIcon,
   CheckboxIcon,
   HorizontalLineIcon,
   InputIcon,
@@ -141,6 +142,16 @@ export const wigetList: Array<WigetItemProps> = [
         // //  disabledSeconds?: (selectedHour: number, selectedMinute: number) => number[];
         // //};`,
         format: "HH:mm:ss",
+      },
+    },
+  },
+  {
+    icon: <CalendarIcon></CalendarIcon>,
+    name: "日期",
+    schemaInfo: {
+      type: WidgetType.Date,
+      props: {
+        label: "标签",
       },
     },
   },
