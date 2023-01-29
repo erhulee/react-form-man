@@ -1,4 +1,4 @@
-import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor, TextActor,  TimeActor, DateActor } from "../form-widget";
+import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor, TextActor,  TimeActor, DateActor, ImageActor } from "../form-widget";
 import { SelectActor } from "../form-widget/select-widget";
 
 export enum WidgetType {
@@ -16,7 +16,8 @@ export enum WidgetType {
   Date = "date",
 
   Text = "text",
-  Divider = "divider"
+  Divider = "divider",
+  Image = "image"
 
 
 }
@@ -125,6 +126,6 @@ export function createTitleDividerColumns(title: string, withDivier?:boolean){
 }
 
 export type Actor = InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor 
-  | DividerActor | RateActor | SliderActor | SelectActor | TextActor | TimeActor | DateActor;  
+  | DividerActor | RateActor | SliderActor | SelectActor | TextActor | TimeActor | DateActor | ImageActor;  
 
 

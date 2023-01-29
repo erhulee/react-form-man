@@ -12,6 +12,7 @@ import { selectWigetKit } from "./select-widget";
 import { textWigetKit } from "./text-widget";
 import { timeWigetKit } from "./time-widget";
 import { dateWigetKit } from "./date-widget";
+import { imageWigetKit } from "./image-widget";
 
 export type { DividerActor } from "./divider-widget"
 export type { InputActor } from "./input-widget";
@@ -26,6 +27,8 @@ export type { SelectActor} from "./select-widget"
 export type { TextActor } from "./text-widget"
 export type { TimeActor} from "./time-widget"
 export type { DateActor} from "./date-widget"
+export type { ImageActor } from "./image-widget"
+
 export const wigetKitMap: {
     [index: string]: FormWigetKit
 } = {
@@ -41,5 +44,6 @@ export const wigetKitMap: {
     "select": selectWigetKit,
     "text": textWigetKit,
     "time": timeWigetKit,
-    "date": dateWigetKit
+    "date": dateWigetKit,
+    "image": imageWigetKit
 }

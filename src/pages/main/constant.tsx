@@ -2,6 +2,7 @@ import {
   CalendarIcon,
   CheckboxIcon,
   HorizontalLineIcon,
+  ImageIcon,
   InputIcon,
   NumberIcon,
   RadioIcon,
@@ -207,4 +208,14 @@ export const decoratorList: Array<WigetItemProps> = [
       },
     },
   },
+  {
+    icon: <ImageIcon></ImageIcon>,
+    name: "图片",
+    schemaInfo: {
+      type: WidgetType.Image,
+      props: {
+        content: "",
+      },
+    },
+  }
 ];

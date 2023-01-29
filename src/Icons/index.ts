@@ -9,6 +9,7 @@ export { default as GithubIcon } from "./Github";
 export { default as GoBackIcon } from "./GoBack";
 export { default as GoOnIcon } from "./GoOn";
 export { default as HorizontalLineIcon } from "./HorizontalLine";
+export { default as ImageIcon } from "./Image";
 export { default as InputIcon } from "./Input";
 export { default as NumberIcon } from "./Number";
 export { default as RadioIcon } from "./Radio";
