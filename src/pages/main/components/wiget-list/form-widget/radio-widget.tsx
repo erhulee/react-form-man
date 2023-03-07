@@ -9,7 +9,7 @@ import {
 } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 
 export type RadioActor = BaseActor & {
   type: WidgetType.Radio;
@@ -17,7 +17,7 @@ export type RadioActor = BaseActor & {
     options: Array<{ label: string; value: string }>;
   };
 };
-export const radioWigetKit: FormWigetKit = {
+export const radioWidgetKit: FormWidgetKit = {
   columns: [...baseColumns, ...OptionLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);

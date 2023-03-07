@@ -4,7 +4,7 @@ import { BaseOptions } from "../../actor-setting/type";
 import { BaseActor, baseColumns, WidgetType } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 import { overLoadColumns } from "../share/overLoadColumns";
 
 export type SwitchActor = BaseActor & {
@@ -12,7 +12,7 @@ export type SwitchActor = BaseActor & {
   props: BaseOptions;
 };
 
-export const switchWigetKit: FormWigetKit = {
+export const switchWidgetKit: FormWidgetKit = {
   columns: overLoadColumns([
     ...baseColumns,
     {

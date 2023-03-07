@@ -1,18 +1,17 @@
-import { FormWigetKit } from "../share/type";
-import { checkboxWigetKit } from "./checkbox-widget";
-import { inputWigetKit } from "./input-widget";
-import { NumberWigetKit } from "./number-widget";
-import { radioWigetKit } from "./radio-widget";
-import { switchWigetKit } from "./switch-widget";
-import { TextareaWigetKit } from "./textarea-widget";
-import { dividerWigetKit } from "./divider-widget"
-import { rateWigetKit } from "./rate-widget";
-import { sliderWigetKit } from "./slider-widget";
-import { selectWigetKit } from "./select-widget";
-import { textWigetKit } from "./text-widget";
-import { timeWigetKit } from "./time-widget";
-import { dateWigetKit } from "./date-widget";
-import { imageWigetKit } from "./image-widget";
+export { checkboxWidgetKit } from "./checkbox-widget";
+export { inputWidgetKit } from "./input-widget";
+export { NumberWidgetKit } from "./number-widget";
+export { radioWidgetKit } from "./radio-widget";
+export { switchWidgetKit } from "./switch-widget";
+export { TextareaWidgetKit } from "./textarea-widget";
+export { dividerWidgetKit } from "./divider-widget"
+export { rateWidgetKit } from "./rate-widget";
+export { sliderWidgetKit } from "./slider-widget";
+export { selectWidgetKit } from "./select-widget";
+export { textWidgetKit } from "./text-widget";
+export { timeWidgetKit } from "./time-widget";
+export { dateWidgetKit } from "./date-widget";
+export { imageWidgetKit } from "./image-widget";
 
 export type { DividerActor } from "./divider-widget"
 export type { InputActor } from "./input-widget";
@@ -29,21 +28,3 @@ export type { TimeActor} from "./time-widget"
 export type { DateActor} from "./date-widget"
 export type { ImageActor } from "./image-widget"
 
-export const wigetKitMap: {
-    [index: string]: FormWigetKit
-} = {
-    "input":    inputWigetKit,
-    "textarea": TextareaWigetKit,
-    "number":   NumberWigetKit,
-    "switch":   switchWigetKit,
-    "radio":    radioWigetKit,
-    "checkbox": checkboxWigetKit,
-    "divider": dividerWigetKit,
-    "rate": rateWigetKit,
-    "slider": sliderWigetKit,
-    "select": selectWigetKit,
-    "text": textWigetKit,
-    "time": timeWigetKit,
-    "date": dateWigetKit,
-    "image": imageWigetKit
-}

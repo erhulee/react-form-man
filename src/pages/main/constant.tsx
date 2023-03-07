@@ -1,5 +1,6 @@
 import {
   CalendarIcon,
+  CellIcon,
   CheckboxIcon,
   HorizontalLineIcon,
   ImageIcon,
@@ -14,10 +15,33 @@ import {
   TextIcon,
   TimeIcon,
 } from "../../Icons";
-import { WigetItemProps } from "./components/wiget-list";
+import { WidgetItemProps } from "./components/wiget-list";
+import { CellContainerWidgetKit } from "./components/wiget-list/container-widgets/cell-container";
+import { inputWidgetKit, TextareaWidgetKit, NumberWidgetKit, switchWidgetKit, radioWidgetKit,
+checkboxWidgetKit, dividerWidgetKit, rateWidgetKit, sliderWidgetKit, selectWidgetKit, textWidgetKit, timeWidgetKit, dateWidgetKit, imageWidgetKit,  } from "./components/wiget-list/form-widget";
+import { ContainerWidgetKit, FormWidgetKit } from "./components/wiget-list/share/type";
 import { WidgetType } from "./components/wiget-list/share/Widget";
+export const widgetKitMap: {
+  [index: string]: FormWidgetKit | ContainerWidgetKit
+} = {
+  "input":    inputWidgetKit,
+  "textarea": TextareaWidgetKit,
+  "number":   NumberWidgetKit,
+  "switch":   switchWidgetKit,
+  "radio":    radioWidgetKit,
+  "checkbox": checkboxWidgetKit,
+  "divider": dividerWidgetKit,
+  "rate": rateWidgetKit,
+  "slider": sliderWidgetKit,
+  "select": selectWidgetKit,
+  "text": textWidgetKit,
+  "time": timeWidgetKit,
+  "date": dateWidgetKit,
+  "image": imageWidgetKit,
 
-export const wigetList: Array<WigetItemProps> = [
+  "cell": CellContainerWidgetKit
+}
+export const widgetList: Array<WidgetItemProps> = [
   {
     icon: <InputIcon />,
     name: "单行输入",
@@ -158,36 +182,46 @@ export const wigetList: Array<WigetItemProps> = [
   },
 ];
 
-// export const containerList: Array<WigetItemProps> = [
-//   {
-//     icon: <RowContainerIcon />,
-//     name: "纵向排列",
-//     schemaInfo: {
-//       type: "input",
-//       props: {
-//         id: "",
-//       },
-//     },
-//   },
-//   {
-//     icon: <ColContainerIcon />,
-//     name: "横向排列",
-//     schemaInfo: {
-//       type: "textarea",
-//       props: {},
-//     },
-//   },
-//   {
-//     icon: <CardIcon></CardIcon>,
-//     name: "卡片容器",
-//     schemaInfo: {
-//       type: "textarea",
-//       props: {},
-//     },
-//   },
-// ];
+export const containerList: Array<WidgetItemProps> = [
+  {
+       icon: <CellIcon />,
+    name: "单元格容器",
+    schemaInfo: {
+      type: WidgetType.Cell,
+      props: {
+        // id: "",
+      },
+    }, 
+  },
+  // {
+  //   icon: <RowContainerIcon />,
+  //   name: "纵向排列",
+  //   schemaInfo: {
+  //     type: "input",
+  //     props: {
+  //       id: "",
+  //     },
+  //   },
+  // },
+  // {
+  //   icon: <ColContainerIcon />,
+  //   name: "横向排列",
+  //   schemaInfo: {
+  //     type: "textarea",
+  //     props: {},
+  //   },
+  // },
+  // {
+  //   icon: <CardIcon></CardIcon>,
+  //   name: "卡片容器",
+  //   schemaInfo: {
+  //     type: "textarea",
+  //     props: {},
+  //   },
+  // },
+];
 
-export const decoratorList: Array<WigetItemProps> = [
+export const decoratorList: Array<WidgetItemProps> = [
   {
     icon: <HorizontalLineIcon></HorizontalLineIcon>,
     name: "分割线",

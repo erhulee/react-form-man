@@ -3,12 +3,12 @@ import { useRef, useState } from "react";
 import useModal from "../../../../hooks/useModal";
 import { FormIcon, GithubIcon, ReactIcon } from "../../../../Icons";
 import actorStore from "../../../../store/actorStore";
-import { wigetKitMap } from "../wiget-list/form-widget";
 import generateFile from "./generateFile";
 import CodeEditor from "../../../components/code-editor";
 import { generateAddCode } from "./generateLafCode";
 import globalFormSetting from "../../../../store/globalFormSetting";
 import generateAntdProSchema from "./generateAntdProSchema";
+import { widgetKitMap } from "../../constant";
 function Header() {
   const [fileCode, setFileCode] = useState("");
   const [lafCold, setLafCode] = useState(["", "", "", "", ""]);
@@ -18,8 +18,8 @@ function Header() {
   const handleExport = () => {
     const codes = actorStore.actors.map((actor) => {
       const type = actor.type;
-      const weigetKit = wigetKitMap[type];
-      const code = weigetKit.generate(actor.props);
+      const widgetKit = widgetKitMap[type];
+      const code = widgetKit.generate(actor.props);
       return code;
     });
     displayTsxRef.current = true;

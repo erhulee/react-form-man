@@ -4,7 +4,7 @@ import { BaseOptions } from "../../actor-setting/type";
 import { BaseActor, baseColumns, WidgetType } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 
 export type RateActor = BaseActor & {
   type: WidgetType.Rate;
@@ -15,7 +15,7 @@ export type RateActor = BaseActor & {
   };
 };
 
-export const rateWigetKit: FormWigetKit = {
+export const rateWidgetKit: FormWidgetKit = {
   columns: [
     ...baseColumns,
     {

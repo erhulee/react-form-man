@@ -8,7 +8,7 @@ import {
 } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 import { Select } from "antd";
 
 export type SelectActor = BaseActor & {
@@ -17,7 +17,7 @@ export type SelectActor = BaseActor & {
     options: Array<{ label: string; value: string }>;
   };
 };
-export const selectWigetKit: FormWigetKit = {
+export const selectWidgetKit: FormWidgetKit = {
   columns: [...baseColumns, ...OptionLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);

@@ -1,5 +1,6 @@
 export { default as CalendarIcon } from "./Calendar";
 export { default as CardIcon } from "./Card";
+export { default as CellIcon } from "./Cell";
 export { default as CheckboxIcon } from "./Checkbox";
 export { default as CodeIcon } from "./Code";
 export { default as ColContainerIcon } from "./ColContainer";

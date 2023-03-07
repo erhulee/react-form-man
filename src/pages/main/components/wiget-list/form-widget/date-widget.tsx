@@ -9,7 +9,7 @@ import {
 } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 import { overLoadColumns } from "../share/overLoadColumns";
 
 export type DateActor = BaseActor & {
@@ -21,7 +21,7 @@ export type DateActor = BaseActor & {
   };
 };
 
-export const dateWigetKit: FormWigetKit = {
+export const dateWidgetKit: FormWidgetKit = {
   columns: overLoadColumns([
     ...createTitleDividerColumns("通用配置"),
     ...baseColumns,

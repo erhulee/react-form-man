@@ -2,7 +2,7 @@ import { Image } from "antd";
 import { cloneDeep } from "lodash-es";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 import { BaseActor, WidgetType } from "../share/Widget";
 
 export type ImageActor = BaseActor & {
@@ -12,7 +12,7 @@ export type ImageActor = BaseActor & {
   };
 };
 
-export const imageWigetKit: FormWigetKit = {
+export const imageWidgetKit: FormWidgetKit = {
   columns: [
     {
       title: "alt",

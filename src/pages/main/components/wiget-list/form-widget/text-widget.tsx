@@ -1,5 +1,5 @@
 import { cloneDeep } from "lodash-es";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 import { BaseActor, WidgetType } from "../share/Widget";
 
 export type TextActor = BaseActor & {
@@ -9,7 +9,7 @@ export type TextActor = BaseActor & {
   };
 };
 
-export const textWigetKit: FormWigetKit = {
+export const textWidgetKit: FormWidgetKit = {
   columns: [
     {
       title: "内容",

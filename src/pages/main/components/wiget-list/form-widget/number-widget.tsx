@@ -9,14 +9,14 @@ import {
 } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 
 export type NumberActor = BaseActor & {
   type: WidgetType.Number;
   props: BaseOptions;
 };
 
-export const NumberWigetKit: FormWigetKit = {
+export const NumberWidgetKit: FormWidgetKit = {
   columns: [...baseColumns, ...InputLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);

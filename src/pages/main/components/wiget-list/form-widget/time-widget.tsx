@@ -9,7 +9,7 @@ import {
 } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 import { overLoadColumns } from "../share/overLoadColumns";
 
 export type TimeActor = BaseActor & {
@@ -21,7 +21,7 @@ export type TimeActor = BaseActor & {
   };
 };
 
-export const timeWigetKit: FormWigetKit = {
+export const timeWidgetKit: FormWidgetKit = {
   columns: overLoadColumns([
     ...createTitleDividerColumns("通用配置"),
     ...baseColumns,

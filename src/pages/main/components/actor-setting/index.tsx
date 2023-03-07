@@ -7,8 +7,9 @@ import { useUpdate } from "../../../../hooks/useUpdate";
 import actorStore from "../../../../store/actorStore";
 import GlobalSettingForm from "./global-setting-form";
 import { valueType } from "../../value-types/index";
-import { wigetKitMap } from "../wiget-list/form-widget";
+
 import { cloneDeep } from "lodash";
+import { widgetKitMap } from "../../constant";
 type DataItem = {
   name: string;
   state: string;
@@ -52,7 +53,7 @@ function ActorSetting() {
       <Card>
         <BetaSchemaForm<DataItem>
           form={form}
-          columns={wigetKitMap[activeActor.type].columns}
+          columns={widgetKitMap[activeActor.type].columns}
           layout="horizontal"
           submitter={false}
           labelAlign="left"

@@ -2,7 +2,7 @@ import { Divider } from "antd";
 import { cloneDeep } from "lodash-es";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 import { BaseActor, WidgetType } from "../share/Widget";
 
 export type DividerActor = BaseActor & {
@@ -12,7 +12,7 @@ export type DividerActor = BaseActor & {
   };
 };
 
-export const dividerWigetKit: FormWigetKit = {
+export const dividerWidgetKit: FormWidgetKit = {
   columns: [
     {
       title: "dashed",

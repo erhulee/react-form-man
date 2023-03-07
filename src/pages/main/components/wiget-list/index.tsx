@@ -1,14 +1,14 @@
 import { ActorActions } from "../../../../store/actorStore";
-import { decoratorList, wigetList } from "../../constant";
+import { containerList, decoratorList, widgetList } from "../../constant";
 import { Actor } from "./share/Widget";
 
-export type WigetItemProps = {
+export type WidgetItemProps = {
   icon: JSX.Element;
   name: string;
   schemaInfo: Actor;
   className?: string;
 };
-function WigetItem(props: WigetItemProps) {
+function WigetItem(props: WidgetItemProps) {
   const { icon, name, schemaInfo, className } = props;
   return (
     <div
@@ -27,12 +27,12 @@ function WigetList() {
       <div className=" m-2">
         <p className=" font-semibold m-2 text-lg">基础组件</p>
         <div className=" grid grid-cols-2 gap-2">
-          {wigetList.map((item) => (
+          {widgetList.map((item) => (
             <WigetItem {...item} className="mb-2"></WigetItem>
           ))}
         </div>
       </div>
-      {/*
+      
       <div className=" m-2">
         <p className=" font-semibold m-2 text-lg">容器组件</p>
         <div className=" grid grid-cols-2 gap-2">
@@ -41,7 +41,7 @@ function WigetList() {
           ))}
         </div>
       </div>
-      */}
+     
 
       <div className=" m-2">
         <p className=" font-semibold m-2 text-lg">装饰组件</p>

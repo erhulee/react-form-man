@@ -3,9 +3,9 @@ import { Form } from "antd";
 import { ActorActions } from "../../../../store/actorStore";
 import { cloneDeep } from "lodash-es";
 import { Actor } from "../wiget-list/share/Widget";
-import { wigetKitMap } from "../wiget-list/form-widget";
 import clearFormItemProps from "../wiget-list/share/clearFormItemProps";
 import WrapDecorator from "./wrap-decorator";
+import { widgetKitMap } from "../../constant";
 
 type ActorItemProps = {
   actor: Actor;
@@ -17,10 +17,10 @@ type ActorItemProps = {
 
 function ActorItem(props: ActorItemProps) {
   const { actor, index, id } = props;
-  const wigetKit = wigetKitMap[props.actor.type];
+  const widgetKit = widgetKitMap[props.actor.type];
   const nativeProps = cloneDeep(actor.props);
   const formItemProps = clearFormItemProps(nativeProps);
-  const Item = wigetKit.createInstance;
+  const Item = widgetKit.createInstance;
 
   return (
     <DragItem

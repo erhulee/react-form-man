@@ -1,3 +1,4 @@
+import { CellActor } from "../container-widgets";
 import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor, TextActor,  TimeActor, DateActor, ImageActor } from "../form-widget";
 import { SelectActor } from "../form-widget/select-widget";
 
@@ -17,7 +18,9 @@ export enum WidgetType {
 
   Text = "text",
   Divider = "divider",
-  Image = "image"
+  Image = "image",
+
+  Cell = "cell"
 
 
 }
@@ -126,6 +129,7 @@ export function createTitleDividerColumns(title: string, withDivier?:boolean){
 }
 
 export type Actor = InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor 
-  | DividerActor | RateActor | SliderActor | SelectActor | TextActor | TimeActor | DateActor | ImageActor;  
+  | DividerActor | RateActor | SliderActor | SelectActor | TextActor | TimeActor | DateActor | ImageActor
+  | CellActor;  
 
 

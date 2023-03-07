@@ -9,14 +9,14 @@ import {
 } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 
 export type TextareaActor = BaseActor & {
   type: WidgetType.Textarea;
   props: BaseOptions;
 };
 
-export const TextareaWigetKit: FormWigetKit = {
+export const TextareaWidgetKit: FormWidgetKit = {
   columns: [...baseColumns, ...InputLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);

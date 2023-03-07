@@ -9,7 +9,7 @@ import {
 } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
-import { FormWigetKit } from "../share/type";
+import { FormWidgetKit } from "../share/type";
 
 export type CheckboxActor = BaseActor & {
   type: WidgetType.Checkbox;
@@ -18,7 +18,7 @@ export type CheckboxActor = BaseActor & {
   };
 };
 
-export const checkboxWigetKit: FormWigetKit = {
+export const checkboxWidgetKit: FormWidgetKit = {
   columns: [...baseColumns, ...OptionLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
