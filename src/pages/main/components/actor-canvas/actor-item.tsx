@@ -6,6 +6,8 @@ import { Actor } from "../wiget-list/share/Widget";
 import clearFormItemProps from "../wiget-list/share/clearFormItemProps";
 import WrapDecorator from "./wrap-decorator";
 import { widgetKitMap } from "../../constant";
+import DragWrap from "../../../../drap-component-wrap/drag-wrap";
+import { ItemType } from "../../../../drap-component-wrap/type";
 
 type ActorItemProps = {
   actor: Actor;
@@ -23,20 +25,15 @@ function ActorItem(props: ActorItemProps) {
   const Item = widgetKit.createInstance;
 
   return (
-    <DragItem
-      onClick={() => ActorActions.activeActor(id)}
-      index={index}
-      id={id}
-      className={` bg-slate-200`}
-    >
-      <div className=" relative">
+    <DragWrap itemType={ItemType.actor} item={()=> ({componentId:id})}>
+      <div className=" relative bg-slate-200 "  >
         <WrapDecorator title={props.title} isActive={props.isActive}>
           <Form.Item {...formItemProps}>
-            <Item {...nativeProps}></Item>
+            <Item {...nativeProps} id={id} ></Item>
           </Form.Item>
         </WrapDecorator>
       </div>
-    </DragItem>
+      </DragWrap>
   );
 }
 

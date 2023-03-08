@@ -41,7 +41,7 @@ export const widgetKitMap: {
 
   "cell": CellContainerWidgetKit
 }
-export const widgetList: Array<WidgetItemProps> = [
+export const formList: Array<WidgetItemProps> = [
   {
     icon: <InputIcon />,
     name: "单行输入",

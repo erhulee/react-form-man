@@ -10,6 +10,8 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const router = createBrowserRouter(
   // createRoutesFromElements(
@@ -30,7 +32,9 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <DndProvider backend={HTML5Backend} >
+    <RouterProvider router={router} />
+  </DndProvider>
   // <React.StrictMode>
-  <RouterProvider router={router} />
   // </React.StrictMode>
 );

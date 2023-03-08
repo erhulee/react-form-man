@@ -6,7 +6,7 @@ import Header from "./components/actor-header";
 import ActorSetting from "./components/actor-setting";
 import ActorTree from "./components/actor-tree";
 import FormShop from "./components/form-shop";
-import WigetList from "./components/wiget-list";
+import WidgetList from "./components/wiget-list";
 
 const Sider = Layout.Sider;
 const Content = Layout.Content;
@@ -35,7 +35,7 @@ export default function MainPage() {
                 ),
                 key: "组件",
 
-                children: <WigetList></WigetList>,
+                children: <WidgetList />
               },
               {
                 label: (

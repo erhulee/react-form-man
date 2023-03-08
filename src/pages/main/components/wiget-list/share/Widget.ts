@@ -32,6 +32,8 @@ export interface BaseActor {
       disabled?: boolean
       name?: string
       label?: string 
+
+      children?: BaseActor[]
     }
 }
 export const baseColumns: any = [

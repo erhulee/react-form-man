@@ -1,5 +1,7 @@
+import DragWrap from "../../../../drap-component-wrap/drag-wrap";
+import { ItemType } from "../../../../drap-component-wrap/type";
 import { ActorActions } from "../../../../store/actorStore";
-import { containerList, decoratorList, widgetList } from "../../constant";
+import { containerList, decoratorList, formList,  } from "../../constant";
 import { Actor } from "./share/Widget";
 
 export type WidgetItemProps = {
@@ -8,9 +10,10 @@ export type WidgetItemProps = {
   schemaInfo: Actor;
   className?: string;
 };
-function WigetItem(props: WidgetItemProps) {
+function WidgetItem(props: WidgetItemProps) {
   const { icon, name, schemaInfo, className } = props;
   return (
+    <DragWrap itemType={ItemType.origin} item={()=>({schemaInfo})}   >
     <div
       onClick={() => ActorActions.addActor(schemaInfo)}
       className={`${className} bg-slate-100 flex flex-col justify-center items-center border-transparent border-solid  py-1 rounded border hover:border-cyan-900 cursor-pointer `}
@@ -18,17 +21,18 @@ function WigetItem(props: WidgetItemProps) {
       <span className=" text-xl ">{icon}</span>
       <div className=" flex-1 text-gray-600">{name}</div>
     </div>
+    </DragWrap>
   );
 }
 
-function WigetList() {
+function WidgetList() {
   return (
     <div className=" px-2">
       <div className=" m-2">
         <p className=" font-semibold m-2 text-lg">基础组件</p>
         <div className=" grid grid-cols-2 gap-2">
-          {widgetList.map((item) => (
-            <WigetItem {...item} className="mb-2"></WigetItem>
+          {formList.map((item) => (
+            <WidgetItem {...item} className="mb-2" />
           ))}
         </div>
       </div>
@@ -37,7 +41,7 @@ function WigetList() {
         <p className=" font-semibold m-2 text-lg">容器组件</p>
         <div className=" grid grid-cols-2 gap-2">
           {containerList.map((item) => (
-            <WigetItem {...item} className="mb-2"></WigetItem>
+             <WidgetItem {...item} className="mb-2" />
           ))}
         </div>
       </div>
@@ -47,7 +51,7 @@ function WigetList() {
         <p className=" font-semibold m-2 text-lg">装饰组件</p>
         <div className=" grid grid-cols-2 gap-2">
           {decoratorList.map((item) => (
-            <WigetItem {...item} className="mb-2"></WigetItem>
+                <WidgetItem {...item} className="mb-2" />
           ))}
         </div>
       </div>
@@ -55,4 +59,4 @@ function WigetList() {
   );
 }
 
-export default WigetList;
+export default WidgetList;
