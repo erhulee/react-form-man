@@ -17,6 +17,7 @@ import {
 } from "../../Icons";
 import { WidgetItemProps } from "./components/wiget-list";
 import { CellContainerWidgetKit } from "./components/wiget-list/container-widgets/cell-container";
+import { RootWidgetKit } from "./components/wiget-list/container-widgets/root";
 import { inputWidgetKit, TextareaWidgetKit, NumberWidgetKit, switchWidgetKit, radioWidgetKit,
 checkboxWidgetKit, dividerWidgetKit, rateWidgetKit, sliderWidgetKit, selectWidgetKit, textWidgetKit, timeWidgetKit, dateWidgetKit, imageWidgetKit,  } from "./components/wiget-list/form-widget";
 import { ContainerWidgetKit, FormWidgetKit } from "./components/wiget-list/share/type";
@@ -39,7 +40,8 @@ export const widgetKitMap: {
   "date": dateWidgetKit,
   "image": imageWidgetKit,
 
-  "cell": CellContainerWidgetKit
+  "cell": CellContainerWidgetKit,
+  "root": RootWidgetKit
 }
 export const formList: Array<WidgetItemProps> = [
   {

@@ -7,6 +7,7 @@ type DragParams = DragTransferData<{schemaInfo: any } | {componentId: string}>
 type Props = {
     accept:  ItemType| Array<ItemType>,
     onDrop: (transferData: DragParams)=>void;
+    isRoot?: boolean
 }
 
 function DropWrap(props: React.PropsWithChildren<Props>){
@@ -15,6 +16,8 @@ function DropWrap(props: React.PropsWithChildren<Props>){
         return {
             accept,
             drop:(transferData, monitor)=>{
+                const isTopLayer =monitor.isOver();
+                if(!isTopLayer) return;
                 props.onDrop(transferData)
             },
             collect: (monitor)=>
@@ -24,7 +27,7 @@ function DropWrap(props: React.PropsWithChildren<Props>){
         }
     })
 
-    return <div ref={drop} className={`${isOver ?"opacity-20":"" }  `}>
+    return <div ref={drop} className={`${isOver && !props.isRoot ?"opacity-20":"" }  `}>
         {children}
     </div>
 }

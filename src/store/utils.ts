@@ -16,3 +16,4 @@ export function findActor(root: Actor | Array<Actor>, targetId:String): Actor | 
     }
     return null;
 }
+

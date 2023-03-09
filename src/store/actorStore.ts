@@ -1,13 +1,21 @@
 import { proxy } from 'valtio'
 import { nanoid} from "nanoid"
 import { cloneDeep } from 'lodash-es';
-import { Actor } from '../pages/main/components/wiget-list/share/Widget';
+import { Actor, WidgetType } from '../pages/main/components/wiget-list/share/Widget';
 import { findActor } from './utils';
 export type ActorStore = {
-    actors: Array<Actor>;
+    actorsTree: Actor;
+    actors: Actor[];
     activeActor: Actor | null;
 }
 const _state:ActorStore = {
+    actorsTree: {
+        type: WidgetType.Root,
+        props: {
+        //   label: "标签",
+        children:[]
+        },
+    },
     actors: [],
     activeActor: null,
 }
@@ -16,13 +24,25 @@ const state = proxy(_state)
 export default state
 
 export const ActorActions = {
+    // initRoot: ()=>{
+    //     const rootSchema = {
+    //         type: WidgetType.Root,
+    //         props: {
+    //         //   label: "标签",
+    //         },
+    //     }
+    //     state.actors = rootSchema;
+        
+    // },
     addActor: (schema: Actor)=>{
+        console.log(state);
         const instance = cloneDeep(schema);
         instance.id = nanoid(10);
-        
-        state.actors.push(instance)
+
+        state.actorsTree.props.children?.push(instance)
+        // state.actors.push(instance)
     },
-    addActorBeChild: (schema: Actor, fatherId: String)=>{
+    addActorBeChild: (schema: Actor, fatherId?: String)=>{
         const instance = cloneDeep(schema);
         instance.id = nanoid(10);
         const parent = state.actors.find((actor)=> actor.id == fatherId)
@@ -37,19 +57,27 @@ export const ActorActions = {
         // 1. DFS 寻找 instance;
         const sourceActor = findActor(state.actors, sourceActorId);
         if(sourceActor == null) return;
-
-
-
-
     },
     activeActor: (id: string | null)=>{
-        if(id == null){
-            state.activeActor = null;
-            return
+        if(id == null || id?.trim() == "") {
+        // 设置 rootNode 为激活
+            return;
         }
-        const target = cloneDeep(state.actors).find(actor => actor.id == id);
-        if(target == null) return;
-        state.activeActor = target;
+        // DFS 寻找
+        function find(node: Actor):Actor | null{
+            if(node.id == id) return node;
+            const children = node.props.children || [];
+            for(let i = 0; i < children.length; i++){
+                const result = find(children[i]);
+                if(result !== null) return result;
+            }
+            return null;
+        }
+
+        const target = find(state.actorsTree);
+        if(target !== null) {
+            state.activeActor = target;
+        }
     },
 
     deleteActiveActor: ()=>{

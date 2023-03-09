@@ -28,7 +28,7 @@ export const CellContainerWidgetKit: ContainerWidgetKit = {
             ActorActions.addActorBeChild(schemaInfo, id)
           // 老的 actor 挪动
           }else{
-
+            
           }
         }}>
           <div className="bg-slate-300 border-dashed border-2" style={{minHeight: "100px"}} >
