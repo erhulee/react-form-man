@@ -13,7 +13,7 @@ export type WidgetItemProps = {
 function WidgetItem(props: WidgetItemProps) {
   const { icon, name, schemaInfo, className } = props;
   return (
-    <DragWrap itemType={ItemType.origin} item={()=>({schemaInfo})}   >
+    <DragWrap itemType={ItemType.origin} item={{schemaInfo, itemType: ItemType.origin}}   >
     <div
       onClick={() => ActorActions.addActor(schemaInfo)}
       className={`${className} bg-slate-100 flex flex-col justify-center items-center border-transparent border-solid  py-1 rounded border hover:border-cyan-900 cursor-pointer `}

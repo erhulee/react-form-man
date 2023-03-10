@@ -39,19 +39,19 @@ function WrapDecorator(props: React.PropsWithChildren<DecoratorProps>) {
         tabIndex={1}
         className={
           `${isActive ? "border border-blue-500 border-solid" : ""} 
-           ${widgetCategory == WidgetCategory.Container? "p-4 bg-blue-200 mt-2": ""}
-           ${widgetCategory == WidgetCategory.Form? "bg-blue-100 p-4 mt-2":""}
+           ${widgetCategory == WidgetCategory.Container? "p-4 bg-blue-200 ": ""}
+           ${widgetCategory == WidgetCategory.Form? "bg-blue-100 p-4 ":""}
            ${widgetCategory == WidgetCategory.Root? "w-full h-full px-10 py-5":""}
           relative rounded `}
       >
         {isActive && (
-          <span className=" absolute top-0 left-0 bg-blue-500 px-1 py-1 text-white z-30">
+          <span className=" absolute top-0 left-0 bg-blue-500 px-1 py-1 text-white z-30 rounded-br">
             {title}
           </span>
         )}
         {isActive && (
           <div
-            className=" bg-blue-500 absolute top-0 right-0 p-1 cursor-pointer z-30 "
+            className=" bg-blue-500 absolute top-0 right-0 p-1 cursor-pointer z-30 rounded-bl "
             onClick={() => deleteActive()}
           >
             <TrashIcon></TrashIcon>
@@ -63,12 +63,12 @@ function WrapDecorator(props: React.PropsWithChildren<DecoratorProps>) {
 }
 
 function MoveDecorator(props: React.PropsWithChildren<MoveDecoratorProps>){
+  console.log("Re-render")
   const {widgetCategory, id, children} = props;
-
   switch(widgetCategory){
     case WidgetCategory.Root:
       return (
-        <DropWrap onDrop={()=>{}} accept={[ItemType.actor, ItemType.origin]} isRoot>
+        <DropWrap onDrop={(transferData)=>{console.log("tt:", transferData)}} accept={[ItemType.actor, ItemType.origin]} isRoot>
             {children}
         </DropWrap>
       )
@@ -82,9 +82,16 @@ function MoveDecorator(props: React.PropsWithChildren<MoveDecoratorProps>){
       )
     case WidgetCategory.Form:
     case WidgetCategory.Decorator:
-      return <DragWrap itemType={ItemType.actor} item={()=>({componentId: id })} >
-          {children}
-      </DragWrap>
+      return  <DragWrap itemType={ItemType.actor} item={{ componentId: id, itemType: ItemType.actor }} >
+        {children}
+    </DragWrap>
+      // (<DropWrap onDrop={(transferData)=>{
+      //   const sourceId = transferData.componentId;
+      //   const targetId = id;
+      //   ActorActions.insertActor(sourceId, targetId)
+      // }} accept={[ItemType.actor, ItemType.origin]}>
+      
+      // </DropWrap>)
   }
 }
   
@@ -94,20 +101,19 @@ function RenderItemWrap(props: React.PropsWithChildren<Props>){
     
     const handleActiveClick = (e:React.MouseEvent<HTMLDivElement, MouseEvent>)=> {
         ActorActions.activeActor(id || "");
-        console.log("clcik:", id)
         e.stopPropagation();
     }
 
     const itemType = getWidgetCategory(type);
 
     const isActive = currentActiveId == id;
-    const title = actorProps.name ?? "未定义";
+    const title = type ?? "未定义";
     return (<div onClick={handleActiveClick}>
-                <WrapDecorator isActive={isActive} title={title} widgetCategory={itemType}>
                   <MoveDecorator id={id || ""} widgetCategory={itemType}>
-                     {children}
+                    <WrapDecorator isActive={isActive} title={title} widgetCategory={itemType}>
+                        {children}
+                    </WrapDecorator>
                   </MoveDecorator>
-                </WrapDecorator>
             </div>)
 
 }

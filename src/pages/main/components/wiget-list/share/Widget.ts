@@ -40,6 +40,7 @@ export interface BaseActor {
       name?: string
       label?: string 
 
+      parent?: BaseActor
       children?: BaseActor[]
     }
 }
