@@ -107,7 +107,7 @@ export const ActorActions = {
 
         const containerActor = find(targetId);
         if(Array.isArray(containerActor?.props.children)){
-            containerActor?.props.children.splice(targetPos + 1, 0, sourceActor!)
+            containerActor?.props.children.splice(targetPos , 0, sourceActor!)
         }
 
     },

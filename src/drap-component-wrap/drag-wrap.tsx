@@ -31,7 +31,7 @@ function DragWrap(props: React.PropsWithChildren<{
 
 
     return <>
-        <DragPreviewImage src={previewSrc} connect={preview}></DragPreviewImage>
+        {/* <DragPreviewImage src={previewSrc} connect={preview}></DragPreviewImage> */}
         <div ref={drag}>
             {children}
         </div>
