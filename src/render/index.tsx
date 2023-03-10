@@ -24,7 +24,7 @@ function Render(node: Actor, activeActorId: string){
     
     children.map(child=>Render(child, activeActorId)).forEach((renderResult, index)=>{
         childrenRenderResult.push(renderResult);
-        const ResponseInsertNode = <EmptyDivider index={index + 1} currentContainerId={node.id!} key={index} ></EmptyDivider>;
+        const ResponseInsertNode = <EmptyDivider index={index + 1} currentContainerId={node.id!} key={index + 1} ></EmptyDivider>;
         childrenRenderResult.push(ResponseInsertNode)
     });
     const widgetKit = queryWidgetKit(type);

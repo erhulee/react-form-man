@@ -60,46 +60,6 @@ export const ActorActions = {
             parent.props.children = [instance];
         }
     },
-    insertActor:(sourceId:string, targetId:string)=>{
-        if(isStringEmpty(sourceId) || isStringEmpty(targetId)) return;
-
-        // DFS 寻找
-        function find(node: Actor, id:string):Actor | null{
-            if(node.id == id) return node;
-            const children = node.props.children || [];
-            for(let i = 0; i < children.length; i++){
-                const result = find(children[i], id);
-                if(result !== null) return result;
-            }
-            return null;
-        }
-
-        const sourceActor = find(actorStore.actorsTree, sourceId);
-        const targetActor = find(actorStore.actorsTree, targetId);
-        if(sourceActor == null || targetActor == null) return;
-        const sourceActorParent = sourceActor?.props.parent;
-        const targetActorParent = targetActor?.props.parent;
-
-
-        const sourceIndex = sourceActorParent?.props.children?.findIndex(child => child.id == sourceId);
-        if(sourceIndex == -1 ) return
-        console.log("删除原node：", sourceActor, "插入的位置后一个node:", targetActor);
-        console.log("删除前:", sourceActorParent?.props.children?.map(ch=> ch.id + ch.type))
-        sourceActorParent?.props.children?.splice(sourceIndex!, 1);
-        console.log("删除后:", sourceActorParent?.props.children?.map(ch=> ch.id + ch.type))
-        const targetIndex = targetActorParent?.props.children?.findIndex(child => child.id == targetId);
-
-
-        console.log("插入前：", targetActorParent?.props.children?.map(ch => ch.id + ch.type));
-        console.log("插入的位置:", targetIndex)
-        if( targetIndex == -1 ) return;
-        if( targetIndex == 0){
-            targetActorParent?.props.children?.unshift(sourceActor)
-        }else{
-            targetActorParent?.props.children?.splice(targetIndex! , 0, sourceActor);
-        }
-        console.log("插入后:", targetActorParent?.props.children?.map(ch => ch.id + ch.type))
-    },
     insertActorToPosition:(sourceId: string, targetId: string, targetPos: number)=>{
         const sourceActor = find(sourceId);
         const sourceActorParent = sourceActor?.props.parent;
@@ -108,8 +68,11 @@ export const ActorActions = {
 
         const containerActor = find(targetId);
         if(Array.isArray(containerActor?.props.children)){
-            containerActor?.props.children.splice(targetPos + 1, 0, sourceActor!)
+            containerActor?.props.children.splice(targetPos, 0, sourceActor!)
         }
+
+        const newTree = cloneDeep(actorStore.actorsTree);
+        actorStore.actorsTree = newTree;
 
     },
     MoveActorBeChild:(sourceActorId: string, targetActorId:string)=>{
