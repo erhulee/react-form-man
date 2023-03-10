@@ -2,6 +2,12 @@ import { CellActor } from "../container-widgets";
 import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor, TextActor,  TimeActor, DateActor, ImageActor } from "../form-widget";
 import { SelectActor } from "../form-widget/select-widget";
 
+export enum WidgetCategory {
+  Root,
+  Container,
+  Form,
+  Decorator
+}
 export enum WidgetType {
   Input = "input",
   Textarea = "textarea",
@@ -20,6 +26,7 @@ export enum WidgetType {
   Divider = "divider",
   Image = "image",
 
+  Root = "root",
   Cell = "cell"
 
 
@@ -33,6 +40,7 @@ export interface BaseActor {
       name?: string
       label?: string 
 
+      parent?: BaseActor
       children?: BaseActor[]
     }
 }
@@ -130,8 +138,34 @@ export function createTitleDividerColumns(title: string, withDivier?:boolean){
 
 }
 
-export type Actor = InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor 
+export type Actor =  InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor 
   | DividerActor | RateActor | SliderActor | SelectActor | TextActor | TimeActor | DateActor | ImageActor
   | CellActor;  
 
+  export function isFormWidget(type: WidgetType){
+    const formWidgets = [ WidgetType.Input,
+    WidgetType.Textarea,
+    WidgetType.Number,
+    WidgetType.Switch,
+    WidgetType.Radio,
+    WidgetType.Checkbox,
+    WidgetType.Rate,
+    WidgetType.Slider,
+    WidgetType.Select,
+    WidgetType.Time,
+    WidgetType.Date];
+    return formWidgets.includes(type)
+}
 
+export function isContainerWidget(type: WidgetType){
+    const containerWidget = [ WidgetType.Cell, WidgetType.Root];
+    return containerWidget.includes(type);
+}
+
+
+export function getWidgetCategory(type: WidgetType):WidgetCategory{
+  if(type == WidgetType.Root) return WidgetCategory.Root;
+  if(isFormWidget(type)) return WidgetCategory.Form;
+  if(isContainerWidget(type)) return WidgetCategory.Container;
+  return WidgetCategory.Decorator;
+}

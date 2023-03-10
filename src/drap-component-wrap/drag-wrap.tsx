@@ -1,14 +1,16 @@
-import { cloneDeep } from "lodash-es";
+import { cloneDeep,  } from "lodash-es";
 import { DragPreviewImage, useDrag } from "react-dnd";
+import  { ActorActions, find } from "../store/actorStore";
 import { ItemType } from "./type";
 
 function DragWrap(props: React.PropsWithChildren<{
     previewSrc?: string
     itemType: ItemType
-    item?: ()=>any;
+    item?: any
 }>){
-   
-    const {previewSrc = "", children, itemType, item= ()=>({})} = props;
+ 
+    const {previewSrc = "", children, itemType, item = {}} = props;
+    console.log("transferData:", item, find(item.componentId))
     const [{ isDragging }, drag, preview] = useDrag(
         () => ({
             type: itemType,
@@ -17,14 +19,15 @@ function DragWrap(props: React.PropsWithChildren<{
                     isDragging: Boolean(monitor.isDragging()),
                 }
             },
-            item: ()=>{
-                const transferData = cloneDeep(item());
-                transferData.itemType = itemType;
-                return transferData;
-            }
+            item: item,
         }),
         []
     );
+
+    // if(isDragging){
+    //     const id = item().componentId;
+    //     ActorActions.activeActor(id);
+    // }
 
 
     return <>

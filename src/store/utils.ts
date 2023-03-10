@@ -16,3 +16,10 @@ export function findActor(root: Actor | Array<Actor>, targetId:String): Actor | 
     }
     return null;
 }
+
+
+export function isStringEmpty(str: string | null | undefined){
+    return str && !Boolean(str.trim())
+}
+
+
