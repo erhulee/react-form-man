@@ -1,13 +1,16 @@
 import {
   CalendarIcon,
+  CardIcon,
   CellIcon,
   CheckboxIcon,
+  ColContainerIcon,
   HorizontalLineIcon,
   ImageIcon,
   InputIcon,
   NumberIcon,
   RadioIcon,
   RateIcon,
+  RowContainerIcon,
   SelectIcon,
   SliderIcon,
   SwitchIcon,
@@ -16,6 +19,7 @@ import {
   TimeIcon,
 } from "../../Icons";
 import { WidgetItemProps } from "./components/wiget-list";
+import { CardContainerWidgetKit, RowContainerWidgetKit } from "./components/wiget-list/container-widgets";
 import { CellContainerWidgetKit } from "./components/wiget-list/container-widgets/cell-container";
 import { RootWidgetKit } from "./components/wiget-list/container-widgets/root";
 import { inputWidgetKit, TextareaWidgetKit, NumberWidgetKit, switchWidgetKit, radioWidgetKit,
@@ -41,7 +45,9 @@ export const widgetKitMap: {
   "image": imageWidgetKit,
 
   "cell": CellContainerWidgetKit,
-  "root": RootWidgetKit
+  "root": RootWidgetKit,
+  [WidgetType.Row]:RowContainerWidgetKit,
+  [WidgetType.Card]: CardContainerWidgetKit
 }
 export const formList: Array<WidgetItemProps> = [
   {
@@ -186,7 +192,7 @@ export const formList: Array<WidgetItemProps> = [
 
 export const containerList: Array<WidgetItemProps> = [
   {
-       icon: <CellIcon />,
+    icon: <CellIcon />,
     name: "单元格容器",
     schemaInfo: {
       type: WidgetType.Cell,
@@ -199,28 +205,28 @@ export const containerList: Array<WidgetItemProps> = [
   //   icon: <RowContainerIcon />,
   //   name: "纵向排列",
   //   schemaInfo: {
-  //     type: "input",
+  //     type: WidgetType.Row,
   //     props: {
-  //       id: "",
+  //       // id: "",
   //     },
   //   },
   // },
-  // {
-  //   icon: <ColContainerIcon />,
-  //   name: "横向排列",
-  //   schemaInfo: {
-  //     type: "textarea",
-  //     props: {},
-  //   },
-  // },
-  // {
-  //   icon: <CardIcon></CardIcon>,
-  //   name: "卡片容器",
-  //   schemaInfo: {
-  //     type: "textarea",
-  //     props: {},
-  //   },
-  // },
+  {
+    icon: <ColContainerIcon />,
+    name: "横向排列",
+    schemaInfo: {
+     type: WidgetType.Row,
+      props: {},
+    },
+  },
+  {
+    icon: <CardIcon></CardIcon>,
+    name: "卡片容器",
+    schemaInfo: {
+      type: WidgetType.Card,
+      props: {},
+    },
+  },
 ];
 
 export const decoratorList: Array<WidgetItemProps> = [

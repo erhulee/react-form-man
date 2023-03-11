@@ -33,7 +33,7 @@ function Render(node: Actor, activeActorId: string){
 
     const instance = (
         <RenderItemWrap actorData = {node} currentActiveId = {activeActorId} key={node.id}>
-            <InstanceComp {...nativeProps}>
+            <InstanceComp props={nativeProps} id={node.id!} >
                 {
                 isFormWidget(type) ? 
                 null : 

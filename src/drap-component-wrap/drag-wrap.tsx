@@ -10,7 +10,6 @@ function DragWrap(props: React.PropsWithChildren<{
 }>){
  
     const {previewSrc = "", children, itemType, item = {}} = props;
-    console.log("transferData:", item, find(item.componentId))
     const [{ isDragging }, drag, preview] = useDrag(
         () => ({
             type: itemType,

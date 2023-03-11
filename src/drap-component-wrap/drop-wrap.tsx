@@ -16,7 +16,7 @@ function DropWrap(props: React.PropsWithChildren<Props>){
         return {
             accept,
             drop:(transferData, monitor)=>{
-                const isTopLayer =monitor.isOver();
+                const isTopLayer = monitor.isOver();
                 if(!isTopLayer) return;
                 props.onDrop(transferData)
             },

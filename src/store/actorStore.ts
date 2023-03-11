@@ -38,15 +38,30 @@ const actorStore = proxy(_state)
 export default actorStore
 
 export const ActorActions = {
-    addActor: (schema: Actor, index?:number)=>{
+    addActor: (schema: Actor, index?:number, fatherId?: string)=>{
         const instance = cloneDeep(schema);
         instance.id = nanoid(10);
-        instance.props.parent = actorStore.actorsTree;
-        if(typeof index == "undefined"){
-            actorStore.actorsTree.props.children?.push(instance)
+        if(typeof fatherId == "undefined"){
+            instance.props.parent = actorStore.actorsTree;
+            if(typeof index == "undefined"){
+                actorStore.actorsTree.props.children?.push(instance)
+            }else{
+                actorStore.actorsTree?.props.children?.splice(index + 1, 0, instance)
+            }
         }else{
-            actorStore.actorsTree?.props.children?.splice(index + 1, 0, instance)
+            const parent = find(fatherId);
+            if(parent == null) console.error("寻找父节点失败")
+            instance.props.parent = parent || actorStore.actorsTree;
+            if(! parent?.props.children?.length ){
+                parent!.props.children = [];
+            }
+            if(typeof index == "undefined"){
+                parent?.props.children?.push(instance)
+            }else{
+                parent?.props.children?.splice(index + 1, 0, instance)
+            }
         }
+
     },
     addActorBeChild: (schema: Actor, fatherId?: String)=>{
         const instance = cloneDeep(schema);
@@ -100,6 +115,7 @@ export const ActorActions = {
     //     console.log("插入后:", targetActorParent?.props.children?.map(ch => ch.id + ch.type))
     // },
     insertActorToPosition:(sourceId: string, targetId: string, targetPos: number)=>{
+        debugger;
         const sourceActor = find(sourceId);
         const sourceActorParent = sourceActor?.props.parent;
         const sourceActorIndex = sourceActorParent?.props.children?.findIndex(child=> child.id == sourceId);
@@ -108,6 +124,7 @@ export const ActorActions = {
         const containerActor = find(targetId);
         if(Array.isArray(containerActor?.props.children)){
             containerActor?.props.children.splice(targetPos , 0, sourceActor!)
+            containerActor!.props.children = cloneDeep(containerActor!.props.children);
         }
 
     },

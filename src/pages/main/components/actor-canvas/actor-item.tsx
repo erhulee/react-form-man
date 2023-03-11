@@ -1,6 +1,4 @@
-import DragItem from "./draw";
 import { Form } from "antd";
-import { ActorActions } from "../../../../store/actorStore";
 import { cloneDeep } from "lodash-es";
 import { Actor } from "../wiget-list/share/Widget";
 import clearFormItemProps from "../wiget-list/share/clearFormItemProps";
