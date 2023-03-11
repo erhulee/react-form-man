@@ -21,7 +21,6 @@ export const CellContainerWidgetKit: ContainerWidgetKit = {
           accept={[ItemType.actor, ItemType.origin]} 
           onDrop={(transferData)=>{
           const {itemType, schemaInfo, componentId} = transferData;
-          console.log("TRANS:", transferData)
           // 增加新的actor
           if(itemType == ItemType.origin){
             const id = props.id;

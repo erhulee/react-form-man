@@ -10,7 +10,6 @@ function DragWrap(props: React.PropsWithChildren<{
 }>){
  
     const {previewSrc = "", children, itemType, item = {}} = props;
-    console.log("transferData:", item, find(item.componentId))
     const [{ isDragging }, drag, preview] = useDrag(
         () => ({
             type: itemType,
@@ -31,7 +30,7 @@ function DragWrap(props: React.PropsWithChildren<{
 
 
     return <>
-        <DragPreviewImage src={previewSrc} connect={preview}></DragPreviewImage>
+        {/* <DragPreviewImage src={previewSrc} connect={preview}></DragPreviewImage> */}
         <div ref={drag}>
             {children}
         </div>

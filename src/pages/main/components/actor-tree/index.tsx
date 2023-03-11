@@ -8,20 +8,28 @@ import actorStore, {
   ActorActions,
   ActorStore,
 } from "../../../../store/actorStore";
+import { Actor } from "../wiget-list/share/Widget";
 
 function generateTree(store: ActorStore) {
-  const actors = store.actors;
-  return actors.map((actor) => {
-    return {
-      title: (
+  const root = store.actorsTree;
+  function _generate(root: Actor){
+    const instance:any = {
+      key: root.id || "",
+      title:(
         <div className="p-1">
-          <Tag color="#108ee9">{actor.type}</Tag>
-          {actor.props.name || "defaultName"}{" "}
+          <Tag color="#108ee9">{root.type}</Tag>
+          {root.props.name || "defaultName"}{" "}
         </div>
       ),
-      key: actor.id || "",
-    };
-  });
+    }
+    if(Array.isArray(root.props.children)){
+      instance.children = (root.props.children).map(child=> _generate(child));
+    }else{
+      instance.isLeaf = true;
+    }
+    return instance;
+  }
+  return _generate(root);
 }
 function ActorTree() {
   const update = useUpdate();
@@ -39,8 +47,11 @@ function ActorTree() {
       switcherIcon={<DownOutlined />}
       selectedKeys={[storeSnap.activeActor?.id!]}
       onSelect={onSelect}
-      treeData={tree}
+      treeData={[tree]}
     />
   );
 }
+
+
+
 export default ActorTree;

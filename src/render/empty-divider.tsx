@@ -11,16 +11,16 @@ function EmptyDivider(props: Props){
     return <DropWrap 
         accept={[ItemType.actor, ItemType.origin]} 
         onDrop={(transferData)=>{
-            debugger;
             const {componentId, itemType, schemaInfo} = transferData;
             if(itemType == ItemType.origin){
-                ActorActions.addActor(schemaInfo, index);
+                ActorActions.addActor(schemaInfo, index, currentContainerId);
             }else{
                 ActorActions.insertActorToPosition(componentId, currentContainerId, index)
-            }
+            };
+            console.log("new tree:", actorStore.actorsTree)
         }} 
-        hoverClassName="bg-slate-500 h-8 transition-all">
-        <div className="w-full h-full " style={{minHeight: "16px"}}></div>
+        hoverClassName="bg-blue-400 h-8 transition-all">
+        <div className="w-full h-full  " style={{minHeight: "16px"}}></div>
     </DropWrap>
 }
 

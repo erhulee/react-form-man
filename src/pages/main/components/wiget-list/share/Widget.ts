@@ -1,4 +1,4 @@
-import { CellActor } from "../container-widgets";
+import { CardContainerActor, CellActor, RowContainerActor } from "../container-widgets";
 import { InputActor, TextareaActor, NumberActor, SwitchActor, RadioActor, CheckboxActor, DividerActor, RateActor, SliderActor, TextActor,  TimeActor, DateActor, ImageActor } from "../form-widget";
 import { SelectActor } from "../form-widget/select-widget";
 
@@ -27,7 +27,9 @@ export enum WidgetType {
   Image = "image",
 
   Root = "root",
-  Cell = "cell"
+  Cell = "cell",
+  Row = "row",
+  Card = "card"
 
 
 }
@@ -140,28 +142,32 @@ export function createTitleDividerColumns(title: string, withDivier?:boolean){
 
 export type Actor =  InputActor | TextareaActor | NumberActor | SwitchActor | RadioActor | CheckboxActor 
   | DividerActor | RateActor | SliderActor | SelectActor | TextActor | TimeActor | DateActor | ImageActor
-  | CellActor;  
+  | CellActor | RowContainerActor | CardContainerActor;  
 
-  export function isFormWidget(type: WidgetType){
-    const formWidgets = [ WidgetType.Input,
-    WidgetType.Textarea,
-    WidgetType.Number,
-    WidgetType.Switch,
-    WidgetType.Radio,
-    WidgetType.Checkbox,
-    WidgetType.Rate,
-    WidgetType.Slider,
-    WidgetType.Select,
-    WidgetType.Time,
-    WidgetType.Date];
+export function isFormWidget(type: WidgetType){
+    const formWidgets = [ 
+      WidgetType.Input,
+      WidgetType.Textarea,
+      WidgetType.Number,
+      WidgetType.Switch,
+      WidgetType.Radio,
+      WidgetType.Checkbox,
+      WidgetType.Rate,
+      WidgetType.Slider,
+      WidgetType.Select,
+      WidgetType.Time,
+      WidgetType.Date
+    ];
     return formWidgets.includes(type)
 }
 
 export function isContainerWidget(type: WidgetType){
-    const containerWidget = [ WidgetType.Cell, WidgetType.Root];
+    const containerWidget = [ 
+      WidgetType.Cell, WidgetType.Root,
+      WidgetType.Card, WidgetType.Row
+    ];
     return containerWidget.includes(type);
 }
-
 
 export function getWidgetCategory(type: WidgetType):WidgetCategory{
   if(type == WidgetType.Root) return WidgetCategory.Root;
