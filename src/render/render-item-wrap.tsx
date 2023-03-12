@@ -63,7 +63,6 @@ function WrapDecorator(props: React.PropsWithChildren<DecoratorProps>) {
 }
 
 function MoveDecorator(props: React.PropsWithChildren<MoveDecoratorProps>){
-  console.log("Re-render")
   const {widgetCategory, id, children} = props;
   switch(widgetCategory){
     case WidgetCategory.Root:
@@ -94,6 +93,17 @@ function MoveDecorator(props: React.PropsWithChildren<MoveDecoratorProps>){
       // </DropWrap>)
   }
 }
+
+function ActiveDecorator(props: React.PropsWithChildren<{id: string}>){
+  const { children, id} = props;
+  const handleClick = ()=>{
+    ActorActions.activeActor(id);
+    ActorActions.updateTree();
+  }
+  return <div onClick={handleClick}>
+    {children}
+  </div>
+}
   
 function RenderItemWrap(props: React.PropsWithChildren<Props>){
     const {children, actorData, currentActiveId} = props;
@@ -106,13 +116,16 @@ function RenderItemWrap(props: React.PropsWithChildren<Props>){
 
     const itemType = getWidgetCategory(type);
 
+    console.log(currentActiveId, "__",  id)
     const isActive = currentActiveId == id;
     const title = type ?? "未定义";
     return (<div onClick={handleActiveClick}>
                   <MoveDecorator id={id || ""} widgetCategory={itemType}>
-                    <WrapDecorator isActive={isActive} title={title} widgetCategory={itemType}>
-                        {children}
-                    </WrapDecorator>
+                    <ActiveDecorator id={id || ""}>
+                      <WrapDecorator isActive={isActive} title={title} widgetCategory={itemType}>
+                          {children}
+                      </WrapDecorator>
+                    </ActiveDecorator>
                   </MoveDecorator>
             </div>)
 

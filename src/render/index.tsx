@@ -44,11 +44,10 @@ function Render(node: Actor, activeActorId: string){
     // const isForm = isFormWidget(type);
 }
 function RenderRoot(){
-    const snap: any = actorStore;
-    const active:Actor = snap.activeActor;
-    const actorsTreeNode = snap.actorsTree;
-    const globalSetting = useSnapshot(globalFormSetting);
-    const rootNode = Render(actorsTreeNode, active?.id || "");
+    const activeActorId:string = actorStore.activeActorId;
+    const actorsTreeNode = actorStore.actorsTree;
+    // const globalSetting = useSnapshot(globalFormSetting);
+    const rootNode = Render(actorsTreeNode, activeActorId || "");
     return <div>
         {rootNode}
     </div>

@@ -1,6 +1,6 @@
 import { proxy } from 'valtio'
 import { nanoid} from "nanoid"
-import { cloneDeep } from 'lodash-es';
+import { clone, cloneDeep } from 'lodash-es';
 import { Actor, WidgetType } from '../pages/main/components/wiget-list/share/Widget';
 export function find(findId: string):Actor | null{
     function _find(node: Actor):Actor | null{
@@ -20,6 +20,7 @@ export type ActorStore = {
     actorsTree: Actor;
     actors: Actor[];
     activeActor: Actor | null;
+    activeActorId: string
 }
 const _state:ActorStore = {
     actorsTree: {
@@ -32,6 +33,7 @@ const _state:ActorStore = {
     },
     actors: [],
     activeActor: null,
+    activeActorId: "",
 }
 
 const actorStore = proxy(_state)
@@ -134,34 +136,17 @@ export const ActorActions = {
     //     if(sourceActor == null) return;
     // },
     activeActor: (id: string | null)=>{
-        if(id == null || id?.trim() == "") {
         // 设置 rootNode 为激活
-            return;
-        }
+        if(id == null || id?.trim() == "" || actorStore.actorsTree.id == id) return
 
         // 检查是否和现阶段的激活actor一致
         if(actorStore.activeActor?.id == id) return;
-        // DFS 寻找
-        function find(node: Actor):Actor | null{
-            if(node.id == id) return node;
-            const children = node.props.children || [];
-            for(let i = 0; i < children.length; i++){
-                const result = find(children[i]);
-                if(result !== null) return result;
-            }
-            return null;
-        }
 
-        const target = find(actorStore.actorsTree);
-        // if(target !== null) {
-        //     actorStore.activeActor = cloneDeep(target);
-        // }
+        actorStore.activeActorId = id
     },
 
-    
-
     deleteActiveActor: ()=>{
-        ActorActions.deleteActor(actorStore.activeActor?.id);
+        ActorActions.deleteActor(actorStore.activeActorId);
         actorStore.activeActor = null
     },
 
@@ -174,5 +159,11 @@ export const ActorActions = {
             if(index == -1) return;
             parent.props.children.splice(index, 1);
         }
+    },
+
+    updateTree(){
+        const newTree = cloneDeep(actorStore.actorsTree);
+        // const allStore = cloneDeep(actorStore);
+        actorStore.actorsTree = newTree;
     }
 }
