@@ -156,7 +156,8 @@ export function isFormWidget(type: WidgetType){
       WidgetType.Slider,
       WidgetType.Select,
       WidgetType.Time,
-      WidgetType.Date
+      WidgetType.Date,
+      WidgetType.Image
     ];
     return formWidgets.includes(type)
 }
@@ -174,4 +175,15 @@ export function getWidgetCategory(type: WidgetType):WidgetCategory{
   if(isFormWidget(type)) return WidgetCategory.Form;
   if(isContainerWidget(type)) return WidgetCategory.Container;
   return WidgetCategory.Decorator;
+}
+
+export function getFormItemValuePropName(type: WidgetType){
+  const defaultMap:Partial< Record<  WidgetType, string> >= {
+    // upload: "fileList",
+    switch: "checked",
+    image: 'fileList'
+  }
+
+  if(defaultMap[type]) return defaultMap[type];
+  return null
 }

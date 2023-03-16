@@ -5,11 +5,11 @@ function clearFormItemProps(props:any){
     targets.forEach(target=>{
         if(props[target]){
             result[target] = props[target];
-            delete props[target];
+            // delete props[target];
         }
     })
 
-    delete props.id
+    // delete props.id
     return result
 }
 

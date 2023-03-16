@@ -9,7 +9,7 @@ export const RootWidgetKit: ContainerWidgetKit ={
         return ""
     },
     createInstance: (props: any)=>{
-        return <div>
+        return <div className="">
             {props.children}
         </div>
     }

@@ -1,6 +1,7 @@
 // 从 store 里拿到组件树，开始渲染
 import { cloneDeep } from "lodash-es";
 import { useSnapshot } from "valtio";
+import clearFormItemProps from "../pages/main/components/wiget-list/share/clearFormItemProps";
 import { Actor, isFormWidget, WidgetType } from "../pages/main/components/wiget-list/share/Widget";
 import { widgetKitMap } from "../pages/main/constant";
 import actorStore from "../store/actorStore";
@@ -30,9 +31,14 @@ function Render(node: Actor, activeActorId: string){
     const widgetKit = queryWidgetKit(type);
     const nativeProps = cloneDeep(node.props);
     const InstanceComp = widgetKit.createInstance;
-
+    const formProps = clearFormItemProps(node.props);
     const instance = (
-        <RenderItemWrap actorData = {node} currentActiveId = {activeActorId} key={node.id}>
+        <RenderItemWrap 
+            actorData = {node} 
+            currentActiveId = {activeActorId} 
+            key={node.id}
+            formProps={formProps}
+        >
             <InstanceComp props={nativeProps} id={node.id!} >
                 {
                 isFormWidget(type) ? 
@@ -41,14 +47,14 @@ function Render(node: Actor, activeActorId: string){
             </InstanceComp>
         </RenderItemWrap>)
     return instance;
-    // const isForm = isFormWidget(type);
 }
 function RenderRoot(){
+    useSnapshot(actorStore);
     const activeActorId:string = actorStore.activeActorId;
     const actorsTreeNode = actorStore.actorsTree;
     // const globalSetting = useSnapshot(globalFormSetting);
     const rootNode = Render(actorsTreeNode, activeActorId || "");
-    return <div>
+    return <div className="  w-full h-full px-4" >
         {rootNode}
     </div>
 }

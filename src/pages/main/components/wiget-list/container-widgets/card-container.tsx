@@ -22,10 +22,9 @@ export const CardContainerWidgetKit: ContainerWidgetKit = {
     },
 
     createInstance:(props: React.PropsWithChildren<createInstanceParams>)=>{
-        const {children, id, props:{children: $children, parent: $parent}} = props
-        console.log("!!props:", props)
+        const {children, id, props:_props} = props
         return(
-            <Card {...props} title="hello">
+            <Card {..._props}  >
                 {children}
             </Card>)
           

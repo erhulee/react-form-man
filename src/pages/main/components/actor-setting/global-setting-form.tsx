@@ -8,6 +8,7 @@ import {
   Radio,
   Switch,
 } from "antd";
+import Upload from "antd/es/upload/Upload";
 import { GlobalFormSettingAction } from "../../../../store/globalFormSetting";
 const useForm = Form.useForm;
 function GlobalSettingForm() {
@@ -26,7 +27,8 @@ function GlobalSettingForm() {
           labelAlign="left"
         >
           <Form.Item name="name" label="表单名称">
-            <Input />
+            {/* <Input /> */}
+            <Upload></Upload>
           </Form.Item>
           <Form.Item name="labelCol" label="标签宽度" tooltip={"labelCol"}>
             <InputNumber />

@@ -9,11 +9,13 @@ export const valueType = {
       <OptionInput {...props}></OptionInput>
     ),
   },
-  divider: {
+  dividerWithTitle: {
     render: (text: string) => <a>{text}</a>,
-    renderFormItem: (text: string, props: any) => (
-      <SimpleDivider></SimpleDivider>
-    ),
+    renderFormItem: (text: string, props: any) => {
+      console.log("props:", props)
+      return (
+      <SimpleDivider {...props.fieldProps}></SimpleDivider>
+    )},
   },
   title: {
     render: (text: string) => <a>{text}</a>,

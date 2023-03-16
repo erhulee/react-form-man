@@ -117,7 +117,6 @@ export const ActorActions = {
     //     console.log("插入后:", targetActorParent?.props.children?.map(ch => ch.id + ch.type))
     // },
     insertActorToPosition:(sourceId: string, targetId: string, targetPos: number)=>{
-        debugger;
         const sourceActor = find(sourceId);
         const sourceActorParent = sourceActor?.props.parent;
         const sourceActorIndex = sourceActorParent?.props.children?.findIndex(child=> child.id == sourceId);
@@ -137,7 +136,10 @@ export const ActorActions = {
     // },
     activeActor: (id: string | null)=>{
         // 设置 rootNode 为激活
-        if(id == null || id?.trim() == "" || actorStore.actorsTree.id == id) return
+        if(id == null || id?.trim() == "" || actorStore.actorsTree.id == id){
+            actorStore.activeActorId = actorStore.actorsTree.id!;
+            return;
+        }
 
         // 检查是否和现阶段的激活actor一致
         if(actorStore.activeActor?.id == id) return;
