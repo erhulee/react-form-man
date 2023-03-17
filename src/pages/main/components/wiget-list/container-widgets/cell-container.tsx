@@ -2,7 +2,6 @@
 import DropWrap from "../../../../../drap-component-wrap/drop-wrap";
 import { ItemType } from "../../../../../drap-component-wrap/type";
 import actorStore, { ActorActions } from "../../../../../store/actorStore";
-import ActorItem from "../../actor-canvas/actor-item";
 import { ContainerWidgetKit } from "../share/type";
 import { BaseActor } from "../share/Widget";
 import { useSnapshot } from "valtio";
@@ -31,16 +30,7 @@ export const CellContainerWidgetKit: ContainerWidgetKit = {
           }
         }}>
           <div className="bg-slate-300 border-dashed border-2" style={{minHeight: "100px"}} >
-            {children.map((actor:any, index:number)=>{
-              return <ActorItem 
-                isActive={active && active.id === actor.id}
-                title={actor.type}
-                key={actor.id}
-                actor={actor}
-                id={actor.id!}
-                index={index}
-              />
-            })}
+          
             
           </div>
         </DropWrap>

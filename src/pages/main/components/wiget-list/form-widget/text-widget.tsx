@@ -23,7 +23,7 @@ export const textWidgetKit: FormWidgetKit = {
     <div>${props.content}</div>
     `;
   },
-  createInstance: (props: TextActor["props"]) => {
+  createInstance: (props: any) => {
     return <div>{props.content}</div>;
   },
 };

@@ -6,7 +6,6 @@ import actorStore from "../../../../store/actorStore";
 import CodeEditor from "../../../components/code-editor";
 import { generateAddCode } from "./generateLafCode";
 import globalFormSetting from "../../../../store/globalFormSetting";
-import generateAntdProSchema from "./generateAntdProSchema";
 import { widgetKitMap } from "../../constant";
 import { generateAntDesignForm } from "../../../../code-generator/andt-generator";
 function Header() {
@@ -48,11 +47,7 @@ function Header() {
     toggle();
   };
 
-  const handleExportAntdPro = () => {
-    const code = generateAntdProSchema(actorStore.actors);
-    setFileCode(code);
-    toggle();
-  };
+
 
   const handleOk = async () => {
     await navigator.clipboard.writeText(fileCode);

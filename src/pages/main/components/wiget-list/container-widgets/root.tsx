@@ -7,7 +7,7 @@ export type RootActor = BaseActor;
 export const RootWidgetKit: ContainerWidgetKit ={
     columns:    [],
     generate:  (props)=>{
-        const {remainProps, requireProps} = getFormProps(props);
+        const {remainProps, } = getFormProps(props);
         const propsString = splitProps(remainProps);
         
         return {

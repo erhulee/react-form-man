@@ -194,7 +194,7 @@ export const formList: Array<WidgetItemProps> = [
     schemaInfo: {
       type: WidgetType.Image,
       props: {
-        content: "",
+        // content: "",
       },
     },
   }
