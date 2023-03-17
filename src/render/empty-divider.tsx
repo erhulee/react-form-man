@@ -17,7 +17,6 @@ function EmptyDivider(props: Props){
             }else{
                 ActorActions.insertActorToPosition(componentId, currentContainerId, index)
             };
-            console.log("new tree:", actorStore.actorsTree)
         }} 
         hoverClassName="bg-blue-400 h-8 transition-all">
         <div className="w-full h-full  " style={{minHeight: "16px"}}></div>

@@ -10,6 +10,7 @@ import {
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
+import { getFormProps } from "../../../../../code-generator/splitPropsUtil";
 
 export type NumberActor = BaseActor & {
   type: WidgetType.Number;
@@ -20,9 +21,9 @@ export const NumberWidgetKit: FormWidgetKit = {
   columns: [...baseColumns, ...InputLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const formItemProps = clearFormItemProps(props);
+    const {formItemProps,remainProps} = getFormProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
-          <InputNumber ${splitProps(props)}/>
+          <InputNumber ${splitProps(remainProps)}/>
         </Form.Item>`;
   },
   createInstance: (props: any) => {

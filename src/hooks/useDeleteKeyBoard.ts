@@ -8,10 +8,10 @@ function useDeleteKeyBoard(callback: ()=>void){
         }
        document.addEventListener("keydown", cb)
     
-         return ()=>{
+        return ()=>{
             document.removeEventListener("keydown", cb)
-         }
+        }
     }, [])
 }
 
-export default useDeleteKeyBoard;
+export default useDeleteKeyBoard;213

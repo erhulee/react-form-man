@@ -7,17 +7,26 @@ type Props = {
 
 }
 export const CardContainerWidgetKit: ContainerWidgetKit = {
-    columns: [],
+    columns: [
+        {
+            title: "title",
+            dataIndex: "title",
+            valueType: "input",
+            formItemProps:{
+                tooltip: "标题"
+            }
+          },
+    ],
     generate(_props:any){
         return `<div></div>`
     },
 
     createInstance:(props: React.PropsWithChildren<createInstanceParams>)=>{
-        const {children, id, props:{children: $children, parent: $parent}} = props
-        return <div className=" bg-blue-200  border-dashed border-3 border-blue-400 px-2 " style={{minHeight: "80px"}} >
-                 <Card >
+        const {children, id, props:_props} = props
+        return(
+            <Card {..._props}  >
                 {children}
-                </Card>
-            </div>
+            </Card>)
+          
     }
 }

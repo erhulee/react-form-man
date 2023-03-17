@@ -1,4 +1,5 @@
 import { Layout, Tabs } from "antd";
+import useDeleteKeyBoard from "../../hooks/useDeleteKeyBoard";
 import { ComponentIcon, TemplateIcon, TreeIcon } from "../../Icons";
 import { ActorActions } from "../../store/actorStore";
 import ActorCanvas from "./components/actor-canvas";
@@ -18,6 +19,7 @@ const scrollStyle: React.CSSProperties = {
 };
 
 export default function MainPage() {
+  useDeleteKeyBoard(ActorActions.deleteActiveActor);
   return (
     <Layout style={{ width: "100%", height: "100vh" }}>
       <Layout.Header style={{ backgroundColor: "#3C81F6" }}>

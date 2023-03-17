@@ -1,6 +1,6 @@
 import { proxy } from 'valtio'
 import { nanoid} from "nanoid"
-import { cloneDeep } from 'lodash-es';
+import { clone, cloneDeep } from 'lodash-es';
 import { Actor, WidgetType } from '../pages/main/components/wiget-list/share/Widget';
 export function find(findId: string):Actor | null{
     function _find(node: Actor):Actor | null{
@@ -20,6 +20,7 @@ export type ActorStore = {
     actorsTree: Actor;
     actors: Actor[];
     activeActor: Actor | null;
+    activeActorId: string
 }
 const _state:ActorStore = {
     actorsTree: {
@@ -32,6 +33,7 @@ const _state:ActorStore = {
     },
     actors: [],
     activeActor: null,
+    activeActorId: "",
 }
 
 const actorStore = proxy(_state)
@@ -115,7 +117,6 @@ export const ActorActions = {
     //     console.log("插入后:", targetActorParent?.props.children?.map(ch => ch.id + ch.type))
     // },
     insertActorToPosition:(sourceId: string, targetId: string, targetPos: number)=>{
-        debugger;
         const sourceActor = find(sourceId);
         const sourceActorParent = sourceActor?.props.parent;
         const sourceActorIndex = sourceActorParent?.props.children?.findIndex(child=> child.id == sourceId);
@@ -134,35 +135,21 @@ export const ActorActions = {
     //     if(sourceActor == null) return;
     // },
     activeActor: (id: string | null)=>{
-        if(id == null || id?.trim() == "") {
         // 设置 rootNode 为激活
+        if(id == null || id?.trim() == "" || actorStore.actorsTree.id == id){
+            actorStore.activeActorId = actorStore.actorsTree.id!;
             return;
         }
 
         // 检查是否和现阶段的激活actor一致
         if(actorStore.activeActor?.id == id) return;
-        // DFS 寻找
-        function find(node: Actor):Actor | null{
-            if(node.id == id) return node;
-            const children = node.props.children || [];
-            for(let i = 0; i < children.length; i++){
-                const result = find(children[i]);
-                if(result !== null) return result;
-            }
-            return null;
-        }
 
-        const target = find(actorStore.actorsTree);
-        // if(target !== null) {
-        //     actorStore.activeActor = cloneDeep(target);
-        // }
+        actorStore.activeActorId = id
     },
 
-    
-
     deleteActiveActor: ()=>{
-        ActorActions.deleteActor(actorStore.activeActor?.id);
-        actorStore.activeActor = null
+        ActorActions.deleteActor(actorStore.activeActorId);
+        actorStore.activeActorId = ""
     },
 
     deleteActor:(id?: string)=>{
@@ -174,5 +161,11 @@ export const ActorActions = {
             if(index == -1) return;
             parent.props.children.splice(index, 1);
         }
+    },
+
+    updateTree(){
+        const newTree = cloneDeep(actorStore.actorsTree);
+        // const allStore = cloneDeep(actorStore);
+        actorStore.actorsTree = newTree;
     }
 }
