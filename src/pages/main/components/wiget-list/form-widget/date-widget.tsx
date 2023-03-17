@@ -11,6 +11,7 @@ import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
 import { overLoadColumns } from "../share/overLoadColumns";
+import { getFormProps } from "../../../../../code-generator/splitPropsUtil";
 
 export type DateActor = BaseActor & {
   type: WidgetType.Date;
@@ -57,9 +58,9 @@ export const dateWidgetKit: FormWidgetKit = {
   ]),
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const formItemProps = clearFormItemProps(props);
+    const {formItemProps,remainProps} = getFormProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
-          <DatePicker ${splitProps(props)}/>
+          <DatePicker ${splitProps(remainProps)}/>
         </Form.Item>`;
   },
   createInstance: (props: any) => {

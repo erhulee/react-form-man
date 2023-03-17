@@ -149,7 +149,7 @@ export const ActorActions = {
 
     deleteActiveActor: ()=>{
         ActorActions.deleteActor(actorStore.activeActorId);
-        actorStore.activeActor = null
+        actorStore.activeActorId = ""
     },
 
     deleteActor:(id?: string)=>{

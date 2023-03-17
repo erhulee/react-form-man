@@ -188,6 +188,16 @@ export const formList: Array<WidgetItemProps> = [
       },
     },
   },
+  {
+    icon: <ImageIcon></ImageIcon>,
+    name: "图片上传",
+    schemaInfo: {
+      type: WidgetType.Image,
+      props: {
+        content: "",
+      },
+    },
+  }
 ];
 
 export const containerList: Array<WidgetItemProps> = [
@@ -250,14 +260,5 @@ export const decoratorList: Array<WidgetItemProps> = [
       },
     },
   },
-  {
-    icon: <ImageIcon></ImageIcon>,
-    name: "图片",
-    schemaInfo: {
-      type: WidgetType.Image,
-      props: {
-        content: "",
-      },
-    },
-  }
+
 ];

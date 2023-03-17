@@ -5,6 +5,7 @@ import { BaseActor, baseColumns, WidgetType } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
+import { getFormProps } from "../../../../../code-generator/splitPropsUtil";
 
 export type SliderActor = BaseActor & {
   type: WidgetType.Slider;
@@ -31,9 +32,9 @@ export const sliderWidgetKit: FormWidgetKit = {
   ],
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const formItemProps = clearFormItemProps(props);
+    const {formItemProps,remainProps} = getFormProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
-            <Slider ${splitProps(props)}/>
+            <Slider ${splitProps(remainProps)}/>
         </Form.Item>`;
   },
   createInstance: (props: any) => {

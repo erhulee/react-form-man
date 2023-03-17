@@ -3,12 +3,12 @@ import { useRef, useState } from "react";
 import useModal from "../../../../hooks/useModal";
 import { FormIcon, GithubIcon, ReactIcon } from "../../../../Icons";
 import actorStore from "../../../../store/actorStore";
-import generateFile from "./generateFile";
 import CodeEditor from "../../../components/code-editor";
 import { generateAddCode } from "./generateLafCode";
 import globalFormSetting from "../../../../store/globalFormSetting";
 import generateAntdProSchema from "./generateAntdProSchema";
 import { widgetKitMap } from "../../constant";
+import { generateAntDesignForm } from "../../../../code-generator/andt-generator";
 function Header() {
   const [fileCode, setFileCode] = useState("");
   const [lafCold, setLafCode] = useState(["", "", "", "", ""]);
@@ -24,7 +24,7 @@ function Header() {
     });
     displayTsxRef.current = true;
 
-    const fileCode = generateFile(codes, globalFormSetting);
+    const fileCode = generateAntDesignForm(actorStore.actorsTree, widgetKitMap);
     setFileCode(fileCode);
     toggle();
   };

@@ -6,6 +6,7 @@ import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
 import { overLoadColumns } from "../share/overLoadColumns";
+import { getFormProps } from "../../../../../code-generator/splitPropsUtil";
 
 export type SwitchActor = BaseActor & {
   type: WidgetType.Switch;
@@ -23,13 +24,13 @@ export const switchWidgetKit: FormWidgetKit = {
   ]),
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const formItemProps = clearFormItemProps(props);
-    const needValuePropName = formItemProps.initialValue != null;
-    if (needValuePropName) {
-      formItemProps.valuePropName = "checked";
-    }
+    const {formItemProps,remainProps} = getFormProps(props);
+    // const needValuePropName = formItemProps.initialValue != null;
+    // if (needValuePropName) {
+    //   formItemProps.valuePropName = "checked";
+    // }
     return `<Form.Item ${splitProps(formItemProps)} >
-          <Switch ${splitProps(props)}/>
+          <Switch ${splitProps(remainProps)}/>
         </Form.Item>`;
   },
   createInstance: (props: any) => {

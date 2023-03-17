@@ -11,6 +11,7 @@ import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
 import { overLoadColumns } from "../share/overLoadColumns";
+import { getFormProps } from "../../../../../code-generator/splitPropsUtil";
 
 export type TimeActor = BaseActor & {
   type: WidgetType.Time;
@@ -64,9 +65,9 @@ export const timeWidgetKit: FormWidgetKit = {
   ]),
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const formItemProps = clearFormItemProps(props);
+    const {formItemProps,remainProps} = getFormProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
-          <TimePicker ${splitProps(props)}/>
+          <TimePicker ${splitProps(remainProps)}/>
         </Form.Item>`;
   },
   createInstance: (props: any) => {

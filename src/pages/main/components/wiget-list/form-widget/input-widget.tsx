@@ -7,9 +7,9 @@ import {
   InputLikeColumns,
   WidgetType,
 } from "../share/Widget";
-import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
+import { getFormProps } from "../../../../../code-generator/splitPropsUtil";
 
 export type InputActor = BaseActor & {
   type: WidgetType.Input;
@@ -20,9 +20,9 @@ export const inputWidgetKit: FormWidgetKit = {
   columns: [...baseColumns, ...InputLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const formItemProps = clearFormItemProps(props);
+    const {formItemProps,remainProps} = getFormProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
-          <Input ${splitProps(props)}/>
+          <Input ${splitProps(remainProps)}/>
         </Form.Item>`;
   },
   createInstance: (props: any) => {
