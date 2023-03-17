@@ -82,10 +82,10 @@ function GlobalSettingForm() {
           </Form.Item>
 
           <Divider></Divider>
-          <div className=" my-2 text-lg font-semibold ">Laf设置</div>
+          {/* <div className=" my-2 text-lg font-semibold ">Laf设置</div>
           <Form.Item name="collectionName" label="集合名字">
             <Input />
-          </Form.Item>
+          </Form.Item> */}
         </Form>
       </Card>
     </div>

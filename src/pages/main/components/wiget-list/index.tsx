@@ -16,10 +16,11 @@ function WidgetItem(props: WidgetItemProps) {
     <DragWrap itemType={ItemType.origin} item={{schemaInfo, itemType: ItemType.origin}}   >
     <div
       onClick={() => ActorActions.addActor(schemaInfo)}
-      className={`${className} bg-slate-100 flex flex-col justify-center items-center border-transparent border-solid  py-1 rounded border hover:border-cyan-900 cursor-pointer `}
+      className={`${className} 
+      bg-slate-100 flex justify-center  items-center border-transparent border-solid  py-1 rounded border hover:border-cyan-900 cursor-pointer `}
     >
-      <span className=" text-xl ">{icon}</span>
-      <div className=" flex-1 text-gray-600">{name}</div>
+      <span className="flex flex-col justify-center items-center block mr-2 ">{icon}</span>
+      <span  className=" text-gray-600 block" style={{width: "5rem"}}>{name}</span>
     </div>
     </DragWrap>
   );

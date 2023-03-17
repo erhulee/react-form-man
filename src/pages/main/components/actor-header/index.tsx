@@ -68,16 +68,16 @@ function Header() {
           onClick={() => handleExport()}
         >
           <ReactIcon className=" mr-2"></ReactIcon>
-          导出Tsx
+          导出TSX
         </Button>
-        <Button
+        {/* <Button
           type="primary"
           className=" flex items-center justify-center bg-blue-800 mx-4 "
           onClick={() => handleExportLaf()}
         >
           <ReactIcon className=" mr-2"></ReactIcon>
           导出Laf
-        </Button>
+        </Button> */}
         {/* 
         <Button
           type="primary"
