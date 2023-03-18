@@ -9,6 +9,7 @@ import { generateAntDesignForm } from "../../../../code-generator/andt-generator
 
 import prettier from "prettier";
 import plugin from "prettier/parser-babel";
+
 function Header() {
   const [fileCode, setFileCode] = useState("");
   const displayTsxRef = useRef(true);
@@ -23,7 +24,6 @@ function Header() {
         plugins: [plugin],
       })
     );
-
     toggle();
   };
 

@@ -1,5 +1,9 @@
-import { Button, Form, Input, Tooltip } from "antd";
-import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
+import { Button, Dropdown, Form, Input, Tooltip } from "antd";
+import {
+  PlusOutlined,
+  MinusCircleOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
 import { cloneDeep } from "lodash-es";
 import Modal from "antd/es/modal/Modal";
 import CodeEditor from "../../components/code-editor";
@@ -7,6 +11,7 @@ import { useRef } from "react";
 import { enum2options } from "../../../code-decode/enum2options";
 import useModal from "../../../hooks/useModal";
 import { QuestionCircleOutlined } from "@ant-design/icons";
+import ButtonGroup from "antd/es/button/button-group";
 type Props = {
   fieldProps: {
     value: Array<{
@@ -16,97 +21,130 @@ type Props = {
     onChange: Function;
   };
 };
-enum Op {
-  apple,
-  pear,
-}
+
 function OptionInput(props: Props) {
-  const { value, onChange } = props.fieldProps;
+  const { value, onChange } = props?.fieldProps;
   const [form] = Form.useForm();
+
   form.setFieldValue("options", value);
-  const handleChange = (index: number, key: string, value: string) => {
-    const options = form.getFieldValue("options");
-    options[index][key] = value;
-    form.setFieldValue("options", options);
+
+  const handleChange = (
+    index: number,
+    key: "value" | "label",
+    newValue: string
+  ) => {
+    const options = cloneDeep(value);
+    options[index][key] = newValue;
     onChange(options);
   };
 
   const handleAddItem = () => {
-    const options = form.getFieldValue("options");
+    const options = form.getFieldValue("options") || [];
     onChange([...options, { label: "label", value: "value" }]);
   };
 
+  const handleModalOK = (method = "default") => {
+    const options = cloneDeep(value);
+    const addOptions = enum2options(codeRef.current);
+    if (method == "default") {
+      onChange([...options, ...addOptions]);
+    } else {
+      onChange(addOptions);
+    }
+    close();
+  };
+
   const handleDelete = (index: number) => {
-    const options = cloneDeep(form.getFieldValue("options"));
+    const options = cloneDeep(value);
     options.splice(index, 1);
     onChange(options);
   };
-
   const codeRef = useRef("");
-
   const { open, visible, close } = useModal(false);
   return (
     <div>
-      <Form form={form}>
-        <Form.List name="options">
-          {(fields, { add, remove }, { errors }) => {
-            return (
-              <>
-                {fields.map((field, index) => (
-                  <Form.Item required={false} key={index}>
-                    <div className=" flex">
-                      <Form.Item noStyle>
-                        <Input
-                          defaultValue={value[index]?.label}
-                          placeholder="label"
-                          onChange={(e) => {
-                            const value = e.target.value;
-                            handleChange(index, "label", value);
-                          }}
-                        />
-                      </Form.Item>
-                      <Form.Item noStyle>
-                        <Input
-                          defaultValue={value[index]?.value}
-                          className=" mx-2"
-                          placeholder="value"
-                          onChange={(e) => {
-                            const value = e.target.value;
-                            handleChange(index, "value", value);
-                          }}
-                        />
-                      </Form.Item>
-                      {fields.length > 1 ? (
-                        <MinusCircleOutlined
-                          onClick={() => handleDelete(index)}
-                        />
-                      ) : null}
-                    </div>
-                  </Form.Item>
-                ))}
+      <Form.List name="options">
+        {(fields) => {
+          return (
+            <>
+              {fields.map((field, index) => (
+                <Form.Item required={false} key={Math.random()}>
+                  <div className=" flex">
+                    <Input
+                      defaultValue={value[index]?.label}
+                      placeholder="label"
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        handleChange(index, "label", value);
+                      }}
+                    />
+                    <Input
+                      defaultValue={value[index]?.value}
+                      className=" mx-2"
+                      placeholder="value"
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        handleChange(index, "value", value);
+                      }}
+                    />
+                    {fields.length > 1 ? (
+                      <MinusCircleOutlined
+                        onClick={() => handleDelete(index)}
+                      />
+                    ) : null}
+                  </div>
+                </Form.Item>
+              ))}
 
-                <Button
-                  className=" w-full"
-                  type="dashed"
-                  onClick={() => {
-                    handleAddItem();
-                  }}
-                  icon={<PlusOutlined />}
-                >
-                  添加
-                </Button>
-              </>
-            );
-          }}
-        </Form.List>
-      </Form>
+              <Button
+                className=" w-full"
+                type="dashed"
+                onClick={() => {
+                  handleAddItem();
+                }}
+                icon={<PlusOutlined />}
+              >
+                添加
+              </Button>
+            </>
+          );
+        }}
+      </Form.List>
+      {/* </Form> */}
 
       <Modal
         open={visible}
-        onOk={() => {
-          console.log(enum2options(codeRef.current));
-        }}
         onCancel={close}
+        footer={
+          <ButtonGroup>
+            <Dropdown.Button
+              className="mr-2"
+              type="primary"
+              icon={<DownOutlined />}
+              onClick={() => handleModalOK()}
+              menu={{
+                items: [
+                  {
+                    label: (
+                      <div
+                        onClick={() => {
+                          handleModalOK("override");
+                        }}
+                      >
+                        覆盖
+                      </div>
+                    ),
+
+                    key: "1",
+                  },
+                ],
+              }}
+            >
+              导入
+            </Dropdown.Button>
+            <Button onClick={close}>取消</Button>
+          </ButtonGroup>
+        }
       >
         <CodeEditor
           code=""
