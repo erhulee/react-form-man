@@ -19,8 +19,8 @@ export type CheckboxActor = BaseActor & {
 };
 
 export const checkboxWidgetKit: FormWidgetKit = {
-  columns: [...baseColumns, ...OptionLikeColumns],
-  generate(_props: any) {
+   columns: [...baseColumns, ...OptionLikeColumns],
+    generate(_props: any) {
    
     const props = cloneDeep(_props);
     const {formItemProps,remainProps} = getFormProps(props);

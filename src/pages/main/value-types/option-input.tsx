@@ -1,6 +1,12 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Tooltip } from "antd";
 import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash-es";
+import Modal from "antd/es/modal/Modal";
+import CodeEditor from "../../components/code-editor";
+import { useRef } from "react";
+import { enum2options } from "../../../code-decode/enum2options";
+import useModal from "../../../hooks/useModal";
+import { QuestionCircleOutlined } from "@ant-design/icons";
 type Props = {
   fieldProps: {
     value: Array<{
@@ -10,6 +16,10 @@ type Props = {
     onChange: Function;
   };
 };
+enum Op {
+  apple,
+  pear,
+}
 function OptionInput(props: Props) {
   const { value, onChange } = props.fieldProps;
   const [form] = Form.useForm();
@@ -31,6 +41,10 @@ function OptionInput(props: Props) {
     options.splice(index, 1);
     onChange(options);
   };
+
+  const codeRef = useRef("");
+
+  const { open, visible, close } = useModal(false);
   return (
     <div>
       <Form form={form}>
@@ -86,6 +100,27 @@ function OptionInput(props: Props) {
           }}
         </Form.List>
       </Form>
+
+      <Modal
+        open={visible}
+        onOk={() => {
+          console.log(enum2options(codeRef.current));
+        }}
+        onCancel={close}
+      >
+        <CodeEditor
+          code=""
+          onChange={(code) => (codeRef.current = code)}
+        ></CodeEditor>
+      </Modal>
+
+      <Tooltip title="支持将 TS 中的 enum 一键转入">
+        <QuestionCircleOutlined />
+      </Tooltip>
+
+      <Button type="link" onClick={open}>
+        枚举导入
+      </Button>
     </div>
   );
 }

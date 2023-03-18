@@ -18,11 +18,11 @@ type DataItem = {
 function ActorSetting() {
   const [form] = Form.useForm();
   const snap = useSnapshot(actorStore);
-  
+
   // const activeActor = snap.activeActor;
   const activeActorId = actorStore.activeActorId;
   const treeRootNode = actorStore.actorsTree;
-  
+
   // use
   const activeActor = findActor(actorStore.actorsTree as any, activeActorId);
   // useSubscribe(actorStore, (op) => {
@@ -35,12 +35,12 @@ function ActorSetting() {
 
   const handleValueChange = (v: any) => {
     const props = cloneDeep(form.getFieldsValue());
-    activeActor?.props && (Object.assign(activeActor.props, props));
+    activeActor?.props && Object.assign(activeActor.props, props);
     ActorActions.updateTree();
   };
 
-
-  if (activeActorId == treeRootNode.id || activeActor == null) return <GlobalSettingForm></GlobalSettingForm>;
+  if (activeActorId == treeRootNode.id || activeActor == null)
+    return <GlobalSettingForm></GlobalSettingForm>;
 
   return (
     <ProConfigProvider valueTypeMap={valueType}>

@@ -12,10 +12,9 @@ export const valueType = {
   dividerWithTitle: {
     render: (text: string) => <a>{text}</a>,
     renderFormItem: (text: string, props: any) => {
-      console.log("props:", props)
-      return (
-      <SimpleDivider {...props.fieldProps}></SimpleDivider>
-    )},
+      console.log("props:", props);
+      return <SimpleDivider {...props.fieldProps}></SimpleDivider>;
+    },
   },
   title: {
     render: (text: string) => <a>{text}</a>,

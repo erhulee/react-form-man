@@ -8,7 +8,7 @@ import DropWrap from "../drap-component-wrap/drop-wrap";
 import { ItemType } from "../drap-component-wrap/type";
 import { TrashIcon } from "../Icons";
 import { Actor, getFormItemValuePropName, getWidgetCategory,  WidgetCategory, WidgetType } from "../pages/main/components/wiget-list/share/Widget";
-import { ActorActions } from "../store/actorStore";
+import actorStore, { ActorActions } from "../store/actorStore";
 
 type Props = {
     // isActive: boolean,
@@ -150,7 +150,9 @@ function RenderItemWrap(props: React.PropsWithChildren<Props>){
 
     const isActive = currentActiveId == id;
     const title = type ?? "未定义";
-    return (<div onClick={handleActiveClick} className={`${itemType == WidgetCategory.Root ?" h-full w-full":""}`} >
+    return (<div onClick={handleActiveClick} onBlur={()=>{
+      actorStore.activeActorIsFocus = false;
+    }} className={`${itemType == WidgetCategory.Root ?" h-full w-full":""}`} >
             <ActiveDecorator id={id || ""}>
                   <MoveDecorator id={id || ""} widgetCategory={itemType}>
                       <WrapDecorator isActive={isActive} title={title} widgetCategory={itemType}>

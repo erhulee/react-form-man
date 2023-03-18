@@ -20,7 +20,9 @@ export type ActorStore = {
     actorsTree: Actor;
     actors: Actor[];
     activeActor: Actor | null;
-    activeActorId: string
+    activeActorId: string,
+    // 防止误删
+    activeActorIsFocus: boolean,
 }
 const _state:ActorStore = {
     actorsTree: {
@@ -34,6 +36,7 @@ const _state:ActorStore = {
     actors: [],
     activeActor: null,
     activeActorId: "",
+    activeActorIsFocus: false,
 }
 
 const actorStore = proxy(_state)
@@ -145,9 +148,11 @@ export const ActorActions = {
         if(actorStore.activeActor?.id == id) return;
 
         actorStore.activeActorId = id
+        actorStore.activeActorIsFocus = true
     },
 
     deleteActiveActor: ()=>{
+        if(!actorStore.activeActorIsFocus) return;
         ActorActions.deleteActor(actorStore.activeActorId);
         actorStore.activeActorId = ""
     },

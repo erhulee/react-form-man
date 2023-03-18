@@ -7,8 +7,8 @@ import CodeEditor from "../../../components/code-editor";
 import { widgetKitMap } from "../../constant";
 import { generateAntDesignForm } from "../../../../code-generator/andt-generator";
 
-import prettier from "prettier"
-import plugin from "prettier/parser-babel"
+import prettier from "prettier";
+import plugin from "prettier/parser-babel";
 function Header() {
   const [fileCode, setFileCode] = useState("");
   const displayTsxRef = useRef(true);
@@ -17,13 +17,16 @@ function Header() {
   const handleExport = () => {
     displayTsxRef.current = true;
     let fileCode = generateAntDesignForm(actorStore.actorsTree, widgetKitMap);
-    setFileCode(prettier.format(fileCode, {
-      parser: "babel",
-      plugins: [plugin]
-    }));
+    setFileCode(
+      prettier.format(fileCode, {
+        parser: "babel",
+        plugins: [plugin],
+      })
+    );
 
     toggle();
   };
+
   const handleOk = async () => {
     await navigator.clipboard.writeText(fileCode);
     message.success("复制成功");
@@ -68,4 +71,3 @@ function Header() {
 }
 
 export default Header;
-
