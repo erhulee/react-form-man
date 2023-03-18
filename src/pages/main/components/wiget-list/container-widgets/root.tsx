@@ -20,7 +20,7 @@ export const RootWidgetKit: ContainerWidgetKit ={
               return (
                 <Form form = {form} ${propsString} >
             `,
-            afterCode: `</Form>);
+            afterCode: `</Form>)};
             
             export default CustomForm;
             `

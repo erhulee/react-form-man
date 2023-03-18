@@ -1,54 +1,29 @@
-import { Button, message, Modal, Tabs } from "antd";
+import { Button, Checkbox, message, Modal, Tabs } from "antd";
 import { useRef, useState } from "react";
 import useModal from "../../../../hooks/useModal";
 import { FormIcon, GithubIcon, ReactIcon } from "../../../../Icons";
 import actorStore from "../../../../store/actorStore";
 import CodeEditor from "../../../components/code-editor";
-import { generateAddCode } from "./generateLafCode";
-import globalFormSetting from "../../../../store/globalFormSetting";
 import { widgetKitMap } from "../../constant";
 import { generateAntDesignForm } from "../../../../code-generator/andt-generator";
+
+import prettier from "prettier"
+import plugin from "prettier/parser-babel"
 function Header() {
   const [fileCode, setFileCode] = useState("");
-  const [lafCold, setLafCode] = useState(["", "", "", "", ""]);
   const displayTsxRef = useRef(true);
   const { visible, toggle } = useModal();
 
   const handleExport = () => {
-    const codes = actorStore.actors.map((actor) => {
-      const type = actor.type;
-      const widgetKit = widgetKitMap[type];
-      const code = widgetKit.generate(actor.props);
-      return code;
-    });
     displayTsxRef.current = true;
+    let fileCode = generateAntDesignForm(actorStore.actorsTree, widgetKitMap);
+    setFileCode(prettier.format(fileCode, {
+      parser: "babel",
+      plugins: [plugin]
+    }));
 
-    const fileCode = generateAntDesignForm(actorStore.actorsTree, widgetKitMap);
-    setFileCode(fileCode);
     toggle();
   };
-
-  const handleExportLaf = () => {
-    const instanceKeys: string[] = [];
-    displayTsxRef.current = false;
-    actorStore.actors.forEach((actor) => {
-      const props = actor.props;
-      const name = props.name;
-      if (name == null) return;
-      instanceKeys.push(name);
-    });
-
-    const addCode = generateAddCode(
-      instanceKeys,
-      globalFormSetting.collectionName
-    );
-
-    setLafCode([addCode, addCode, addCode, addCode, addCode]);
-    toggle();
-  };
-
-
-
   const handleOk = async () => {
     await navigator.clipboard.writeText(fileCode);
     message.success("复制成功");
@@ -70,23 +45,6 @@ function Header() {
           <ReactIcon className=" mr-2"></ReactIcon>
           导出TSX
         </Button>
-        {/* <Button
-          type="primary"
-          className=" flex items-center justify-center bg-blue-800 mx-4 "
-          onClick={() => handleExportLaf()}
-        >
-          <ReactIcon className=" mr-2"></ReactIcon>
-          导出Laf
-        </Button> */}
-        {/* 
-        <Button
-          type="primary"
-          onClick={() => handleExportAntdPro()}
-          className="bg-blue-800"
-        >
-          导出 Antd Pro
-        </Button> */}
-
         <a
           className=" h-fit flex items-center ml-3"
           href="https://github.com/erhulee/react-form-man"
@@ -103,42 +61,11 @@ function Header() {
         okText="复制"
         cancelText="取消"
       >
-        {displayTsxRef.current ? (
-          <CodeEditor code={fileCode}></CodeEditor>
-        ) : (
-          <Tabs
-            items={[
-              {
-                label: "增加",
-                key: "add",
-                children: <CodeEditor code={lafCold[0]}></CodeEditor>,
-              },
-              {
-                label: "删除",
-                key: "delete",
-                children: <CodeEditor code={lafCold[1]}></CodeEditor>,
-              },
-              {
-                label: "修改",
-                key: "update",
-                children: <CodeEditor code={lafCold[2]}></CodeEditor>,
-              },
-              {
-                label: "查询全部",
-                key: "queryAll",
-                children: <CodeEditor code={lafCold[3]}></CodeEditor>,
-              },
-              {
-                label: "查询一条",
-                key: "queryOne",
-                children: <CodeEditor code={lafCold[4]}></CodeEditor>,
-              },
-            ]}
-          ></Tabs>
-        )}
+        <CodeEditor code={fileCode}></CodeEditor>
       </Modal>
     </div>
   );
 }
 
 export default Header;
+
