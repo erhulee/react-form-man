@@ -1,14 +1,4 @@
-import {
-  Button,
-  Card,
-  Divider,
-  Form,
-  Input,
-  InputNumber,
-  Radio,
-  Switch,
-} from "antd";
-import Upload from "antd/es/upload/Upload";
+import { Card, Divider, Form, Input, InputNumber, Radio, Switch } from "antd";
 import { GlobalFormSettingAction } from "../../../../store/globalFormSetting";
 const useForm = Form.useForm;
 function GlobalSettingForm() {
@@ -27,8 +17,7 @@ function GlobalSettingForm() {
           labelAlign="left"
         >
           <Form.Item name="name" label="表单名称">
-            {/* <Input /> */}
-            <Upload></Upload>
+            <Input />
           </Form.Item>
           <Form.Item name="labelCol" label="标签宽度" tooltip={"labelCol"}>
             <InputNumber />

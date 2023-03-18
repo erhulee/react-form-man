@@ -17,7 +17,7 @@ type DataItem = {
 
 function ActorSetting() {
   const [form] = Form.useForm();
-  const snap = useSnapshot(actorStore);
+  useSnapshot(actorStore);
 
   // const activeActor = snap.activeActor;
   const activeActorId = actorStore.activeActorId;
@@ -25,13 +25,6 @@ function ActorSetting() {
 
   // use
   const activeActor = findActor(actorStore.actorsTree as any, activeActorId);
-  // useSubscribe(actorStore, (op) => {
-  //   if (op[0][1] == "activeActor") {
-  //     update();
-  //     form.resetFields();
-  //     syncWithStore();
-  //   }
-  // });
 
   const handleValueChange = (v: any) => {
     const props = cloneDeep(form.getFieldsValue());

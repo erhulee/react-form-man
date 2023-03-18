@@ -1,5 +1,5 @@
 import { Input, Modal } from "antd";
-import useModal from "../../../hooks/useModal";
+import useModal from "@hooks/useModal";
 import CodeEditor from "../../components/code-editor";
 
 type Props = {
