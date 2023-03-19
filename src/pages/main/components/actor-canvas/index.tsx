@@ -6,7 +6,7 @@ console.log("update:", useUpdate);
 import "./index.scss";
 
 import { EditorRender, PreviewRender } from "@render";
-import { Switch, Form } from "antd";
+import { Switch, Form, Button, Tooltip } from "antd";
 import { useState } from "react";
 
 function ActorCanvas() {
@@ -25,6 +25,11 @@ function ActorCanvas() {
             setPreview(value);
           }}
         ></Switch>
+        <Tooltip title="敬请期待">
+          <Button type="primary" className="ml-4" disabled>
+            保存为模板
+          </Button>
+        </Tooltip>
       </div>
       {isPreview ? <PreviewRender /> : <EditorRender />}
     </div>

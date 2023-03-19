@@ -46,6 +46,83 @@ export interface BaseActor {
       children?: BaseActor[]
     }
 }
+// 配置 formItem 的选项 
+export const baseFormItemColumns = [
+  {
+    valueType: "title",
+    fieldProps:{
+      title: "FormItem 配置项"
+    }
+  },
+  {
+    title: "标签",
+    dataIndex: "label",
+    valueType: "input",
+    formItemProps: {
+      tooltip: "label",
+    }
+  },
+  {
+    title: "字段索引",
+    dataIndex: "name",
+    valueType: "input",
+    formItemProps: {
+      tooltip: "name",
+    }
+  },
+  {
+    title: "必需",
+    dataIndex: "required",
+    valueType: "switch",
+    formItemProps: {
+      tooltip: "required",
+    }
+  },
+  // {
+  //   title: "未填提示",
+  //   dataIndex: "requireMessage",
+  //   valueType: "input",
+  //   formItemProps: {
+  //     tooltip: "requireMessage",
+  //   }
+  // },
+  {
+    title: "tooltip提示",
+    dataIndex: "tooltip",
+    valueType: "input",
+  },
+  {
+    title: "初始值",
+    dataIndex: "initialValue",
+    valueType: "input"
+  },
+
+]
+
+// 配置 formItem 中真正组件的选项 
+export const baseCompColumns = [
+  {
+    valueType: "title",
+    fieldProps:{
+      title: "组件配置项"
+    }
+  },
+  {
+    title: "尺寸",
+    dataIndex: "size",
+    valueType: "radio",
+    formItemProps: {
+      tooltip: "size",
+    },
+    fieldProps: {
+      options: [
+        { label: "小", value: "small" },
+        { label: "中", value: "middle" },
+        { label: "大", value: "large" },
+      ],
+    },
+  },
+]
 export const baseColumns: any = [
     {
       title: "标签",
@@ -116,6 +193,40 @@ export const InputLikeColumns: any = [
       tooltip: "placeholder",
     }
   },
+  {
+    title: "清除图标",
+    dataIndex: "allowClear",
+    valueType: "switch",
+    formItemProps: {
+      tooltip: "allowClear",
+    },
+  },
+  {
+    title: "边框",
+    dataIndex: "bordered",
+    valueType: "switch",
+    formItemProps: {
+      tooltip: "bordered",
+    },
+  },
+  {
+    title: "最大长度",
+    dataIndex: "maxLength",
+    valueType: "digit",
+    formItemProps: {
+      tooltip: "maxLength",
+    },
+  },
+  {
+    title: "展示字数",
+    dataIndex: "showCount",
+    valueType: "switch",
+    formItemProps: {
+      tooltip: "showCount",
+    },
+  },
+
+  
 ]
 
 export const OptionLikeColumns: any = [

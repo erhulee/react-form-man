@@ -4,6 +4,8 @@ import { BaseOptions } from "../../../main/components/actor-setting/type";
 import {
   BaseActor,
   baseColumns,
+  baseCompColumns,
+  baseFormItemColumns,
   InputLikeColumns,
   WidgetType,
 } from "../share/Widget";
@@ -36,42 +38,7 @@ export type InputActor = BaseActor & {
 };
 
 export const inputWidgetKit: FormWidgetKit = {
-  columns: [
-    ...baseColumns,
-    ...InputLikeColumns,
-    {
-      title: "清除图标",
-      dataIndex: "allowClear",
-      valueType: "switch",
-      formItemProps: {
-        tooltip: "allowClear",
-      },
-    },
-    {
-      title: "边框",
-      dataIndex: "bordered",
-      valueType: "switch",
-      formItemProps: {
-        tooltip: "bordered",
-      },
-    },
-    {
-      title: "最大长度",
-      dataIndex: "maxLength",
-      valueType: "digit",
-      formItemProps: {
-        tooltip: "maxLength",
-      },
-    },
-    {
-      title: "展示字数",
-      dataIndex: "showCount",
-      valueType: "switch",
-      formItemProps: {
-        tooltip: "showCount",
-      },
-    },
-  ],
+  columns: [...baseFormItemColumns, ...baseCompColumns, ...InputLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
     const { formItemProps, remainProps } = getFormProps(props);

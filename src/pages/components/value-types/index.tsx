@@ -1,6 +1,7 @@
 import FormCodeEditor from "./code-editor";
 import SimpleDivider from "./divider";
 import OptionInput from "./option-input";
+import Tab from "./tab";
 
 export const valueType = {
   optionInput: {
@@ -28,6 +29,12 @@ export const valueType = {
     render: (text: string) => <a>{text}</a>,
     renderFormItem: (text: string, props: any) => {
       return <FormCodeEditor {...props.fieldProps}></FormCodeEditor>;
+    },
+  },
+  tab: {
+    render: (text: string) => <a>{text}</a>,
+    renderFormItem: (text: string, props: any) => {
+      return <Tab {...props}></Tab>;
     },
   },
 };
