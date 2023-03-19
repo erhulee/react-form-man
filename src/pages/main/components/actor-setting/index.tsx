@@ -35,7 +35,6 @@ function ActorSetting() {
   };
   const columns = widgetKitMap[activeActor?.type || WidgetType.Root].columns;
 
-  debugger;
   return (
     <ProConfigProvider valueTypeMap={valueType}>
       <Card>

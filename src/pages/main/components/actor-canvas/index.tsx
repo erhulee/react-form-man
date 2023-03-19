@@ -13,8 +13,8 @@ function ActorCanvas() {
   const update = useUpdate();
   useSubscribe(actorStore, update);
   const [isPreview, setPreview] = useState(false);
-  // const snap: any = useSnapshot(actorStore);
 
+  console.log("render");
   return (
     <div>
       <div className="h-12 bg-blue-50 flex justify-end items-center px-8">
@@ -26,7 +26,7 @@ function ActorCanvas() {
           }}
         ></Switch>
       </div>
-      {isPreview ? <PreviewRender></PreviewRender> : <EditorRender />}
+      {isPreview ? <PreviewRender /> : <EditorRender />}
     </div>
   );
 }

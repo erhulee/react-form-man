@@ -9,7 +9,6 @@ import { Actor } from "../pages/components/wiget-list/share/Widget";
 */
 export function generateAntDesignForm(actorTree: Actor, widgetKitMap:  { [index: string]: FormWidgetKit | ContainerWidgetKit} ){
     function generate(node: Actor | null){
-
         if(node == null) return "";
         const {type} = node
         const widgetKit = widgetKitMap[type]  

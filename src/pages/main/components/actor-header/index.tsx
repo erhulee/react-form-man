@@ -14,7 +14,6 @@ function Header() {
 
   const handleExport = () => {
     displayTsxRef.current = true;
-    debugger;
     let fileCode = generateAntDesignForm(actorStore.actorsTree, widgetKitMap);
 
     setFileCode(fileCode);

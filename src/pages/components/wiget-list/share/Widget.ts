@@ -89,6 +89,21 @@ export const baseColumns: any = [
       dataIndex: "initialValue",
       valueType: "input"
     },
+    {
+      title: "尺寸",
+      dataIndex: "size",
+      valueType: "radio",
+      formItemProps: {
+        tooltip: "size",
+      },
+      fieldProps: {
+        options: [
+          { label: "小", value: "small" },
+          { label: "中", value: "middle" },
+          { label: "大", value: "large" },
+        ],
+      },
+    },
 
 ];
 
