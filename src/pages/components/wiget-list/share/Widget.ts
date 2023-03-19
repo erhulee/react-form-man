@@ -89,11 +89,7 @@ export const baseColumns: any = [
       dataIndex: "initialValue",
       valueType: "input"
     },
-    {
-      title: "禁用",
-      dataIndex: "disabled",
-      valueType: "switch"
-    }
+
 ];
 
 export const InputLikeColumns: any = [

@@ -26,8 +26,8 @@ export const valueType = {
   },
   codeEditor: {
     render: (text: string) => <a>{text}</a>,
-    renderFormItem: (text: string, props: any) => (
-      <FormCodeEditor {...props}></FormCodeEditor>
-    ),
+    renderFormItem: (text: string, props: any) => {
+      return <FormCodeEditor {...props.fieldProps}></FormCodeEditor>;
+    },
   },
 };

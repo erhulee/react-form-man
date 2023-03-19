@@ -4,9 +4,9 @@ import {
   Actor,
   getWidgetCategory,
   isFormWidget,
-} from "src/pages/main/components/wiget-list/share/Widget";
+} from "src/pages/components/wiget-list/share/Widget";
 import { cloneDeep } from "lodash-es";
-import clearFormItemProps from "../pages/main/components/wiget-list/share/clearFormItemProps";
+import clearFormItemProps from "../pages/components/wiget-list/share/clearFormItemProps";
 import { FormItemWrap } from "./render-item-wrap";
 import { Form } from "antd";
 import { queryWidgetKit } from "./editor-render";

@@ -1,5 +1,5 @@
 import { cloneDeep } from "lodash-es";
-import { GlobalFormSetting } from "../../../../../store/globalFormSetting";
+import { GlobalFormSetting } from "../../../../store/globalFormSetting";
 
 function getFormProps(_globalSetting: GlobalFormSetting): any {
     const globalSetting = cloneDeep(_globalSetting);

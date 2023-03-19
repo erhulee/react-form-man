@@ -13,7 +13,7 @@ import {
   getWidgetCategory,
   WidgetCategory,
   WidgetType,
-} from "../pages/main/components/wiget-list/share/Widget";
+} from "../pages/components/wiget-list/share/Widget";
 import actorStore, { ActorActions } from "../store/actorStore";
 
 type Props = {

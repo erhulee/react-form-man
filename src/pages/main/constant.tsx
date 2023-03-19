@@ -18,37 +18,57 @@ import {
   TextIcon,
   TimeIcon,
 } from "../../Icons";
-import { WidgetItemProps } from "./components/wiget-list";
-import { CardContainerWidgetKit, RowContainerWidgetKit } from "./components/wiget-list/container-widgets";
-import { CellContainerWidgetKit } from "./components/wiget-list/container-widgets/cell-container";
-import { RootWidgetKit } from "./components/wiget-list/container-widgets/root";
-import { inputWidgetKit, TextareaWidgetKit, NumberWidgetKit, switchWidgetKit, radioWidgetKit,
-checkboxWidgetKit, dividerWidgetKit, rateWidgetKit, sliderWidgetKit, selectWidgetKit, textWidgetKit, timeWidgetKit, dateWidgetKit, imageWidgetKit,  } from "./components/wiget-list/form-widget";
-import { ContainerWidgetKit, FormWidgetKit } from "./components/wiget-list/share/type";
-import { WidgetType } from "./components/wiget-list/share/Widget";
+import { WidgetItemProps } from "../components/wiget-list";
+import {
+  CardContainerWidgetKit,
+  RowContainerWidgetKit,
+} from "../components/wiget-list/container-widgets";
+import { CellContainerWidgetKit } from "../components/wiget-list/container-widgets/cell-container";
+import { RootWidgetKit } from "../components/wiget-list/container-widgets/root";
+import {
+  inputWidgetKit,
+  TextareaWidgetKit,
+  NumberWidgetKit,
+  switchWidgetKit,
+  radioWidgetKit,
+  checkboxWidgetKit,
+  dividerWidgetKit,
+  rateWidgetKit,
+  sliderWidgetKit,
+  selectWidgetKit,
+  textWidgetKit,
+  timeWidgetKit,
+  dateWidgetKit,
+  imageWidgetKit,
+} from "../components/wiget-list/form-widget";
+import {
+  ContainerWidgetKit,
+  FormWidgetKit,
+} from "../components/wiget-list/share/type";
+import { WidgetType } from "../components/wiget-list/share/Widget";
 export const widgetKitMap: {
-  [index: string]: FormWidgetKit | ContainerWidgetKit
+  [index: string]: FormWidgetKit | ContainerWidgetKit;
 } = {
-  "input":    inputWidgetKit,
-  "textarea": TextareaWidgetKit,
-  "number":   NumberWidgetKit,
-  "switch":   switchWidgetKit,
-  "radio":    radioWidgetKit,
-  "checkbox": checkboxWidgetKit,
-  "divider": dividerWidgetKit,
-  "rate": rateWidgetKit,
-  "slider": sliderWidgetKit,
-  "select": selectWidgetKit,
-  "text": textWidgetKit,
-  "time": timeWidgetKit,
-  "date": dateWidgetKit,
-  "image": imageWidgetKit,
+  input: inputWidgetKit,
+  textarea: TextareaWidgetKit,
+  number: NumberWidgetKit,
+  switch: switchWidgetKit,
+  radio: radioWidgetKit,
+  checkbox: checkboxWidgetKit,
+  divider: dividerWidgetKit,
+  rate: rateWidgetKit,
+  slider: sliderWidgetKit,
+  select: selectWidgetKit,
+  text: textWidgetKit,
+  time: timeWidgetKit,
+  date: dateWidgetKit,
+  image: imageWidgetKit,
 
-  "cell": CellContainerWidgetKit,
-  "root": RootWidgetKit,
-  [WidgetType.Row]:RowContainerWidgetKit,
-  [WidgetType.Card]: CardContainerWidgetKit
-}
+  cell: CellContainerWidgetKit,
+  root: RootWidgetKit,
+  [WidgetType.Row]: RowContainerWidgetKit,
+  [WidgetType.Card]: CardContainerWidgetKit,
+};
 export const formList: Array<WidgetItemProps> = [
   {
     icon: <InputIcon />,
@@ -197,7 +217,7 @@ export const formList: Array<WidgetItemProps> = [
         // content: "",
       },
     },
-  }
+  },
 ];
 
 export const containerList: Array<WidgetItemProps> = [
@@ -209,7 +229,7 @@ export const containerList: Array<WidgetItemProps> = [
       props: {
         // id: "",
       },
-    }, 
+    },
   },
   // {
   //   icon: <RowContainerIcon />,
@@ -225,7 +245,7 @@ export const containerList: Array<WidgetItemProps> = [
     icon: <ColContainerIcon />,
     name: "横向排列",
     schemaInfo: {
-     type: WidgetType.Row,
+      type: WidgetType.Row,
       props: {},
     },
   },
@@ -260,5 +280,4 @@ export const decoratorList: Array<WidgetItemProps> = [
       },
     },
   },
-
 ];

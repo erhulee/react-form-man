@@ -9,7 +9,8 @@ export default defineConfig({
       "src": path.resolve(__dirname, "./src"),
       "@render": path.resolve(__dirname, "./src/render"),
       "@hooks":  path.resolve(__dirname, "./src/hooks"),
-      "@store": path.resolve(__dirname, "./src/store")
+      "@store": path.resolve(__dirname, "./src/store"),
+      "@code-gen": path.resolve(__dirname,"./src/code-generator")
     }
   }
 })

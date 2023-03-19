@@ -1,12 +1,12 @@
 // 从 store 里拿到组件树，开始渲染
 import { cloneDeep } from "lodash-es";
 import { useSnapshot } from "valtio";
-import clearFormItemProps from "../pages/main/components/wiget-list/share/clearFormItemProps";
+import clearFormItemProps from "../pages/components/wiget-list/share/clearFormItemProps";
 import {
   Actor,
   isFormWidget,
   WidgetType,
-} from "../pages/main/components/wiget-list/share/Widget";
+} from "../pages/components/wiget-list/share/Widget";
 import { widgetKitMap } from "../pages/main/constant";
 import actorStore from "@store/actorStore";
 import EmptyDivider from "./empty-divider";

@@ -19,7 +19,8 @@
     "paths": {
       "@render": ["./src/render"],
       "@hooks/*":["./src/hooks/*"],
-      "@store/*":["./src/store/*"]
+      "@store/*":["./src/store/*"],
+      "@code-gen/*":["./src/code-generator"]
     }
   },
   "include": ["src"],

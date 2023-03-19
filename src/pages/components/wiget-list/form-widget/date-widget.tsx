@@ -1,6 +1,6 @@
 import { DatePicker, TimePicker } from "antd";
 import { cloneDeep } from "lodash";
-import { BaseOptions } from "../../actor-setting/type";
+import { BaseOptions } from "../../../main/components/actor-setting/type";
 import {
   BaseActor,
   baseColumns,
@@ -11,7 +11,7 @@ import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
 import { overLoadColumns } from "../share/overLoadColumns";
-import { getFormProps } from "../../../../../code-generator/splitPropsUtil";
+import { getFormProps } from "../../../../code-generator/splitPropsUtil";
 
 export type DateActor = BaseActor & {
   type: WidgetType.Date;
@@ -58,7 +58,7 @@ export const dateWidgetKit: FormWidgetKit = {
   ]),
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const {formItemProps,remainProps} = getFormProps(props);
+    const { formItemProps, remainProps } = getFormProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
           <DatePicker ${splitProps(remainProps)}/>
         </Form.Item>`;

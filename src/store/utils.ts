@@ -1,4 +1,4 @@
-import { Actor } from "../pages/main/components/wiget-list/share/Widget";
+import { Actor } from "../pages/components/wiget-list/share/Widget";
 
 export function findActor(root: Actor, targetId:String): Actor | null{
 

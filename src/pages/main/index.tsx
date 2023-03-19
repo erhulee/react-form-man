@@ -8,7 +8,7 @@ import ActorCanvas from "./components/actor-canvas";
 import Header from "./components/actor-header";
 import ActorSetting from "./components/actor-setting";
 import ActorTree from "./components/actor-tree";
-import WidgetList from "./components/wiget-list";
+import WidgetList from "./components/widget-list";
 
 const Sider = Layout.Sider;
 const Content = Layout.Content;

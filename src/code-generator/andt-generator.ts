@@ -1,5 +1,5 @@
-import { ContainerWidgetKit, FormWidgetKit } from "../pages/main/components/wiget-list/share/type";
-import { Actor } from "../pages/main/components/wiget-list/share/Widget";
+import { ContainerWidgetKit, FormWidgetKit } from "../pages/components/wiget-list/share/type";
+import { Actor } from "../pages/components/wiget-list/share/Widget";
 
 /*
     因为组件存在嵌套，所以递归的creator是必然的
@@ -9,7 +9,6 @@ import { Actor } from "../pages/main/components/wiget-list/share/Widget";
 */
 export function generateAntDesignForm(actorTree: Actor, widgetKitMap:  { [index: string]: FormWidgetKit | ContainerWidgetKit} ){
     function generate(node: Actor | null){
-        console.log("ss")
 
         if(node == null) return "";
         const {type} = node

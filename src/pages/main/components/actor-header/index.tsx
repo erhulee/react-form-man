@@ -1,14 +1,11 @@
 import { Button, Checkbox, message, Modal, Tabs } from "antd";
 import { useRef, useState } from "react";
-import useModal from "../../../../hooks/useModal";
+import useModal from "@hooks/useModal";
 import { FormIcon, GithubIcon, ReactIcon } from "../../../../Icons";
-import actorStore from "../../../../store/actorStore";
-import CodeEditor from "../../../components/code-editor";
+import actorStore from "@store/actorStore";
 import { widgetKitMap } from "../../constant";
 import { generateAntDesignForm } from "../../../../code-generator/andt-generator";
-
-import prettier from "prettier";
-import plugin from "prettier/parser-babel";
+import CodeEditor from "src/pages/components/code-editor";
 
 function Header() {
   const [fileCode, setFileCode] = useState("");
@@ -17,13 +14,10 @@ function Header() {
 
   const handleExport = () => {
     displayTsxRef.current = true;
+    debugger;
     let fileCode = generateAntDesignForm(actorStore.actorsTree, widgetKitMap);
-    setFileCode(
-      prettier.format(fileCode, {
-        parser: "babel",
-        plugins: [plugin],
-      })
-    );
+
+    setFileCode(fileCode);
     toggle();
   };
 
