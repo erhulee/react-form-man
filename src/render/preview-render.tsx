@@ -5,11 +5,12 @@ import {
   getWidgetCategory,
   isFormWidget,
 } from "src/pages/components/wiget-list/share/Widget";
-import { cloneDeep } from "lodash-es";
+import { cloneDeep, cond } from "lodash-es";
 import clearFormItemProps from "../pages/components/wiget-list/share/clearFormItemProps";
 import { FormItemWrap } from "./render-item-wrap";
 import { Form } from "antd";
 import { queryWidgetKit } from "./editor-render";
+import { getFormProps } from "src/code-generator/splitPropsUtil";
 function render(node: Actor) {
   const children = node?.props?.children || [];
   const type = node.type;
@@ -36,7 +37,13 @@ function render(node: Actor) {
 function PreviewRender() {
   const treeNode = useSnapshot(actorStore).actorsTree as unknown as Actor;
   const result = render(treeNode);
-  return <Form>{result}</Form>;
+  const { remainProps: formProps } = getFormProps(treeNode.props);
+
+  return (
+    <div className=" m-4 bg-white p-4 border-solid border-slate-800 border rounded-md">
+      <Form {...formProps}>{result}</Form>
+    </div>
+  );
 }
 
 export default PreviewRender;
