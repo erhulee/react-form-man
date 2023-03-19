@@ -10,7 +10,6 @@ import {
   NumberIcon,
   RadioIcon,
   RateIcon,
-  RowContainerIcon,
   SelectIcon,
   SliderIcon,
   SwitchIcon,
@@ -18,7 +17,6 @@ import {
   TextIcon,
   TimeIcon,
 } from "../../Icons";
-import { WidgetItemProps } from "../components/wiget-list";
 import {
   CardContainerWidgetKit,
   RowContainerWidgetKit,
@@ -46,6 +44,7 @@ import {
   FormWidgetKit,
 } from "../components/wiget-list/share/type";
 import { WidgetType } from "../components/wiget-list/share/Widget";
+import { WidgetItemProps } from "./components/widget-list";
 export const widgetKitMap: {
   [index: string]: FormWidgetKit | ContainerWidgetKit;
 } = {

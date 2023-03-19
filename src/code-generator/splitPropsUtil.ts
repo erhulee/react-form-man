@@ -6,7 +6,7 @@ type AbstractFunction = (props: any) => {
     formItemProps?: any
 }
 
-function omitUndefined<T>(obj:T):Partial<T> {
+function omitUndefined<T extends Record<string, any>>(obj:T):Partial<T> {
     return Object.entries(obj)
       .filter(([key, value]) => value !== undefined)
       .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
