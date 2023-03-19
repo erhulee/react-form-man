@@ -90,10 +90,21 @@ export const baseColumns: any = [
       valueType: "input"
     },
     {
-      title: "禁用",
-      dataIndex: "disabled",
-      valueType: "switch"
-    }
+      title: "尺寸",
+      dataIndex: "size",
+      valueType: "radio",
+      formItemProps: {
+        tooltip: "size",
+      },
+      fieldProps: {
+        options: [
+          { label: "小", value: "small" },
+          { label: "中", value: "middle" },
+          { label: "大", value: "large" },
+        ],
+      },
+    },
+
 ];
 
 export const InputLikeColumns: any = [

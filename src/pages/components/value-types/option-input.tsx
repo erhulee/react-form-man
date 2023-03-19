@@ -6,12 +6,12 @@ import {
 } from "@ant-design/icons";
 import { cloneDeep } from "lodash-es";
 import Modal from "antd/es/modal/Modal";
-import CodeEditor from "../../components/code-editor";
 import { useRef } from "react";
 import { enum2options } from "../../../code-decode/enum2options";
 import useModal from "../../../hooks/useModal";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import ButtonGroup from "antd/es/button/button-group";
+import CodeEditor from "../code-editor";
 type Props = {
   fieldProps: {
     value: Array<{

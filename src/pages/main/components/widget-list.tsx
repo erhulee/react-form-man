@@ -1,8 +1,8 @@
-import DragWrap from "../../../../drap-component-wrap/drag-wrap";
-import { ItemType } from "../../../../drap-component-wrap/type";
-import { ActorActions } from "../../../../store/actorStore";
-import { containerList, decoratorList, formList } from "../../constant";
-import { Actor } from "./share/Widget";
+import { Actor } from "src/pages/components/wiget-list/share/Widget";
+import DragWrap from "../../../drap-component-wrap/drag-wrap";
+import { ItemType } from "../../../drap-component-wrap/type";
+import { ActorActions } from "../../../store/actorStore";
+import { containerList, decoratorList, formList } from "../../main/constant";
 
 export type WidgetItemProps = {
   icon: JSX.Element;
@@ -41,7 +41,7 @@ function WidgetList() {
         <p className=" font-semibold m-2 text-lg">基础组件</p>
         <div className="flex flex-wrap items-center justify-start gap-3">
           {formList.map((item) => (
-            <WidgetItem {...item} className="mb-2" />
+            <WidgetItem {...item} className="mb-2" key={item.name} />
           ))}
         </div>
       </div>
@@ -50,7 +50,7 @@ function WidgetList() {
         <p className=" font-semibold m-2 text-lg">容器组件</p>
         <div className="flex flex-wrap items-center justify-start gap-3">
           {containerList.map((item) => (
-            <WidgetItem {...item} className="mb-2" />
+            <WidgetItem {...item} className="mb-2" key={item.name} />
           ))}
         </div>
       </div>
@@ -59,7 +59,7 @@ function WidgetList() {
         <p className=" font-semibold m-2 text-lg">装饰组件</p>
         <div className="flex flex-wrap items-center justify-start gap-3">
           {decoratorList.map((item) => (
-            <WidgetItem {...item} className="mb-2" />
+            <WidgetItem {...item} className="mb-2" key={item.name} />
           ))}
         </div>
       </div>

@@ -6,6 +6,11 @@ type AbstractFunction = (props: any) => {
     formItemProps?: any
 }
 
+function omitUndefined<T>(obj:T):Partial<T> {
+    return Object.entries(obj)
+      .filter(([key, value]) => value !== undefined)
+      .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+  }
 function deleteKeys(target:Record<string, any>, keys:string[]):Record<string, any>{
     const result:any = {};
     keys.forEach(key=>{
@@ -19,7 +24,7 @@ function deleteKeys(target:Record<string, any>, keys:string[]):Record<string, an
 }
 
 export const getFormItemProps: AbstractFunction = (props)=>{
-    const cloneProps = cloneDeep(props);
+    const cloneProps = omitUndefined(cloneDeep(props));
     const keys = ['children', 'parent'];
     const deletedProps = deleteKeys(cloneProps, keys);
 
@@ -33,7 +38,7 @@ export const getFormItemProps: AbstractFunction = (props)=>{
     }
 }
 export const getFormProps: AbstractFunction = (props)=>{
-    const cloneProps = cloneDeep(props);
+    const cloneProps = omitUndefined(cloneDeep(props));
     const keys = ['children', 'parent'];
     const deletedProps = deleteKeys(cloneProps, keys);
 

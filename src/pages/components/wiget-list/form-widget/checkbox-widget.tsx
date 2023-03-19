@@ -1,6 +1,6 @@
 import { Checkbox, Input } from "antd";
 import { cloneDeep } from "lodash";
-import { BaseOptions } from "../../actor-setting/type";
+import { BaseOptions } from "../../../main/components/actor-setting/type";
 import {
   BaseActor,
   baseColumns,
@@ -9,7 +9,7 @@ import {
 } from "../share/Widget";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
-import { getFormProps } from "../../../../../code-generator/splitPropsUtil";
+import { getFormProps } from "../../../../code-generator/splitPropsUtil";
 import { omit } from "lodash-es";
 
 export type CheckboxActor = BaseActor & {

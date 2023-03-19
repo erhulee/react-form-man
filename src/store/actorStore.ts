@@ -1,7 +1,7 @@
 import { proxy } from 'valtio'
 import { nanoid} from "nanoid"
 import { clone, cloneDeep } from 'lodash-es';
-import { Actor, WidgetType } from '../pages/main/components/wiget-list/share/Widget';
+import { Actor, WidgetType } from '../pages/components/wiget-list/share/Widget';
 export function find(findId: string):Actor | null{
     function _find(node: Actor):Actor | null{
         if(node.id == findId) return node;

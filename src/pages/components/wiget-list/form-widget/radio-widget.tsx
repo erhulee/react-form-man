@@ -1,5 +1,6 @@
+import { Input, Radio, Switch } from "antd";
 import { cloneDeep } from "lodash";
-import { BaseOptions } from "../../actor-setting/type";
+import { BaseOptions } from "../../../main/components/actor-setting/type";
 import {
   BaseActor,
   baseColumns,
@@ -9,24 +10,24 @@ import {
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
-import { Select } from "antd";
+import { getFormProps } from "../../../../code-generator/splitPropsUtil";
 
-export type SelectActor = BaseActor & {
-  type: WidgetType.Select;
+export type RadioActor = BaseActor & {
+  type: WidgetType.Radio;
   props: BaseOptions & {
     options: Array<{ label: string; value: string }>;
   };
 };
-export const selectWidgetKit: FormWidgetKit = {
+export const radioWidgetKit: FormWidgetKit = {
   columns: [...baseColumns, ...OptionLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const formItemProps = clearFormItemProps(props);
+    const { formItemProps, remainProps } = getFormProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
-            <Select ${splitProps(props)}/>
+          <Radio.Group ${splitProps(remainProps)}/>
         </Form.Item>`;
   },
   createInstance: (props: any) => {
-    return <Select {...props}></Select>;
+    return <Radio.Group {...props}></Radio.Group>;
   },
 };

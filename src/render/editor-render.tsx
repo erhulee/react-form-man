@@ -1,12 +1,12 @@
 // 从 store 里拿到组件树，开始渲染
 import { cloneDeep } from "lodash-es";
 import { useSnapshot } from "valtio";
-import clearFormItemProps from "../pages/main/components/wiget-list/share/clearFormItemProps";
+import clearFormItemProps from "../pages/components/wiget-list/share/clearFormItemProps";
 import {
   Actor,
   isFormWidget,
   WidgetType,
-} from "../pages/main/components/wiget-list/share/Widget";
+} from "../pages/components/wiget-list/share/Widget";
 import { widgetKitMap } from "../pages/main/constant";
 import actorStore from "@store/actorStore";
 import EmptyDivider from "./empty-divider";
@@ -46,6 +46,7 @@ function Render(node: Actor, activeActorId: string) {
   const nativeProps = cloneDeep(node.props);
   const InstanceComp = widgetKit.createInstance;
   const formProps = clearFormItemProps(node.props);
+  console.log("render3:", nativeProps, type);
   const instance = (
     <RenderItemWrap
       actorData={node}
@@ -65,6 +66,7 @@ function RenderRoot() {
   const activeActorId: string = actorStore.activeActorId;
   const actorsTreeNode = actorStore.actorsTree;
   // const globalSetting = useSnapshot(globalFormSetting);
+  console.log("render2");
   const rootNode = Render(actorsTreeNode, activeActorId || "");
   return <div className="  w-full h-full px-4">{rootNode}</div>;
 }
