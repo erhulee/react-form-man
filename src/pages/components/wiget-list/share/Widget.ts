@@ -354,3 +354,18 @@ export function createTitleColumn(title:string){
     }
   }
 }
+
+export function createEnumColumn(dataIndex:string, title:string, enums: string[], tooltip = dataIndex){
+  return {
+    title,
+    dataIndex,
+    valueType: "radio",
+    formItemProps: {
+      tooltip,
+    },
+    fieldProps: {
+      options: enums.map((e)=>({label: e, value: e}))
+   
+    },
+  }
+}
