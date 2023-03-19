@@ -301,11 +301,56 @@ export function getWidgetCategory(type: WidgetType):WidgetCategory{
 
 export function getFormItemValuePropName(type: WidgetType){
   const defaultMap:Partial< Record<  WidgetType, string> >= {
-    // upload: "fileList",
     switch: "checked",
     image: 'fileList'
   }
 
   if(defaultMap[type]) return defaultMap[type];
   return null
+}
+
+export function createBooleanColumn(dataIndex:string, title:string, tooltip = dataIndex){
+  return {
+    title,
+    dataIndex,
+    valueType: "switch",
+    formItemProps: {
+      tooltip,
+    },
+  }
+}
+
+export function createNumberColumn(dataIndex:string, title:string, tooltip = dataIndex){
+  return {
+    title,
+    dataIndex,
+    valueType: "digit",
+    formItemProps: {
+      tooltip,
+    },
+    fieldProps:{
+      max: Number.MAX_SAFE_INTEGER,
+      min: Number.MIN_SAFE_INTEGER
+    }
+  }
+}
+
+export function createStringColumn(dataIndex:string, title:string, tooltip = dataIndex){
+  return {
+    title,
+    dataIndex,
+    valueType: "input",
+    formItemProps: {
+      tooltip,
+    },
+  }
+}
+
+export function createTitleColumn(title:string){
+  return {
+    valueType: "title",
+    fieldProps:{
+      title,
+    }
+  }
 }
