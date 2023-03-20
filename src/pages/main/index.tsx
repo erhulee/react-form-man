@@ -4,6 +4,7 @@ import { useState } from "react";
 import useDeleteKeyBoard from "../../hooks/useDeleteKeyBoard";
 import { ComponentIcon, TreeIcon } from "../../Icons";
 import { ActorActions } from "../../store/actorStore";
+import Mobile from "../mobile";
 import ActorCanvas from "./components/actor-canvas";
 import Header from "./components/actor-header";
 import ActorSetting from "./components/actor-setting";
@@ -30,6 +31,15 @@ export default function MainPage() {
       setLeftSiderWidth(350);
     }
   });
+
+  if (
+    navigator.userAgent.match(
+      /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    )
+  ) {
+    return <Mobile></Mobile>;
+  }
+
   return (
     <Layout style={{ width: "100%", height: "100vh" }}>
       <Layout.Header style={{ backgroundColor: "#3C81F6" }}>

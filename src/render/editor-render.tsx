@@ -46,7 +46,6 @@ function Render(node: Actor, activeActorId: string) {
   const nativeProps = cloneDeep(node.props);
   const InstanceComp = widgetKit.createInstance;
   const formProps = clearFormItemProps(node.props);
-  console.log("render3:", nativeProps, type);
   const instance = (
     <RenderItemWrap
       actorData={node}
@@ -65,8 +64,6 @@ function RenderRoot() {
   useSnapshot(actorStore);
   const activeActorId: string = actorStore.activeActorId;
   const actorsTreeNode = actorStore.actorsTree;
-  // const globalSetting = useSnapshot(globalFormSetting);
-  console.log("render2");
   const rootNode = Render(actorsTreeNode, activeActorId || "");
   return <div className="  w-full h-full px-4">{rootNode}</div>;
 }

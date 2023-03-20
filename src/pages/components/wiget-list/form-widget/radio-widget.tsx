@@ -3,7 +3,6 @@ import { cloneDeep } from "lodash";
 import { BaseOptions } from "../../../main/components/actor-setting/type";
 import {
   BaseActor,
-  baseColumns,
   baseCompColumns,
   baseFormItemColumns,
   createEnumColumn,
