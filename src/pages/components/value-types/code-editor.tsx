@@ -38,15 +38,15 @@ function FormCodeEditor(props: Props) {
         width="800px"
         onOk={() => {
           let instance = null;
-          try {
-            // debugger;
-            // instance = eval(`${codeRef.current}`);
-            console.log("instance:", instance);
-            onChange(codeRef.current);
-            close();
-          } catch (e) {
-            message.error("eval 失败", e);
-          }
+          // try {
+          // debugger;
+          // instance = eval(`${codeRef.current}`);
+          console.log("instance:", instance);
+          onChange(codeRef.current);
+          close();
+          // } catch (e) {
+          //   message.error("eval 失败", e);
+          // }
         }}
         onCancel={close}
       >
