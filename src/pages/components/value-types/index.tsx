@@ -1,4 +1,4 @@
-import FormCodeEditor from "./code-editor";
+import CodeEditor from "./code-editor";
 import SimpleDivider from "./divider";
 import OptionInput from "./option-input";
 import Tab from "./tab";
@@ -28,7 +28,7 @@ export const valueType = {
   codeEditor: {
     render: (text: string) => <a>{text}</a>,
     renderFormItem: (text: string, props: any) => {
-      return <FormCodeEditor {...props.fieldProps}></FormCodeEditor>;
+      return <CodeEditor {...props.fieldProps}></CodeEditor>;
     },
   },
   tab: {

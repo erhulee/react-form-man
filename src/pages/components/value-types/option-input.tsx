@@ -147,7 +147,7 @@ function OptionInput(props: Props) {
         }
       >
         <CodeEditor
-          code=""
+          value=""
           onChange={(code) => (codeRef.current = code)}
         ></CodeEditor>
       </Modal>

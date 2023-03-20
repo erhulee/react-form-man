@@ -15,7 +15,6 @@ function Header() {
   const handleExport = () => {
     displayTsxRef.current = true;
     let fileCode = generateAntDesignForm(actorStore.actorsTree, widgetKitMap);
-
     setFileCode(fileCode);
     toggle();
   };
@@ -57,7 +56,7 @@ function Header() {
         okText="复制"
         cancelText="取消"
       >
-        <CodeEditor code={fileCode}></CodeEditor>
+        <CodeEditor value={fileCode}></CodeEditor>
       </Modal>
     </div>
   );

@@ -10,7 +10,13 @@ function splitProps(props:any): string{
         if(typeof value == "number"){
             result.push(`${key} = {${value}}`)
         }else if(typeof value == "string"){
-            result.push(`${key} = "${value}"`)
+            //这里先简单用正则判断以下
+            if(/^{.*}$/.test(value) || /^\[.*\]$/){
+                result.push(`${key} = {${value}}`)
+            }else{
+                result.push(`${key} = "${value}"`)
+            }
+        
         }else if(typeof value == "object"){
             result.push(`${key} = {${JSON.stringify(value)}}`)
         }else if(typeof value == "boolean"){

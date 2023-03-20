@@ -1,4 +1,4 @@
-import { Upload } from "antd";
+import { Upload, Form } from "antd";
 import { cloneDeep } from "lodash-es";
 import { getFormProps } from "../../../../code-generator/splitPropsUtil";
 import splitProps from "../share/splitProps";

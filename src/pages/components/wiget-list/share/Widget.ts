@@ -47,6 +47,50 @@ export interface BaseActor {
     }
 }
 // 配置 formItem 的选项 
+/*
+// 全局配置
+[√]colon	配合 label 属性使用，表示是否显示 label 后面的冒号	boolean	true	
+[√]labelAlign	标签文本对齐方式	left | right	right	
+
+[√]label	label 标签的文本	ReactNode	-	
+[√]labelCol	label 标签布局，同 <Col> 组件，设置 span offset 值，如 {span: 3, offset: 12} 或 sm: {span: 3, offset: 12}。你可以通过 Form 的 labelCol 进行统一设置，不会作用于嵌套 Item。当和 Form 同时设置时，以 Item 为准	object	-	
+[√]initialValue	设置子元素默认值，如果与 Form 的 initialValues 冲突则以 Form 为准	string	-	4.2.0
+[√]tooltip	配置提示信息	ReactNode | TooltipProps & { icon: ReactNode }	-	4.7.0
+[√]required	必填样式设置。如不设置，则会根据校验规则自动生成	boolean	false	
+
+[√]name	字段名，支持数组	NamePath	-	
+rules	校验规则，设置字段的校验逻辑。点击此处查看示例	Rule[]	-	
+
+messageVariables	默认验证字段的信息	Record<string, string>	-	4.7.0
+[√]validateFirst	当某一规则校验不通过时，是否停止剩下的规则的校验。设置 parallel 时会并行校验	boolean | parallel	false	parallel: 4.5.0 -> 暂时只支持 boolean
+
+
+//TODO
+dependencies	设置依赖字段，说明见下	NamePath[]	-	
+trigger	设置收集字段值变更的时机。点击此处查看示例	string	onChange	
+shouldUpdate	自定义字段更新逻辑，说明见下	boolean | (prevValue, curValue) => boolean	false	
+normalize	组件获取值后进行转换，再放入 Form 中。不支持异步	(value, prevValue, prevValues) => any	-	
+extra	额外的提示信息，和 help 类似，当需要错误信息和提示文案同时出现时，可以使用这个。	ReactNode	-	
+getValueFromEvent	设置如何将 event 的值转换成字段值	(..args: any[]) => any	-	
+getValueProps	为子元素添加额外的属性	(value: any) => any	-	4.2.0
+
+
+
+
+//暂不实现
+valuePropName	子节点的值的属性，如 Switch 的是 'checked'。该属性为 getValueProps 的封装，自定义 getValueProps 后会失效	string	value	
+hasFeedback	配合 validateStatus 属性使用，展示校验状态图标，建议只配合 Input 组件使用	boolean	false	
+help	提示信息，如不设置，则会根据校验规则自动生成	ReactNode	-	
+hidden	是否隐藏字段（依然会收集和校验字段）	boolean	false	4.4.0
+htmlFor	设置子元素 label htmlFor 属性	string	-	
+wrapperCol	需要为输入控件设置布局样式时，使用该属性，用法同 labelCol。你可以通过 Form 的 wrapperCol 进行统一设置，不会作用于嵌套 Item。当和 Form 同时设置时，以 Item 为准	object	-	
+noStyle	为 true 时不带样式，作为纯字段控件使用	boolean	false	
+preserve	当字段被删除时保留字段值	boolean	true	4.4.0
+validateStatus	校验状态，如不设置，则会根据校验规则自动生成，可选：'success' 'warning' 'error' 'validating'	string	-	
+validateTrigger	设置字段校验的时机	string | string[]	onChange	
+
+
+*/
 export const baseFormItemColumns = [
   {
     valueType: "title",
@@ -86,17 +130,22 @@ export const baseFormItemColumns = [
   //     tooltip: "requireMessage",
   //   }
   // },
+
+
+  createNumberColumn(["labelCol","span"], "标签宽度"),
+  createStringColumn("initialValue", "初始值"),
+  createStringColumn("tooltip", "提示信息"),
   {
     title: "tooltip提示",
     dataIndex: "tooltip",
     valueType: "input",
   },
+  createBooleanColumn("validateFirst", "失败时中止", "当某一规则校验不通过时，是否停止剩下的规则的校验"),
   {
-    title: "初始值",
-    dataIndex: "initialValue",
-    valueType: "input"
-  },
-
+    title: "校验规则",
+    dataIndex: "rules",
+    valueType: "codeEditor"
+  }
 ]
 
 // 配置 formItem 中真正组件的选项 
@@ -320,7 +369,7 @@ export function createBooleanColumn(dataIndex:string, title:string, tooltip = da
   }
 }
 
-export function createNumberColumn(dataIndex:string, title:string, tooltip = dataIndex){
+export function createNumberColumn(dataIndex:string | string[], title:string, tooltip = dataIndex){
   return {
     title,
     dataIndex,

@@ -16,12 +16,10 @@ export function generateAntDesignForm(actorTree: Actor, widgetKitMap:  { [index:
         if(typeof code == "string"){
             return code
         }
-     
         const {beforeCode, afterCode} = code
         const childCodeResult:string[] = (node.props.children || []).map((childNode)=>generate(childNode))
         return beforeCode + childCodeResult.join("") + afterCode
     }
-
     const code = generate(actorTree)
     return code
 }

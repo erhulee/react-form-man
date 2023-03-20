@@ -1,6 +1,7 @@
 import AceEditor, { IEditorProps } from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-ambiance";
+import "ace-builds/src-noconflict/theme-chrome";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-min-noconflict/mode-json"; //
 import "ace-builds/src-min-noconflict/mode-css"; //
@@ -16,12 +17,18 @@ export enum Size {
 type Props = {
   readonly?: boolean;
   width?: string;
-  code: string;
+  value: string;
+  showGutter?: boolean;
   onChange?: (v: string) => void;
   size?: Size;
 };
 function CodeEditor(props: Props) {
-  const { code, onChange: parentChange = () => {}, readonly } = props;
+  const {
+    value = "",
+    onChange: parentChange = () => {},
+    readonly,
+    showGutter = false,
+  } = props;
   const aceEditorRef: any = useRef(null);
   const editorProps: IEditorProps = {
     $blockScrolling: true,
@@ -37,24 +44,24 @@ function CodeEditor(props: Props) {
 
   if (props.size == Size.mini) {
     rect.width = " 198px";
-    rect.height = "200px";
+    rect.height = "70px";
   }
 
   return (
     <div className="">
       <AceEditor
-        className=" bg-slate-100"
+        // className=" bg-slate-100"
         ref={aceEditorRef}
         mode="javascript"
-        theme="github"
+        theme="chrome"
         onChange={(v) => {
-          console.log("V", v);
+          parentChange(v);
         }}
         name="UNIQUE_ID_OF_DIV"
         editorProps={editorProps}
         readOnly={readonly}
-        value={format(code)}
-        showGutter={false}
+        value={format(value)}
+        showGutter={showGutter}
         {...rect}
       />
     </div>
