@@ -1,4 +1,5 @@
 import { cloneDeep } from "lodash-es"
+import { baseFormItemColumns } from "src/pages/components/wiget-list/share/Widget";
 
 type AbstractFunction = (props: any) => {
     deletedProps: any
@@ -27,7 +28,7 @@ export const getFormItemProps: AbstractFunction = (props)=>{
     const cloneProps = omitUndefined(cloneDeep(props));
     const keys = ['children', 'parent'];
     const deletedProps = deleteKeys(cloneProps, keys);
-    const formItemKeys = ['label', 'labelCol'];
+    const formItemKeys:string[] =baseFormItemColumns.map(item=> item.dataIndex) as string[];
     const formItemProps = deleteKeys(cloneProps, formItemKeys);
 
     return {
