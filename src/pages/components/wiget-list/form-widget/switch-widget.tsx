@@ -12,7 +12,7 @@ import {
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
 
-import { getFormProps } from "../../../../code-generator/splitPropsUtil";
+import { getFormItemProps } from "../../../../code-generator/splitPropsUtil";
 
 export type SwitchActor = BaseActor & {
   type: WidgetType.Switch;
@@ -43,7 +43,7 @@ export const switchWidgetKit: FormWidgetKit = {
   ],
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const { formItemProps, remainProps } = getFormProps(props);
+    const { formItemProps, remainProps } = getFormItemProps(props);
 
     return `<Form.Item ${splitProps(formItemProps)} >
           <Switch ${splitProps(remainProps)}/>
@@ -51,7 +51,7 @@ export const switchWidgetKit: FormWidgetKit = {
   },
   createInstance: (props: any) => {
     const compProps = props.props;
-    const { remainProps } = getFormProps(compProps);
+    const { remainProps } = getFormItemProps(compProps);
     return <Switch {...remainProps}></Switch>;
   },
 };

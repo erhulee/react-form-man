@@ -3,7 +3,7 @@ import { cloneDeep } from "lodash-es";
 import { getFormProps } from "../../../../code-generator/splitPropsUtil";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
-import { BaseActor, baseColumns, WidgetType } from "../share/Widget";
+import { BaseActor, baseFormItemColumns, WidgetType } from "../share/Widget";
 
 export type ImageActor = BaseActor & {
   type: WidgetType.Image;
@@ -14,7 +14,7 @@ export type ImageActor = BaseActor & {
 
 export const imageWidgetKit: FormWidgetKit = {
   columns: [
-    ...baseColumns,
+    ...baseFormItemColumns,
     {
       title: "",
       dataIndex: "",

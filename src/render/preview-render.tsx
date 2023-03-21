@@ -5,12 +5,14 @@ import {
   getWidgetCategory,
   isFormWidget,
 } from "src/pages/components/wiget-list/share/Widget";
-import { cloneDeep, cond } from "lodash-es";
-import clearFormItemProps from "../pages/components/wiget-list/share/clearFormItemProps";
+import { cloneDeep } from "lodash-es";
 import { FormItemWrap } from "./render-item-wrap";
 import { Form } from "antd";
 import { queryWidgetKit } from "./editor-render";
-import { getFormProps } from "src/code-generator/splitPropsUtil";
+import {
+  getFormProps,
+  getFormItemProps,
+} from "src/code-generator/splitPropsUtil";
 function render(node: Actor) {
   const children = node?.props?.children || [];
   const type = node.type;
@@ -19,15 +21,15 @@ function render(node: Actor) {
 
   const nativeProps = cloneDeep(node.props);
   const InstanceComp = widgetKit.createInstance;
-  const formProps = clearFormItemProps(node.props);
+  const { remainProps, formItemProps } = getFormItemProps(nativeProps);
 
   return (
     <FormItemWrap
       widgetCategory={getWidgetCategory(node.type)}
-      formProps={formProps}
+      formProps={formItemProps}
       widgetType={node.type}
     >
-      <InstanceComp props={nativeProps} id={node.id!}>
+      <InstanceComp props={remainProps} id={node.id!}>
         {isFormWidget(type) ? null : childrenResult}
       </InstanceComp>
     </FormItemWrap>

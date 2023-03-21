@@ -1,7 +1,7 @@
 import { Slider } from "antd";
 import { cloneDeep } from "lodash";
 import { BaseOptions } from "../../../main/components/actor-setting/type";
-import { BaseActor, baseColumns, WidgetType } from "../share/Widget";
+import { BaseActor, baseFormItemColumns, WidgetType } from "../share/Widget";
 import clearFormItemProps from "../share/clearFormItemProps";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
@@ -13,7 +13,7 @@ export type SliderActor = BaseActor & {
 };
 export const sliderWidgetKit: FormWidgetKit = {
   columns: [
-    ...baseColumns,
+    ...baseFormItemColumns,
     {
       title: "最大值",
       dataIndex: "max",

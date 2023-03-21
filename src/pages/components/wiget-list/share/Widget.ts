@@ -134,12 +134,7 @@ export const baseFormItemColumns = [
 
   createNumberColumn(["labelCol","span"], "标签宽度"),
   createStringColumn("initialValue", "初始值"),
-  createStringColumn("tooltip", "提示信息"),
-  {
-    title: "tooltip提示",
-    dataIndex: "tooltip",
-    valueType: "input",
-  },
+
   createBooleanColumn("validateFirst", "失败时中止", "当某一规则校验不通过时，是否停止剩下的规则的校验"),
   {
     title: "校验规则",
@@ -172,66 +167,7 @@ export const baseCompColumns = [
     },
   },
 ]
-export const baseColumns: any = [
-    {
-      title: "标签",
-      dataIndex: "label",
-      valueType: "input",
-      formItemProps: {
-        tooltip: "label",
-      }
-    },
-    {
-      title: "字段索引",
-      dataIndex: "name",
-      valueType: "input",
-      formItemProps: {
-        tooltip: "name",
-      }
-    },
-    {
-      title: "必需",
-      dataIndex: "required",
-      valueType: "switch",
-      formItemProps: {
-        tooltip: "required",
-      }
-    },
-    {
-      title: "未填提示",
-      dataIndex: "requireMessage",
-      valueType: "input",
-      formItemProps: {
-        tooltip: "requireMessage",
-      }
-    },
-    {
-      title: "tooltip提示",
-      dataIndex: "tooltip",
-      valueType: "input",
-    },
-    {
-      title: "初始值",
-      dataIndex: "initialValue",
-      valueType: "input"
-    },
-    {
-      title: "尺寸",
-      dataIndex: "size",
-      valueType: "radio",
-      formItemProps: {
-        tooltip: "size",
-      },
-      fieldProps: {
-        options: [
-          { label: "小", value: "small" },
-          { label: "中", value: "middle" },
-          { label: "大", value: "large" },
-        ],
-      },
-    },
 
-];
 
 export const InputLikeColumns: any = [
   {

@@ -12,7 +12,7 @@ import {
 
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
-import { getFormProps } from "../../../../code-generator/splitPropsUtil";
+import { getFormItemProps } from "../../../../code-generator/splitPropsUtil";
 
 // 和 Radio.Group 对齐
 // [√]size	大小，只对按钮样式生效	large | middle | small	-
@@ -47,14 +47,14 @@ export const radioWidgetKit: FormWidgetKit = {
   ],
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const { formItemProps, remainProps } = getFormProps(props);
+    const { formItemProps, remainProps } = getFormItemProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
           <Radio.Group ${splitProps(remainProps)}/>
         </Form.Item>`;
   },
   createInstance: (props: any) => {
     const compProps = props.props;
-    const { remainProps } = getFormProps(compProps);
+    const { remainProps } = getFormItemProps(compProps);
     return <Radio.Group {...remainProps}></Radio.Group>;
   },
 };

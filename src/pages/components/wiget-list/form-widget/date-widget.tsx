@@ -3,7 +3,7 @@ import { cloneDeep } from "lodash";
 import { BaseOptions } from "../../../main/components/actor-setting/type";
 import {
   BaseActor,
-  baseColumns,
+  baseFormItemColumns,
   createTitleDividerColumns,
   WidgetType,
 } from "../share/Widget";
@@ -23,9 +23,9 @@ export type DateActor = BaseActor & {
 };
 
 export const dateWidgetKit: FormWidgetKit = {
-  columns: overLoadColumns([
+  columns: [
     ...createTitleDividerColumns("通用配置"),
-    ...baseColumns,
+    ...baseFormItemColumns,
     ...createTitleDividerColumns("专属配置", true),
 
     {
@@ -55,7 +55,8 @@ export const dateWidgetKit: FormWidgetKit = {
         ],
       },
     },
-  ]),
+  ],
+
   generate(_props: any) {
     const props = cloneDeep(_props);
     const { formItemProps, remainProps } = getFormProps(props);

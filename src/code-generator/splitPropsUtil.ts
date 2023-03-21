@@ -27,8 +27,7 @@ export const getFormItemProps: AbstractFunction = (props)=>{
     const cloneProps = omitUndefined(cloneDeep(props));
     const keys = ['children', 'parent'];
     const deletedProps = deleteKeys(cloneProps, keys);
-
-    const formItemKeys = ['label'];
+    const formItemKeys = ['label', 'labelCol'];
     const formItemProps = deleteKeys(cloneProps, formItemKeys);
 
     return {

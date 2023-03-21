@@ -3,7 +3,7 @@ import { cloneDeep } from "lodash";
 import { BaseOptions } from "../../../main/components/actor-setting/type";
 import {
   BaseActor,
-  baseColumns,
+  baseFormItemColumns,
   createTitleDividerColumns,
   WidgetType,
 } from "../share/Widget";
@@ -23,9 +23,9 @@ export type TimeActor = BaseActor & {
 };
 
 export const timeWidgetKit: FormWidgetKit = {
-  columns: overLoadColumns([
+  columns: [
     ...createTitleDividerColumns("通用配置"),
-    ...baseColumns,
+    ...baseFormItemColumns,
     ...createTitleDividerColumns("专属配置", true),
     {
       title: "是否有边框",
@@ -62,7 +62,7 @@ export const timeWidgetKit: FormWidgetKit = {
       dataIndex: "disabledTime",
       valueType: "codeEditor",
     },
-  ]),
+  ],
   generate(_props: any) {
     const props = cloneDeep(_props);
     const { formItemProps, remainProps } = getFormProps(props);

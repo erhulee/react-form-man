@@ -3,11 +3,12 @@ import { ProConfigProvider } from "@ant-design/pro-provider";
 import { Card, Form } from "antd";
 import actorStore from "@store/actorStore";
 import { valueType } from "../../../components/value-types/index";
-import { cloneDeep } from "lodash-es";
+import { cloneDeep, omit } from "lodash-es";
 import { widgetKitMap } from "../../constant";
 import { findActor } from "@store/utils";
 import { WidgetType } from "../../../components/wiget-list/share/Widget";
 import { useSnapshot } from "valtio";
+import { subscribeKey } from "valtio/utils";
 
 type DataItem = {
   name: string;
@@ -16,9 +17,20 @@ type DataItem = {
 
 function ActorSetting() {
   useSnapshot(actorStore);
+  const [form] = Form.useForm();
   const activeActorId = actorStore.activeActorId;
   const activeActor = findActor(actorStore.actorsTree as any, activeActorId);
-  const [form] = Form.useForm();
+
+  // 执行实际先于 rerender
+  subscribeKey(actorStore, "activeActorId", (id) => {
+    form.resetFields();
+    const activeActor = findActor(actorStore.actorsTree as any, id);
+    console.log("aaa:");
+    if (activeActor?.props) {
+      const props = omit(cloneDeep(activeActor.props), ["children", "parent"]);
+      form.setFieldsValue(props);
+    }
+  });
 
   const handleValueChange = (v: any) => {
     const props = cloneDeep(form.getFieldsValue());
@@ -33,6 +45,7 @@ function ActorSetting() {
       activeActor.props = oldProps;
     }
   };
+
   const columns = widgetKitMap[activeActor?.type || WidgetType.Root].columns;
 
   return (

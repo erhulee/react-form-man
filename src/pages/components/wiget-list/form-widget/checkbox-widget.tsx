@@ -3,13 +3,13 @@ import { cloneDeep } from "lodash";
 import { BaseOptions } from "../../../main/components/actor-setting/type";
 import {
   BaseActor,
-  baseColumns,
+  baseFormItemColumns,
   OptionLikeColumns,
   WidgetType,
 } from "../share/Widget";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
-import { getFormProps } from "../../../../code-generator/splitPropsUtil";
+import { getFormItemProps } from "../../../../code-generator/splitPropsUtil";
 import { omit } from "lodash-es";
 
 export type CheckboxActor = BaseActor & {
@@ -20,10 +20,10 @@ export type CheckboxActor = BaseActor & {
 };
 
 export const checkboxWidgetKit: FormWidgetKit = {
-  columns: [...baseColumns, ...OptionLikeColumns],
+  columns: [...baseFormItemColumns, ...OptionLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const { formItemProps, remainProps } = getFormProps(props);
+    const { formItemProps, remainProps } = getFormItemProps(props);
     return `<Form.Item ${splitProps(formItemProps)}>
           <Checkbox.Group ${splitProps(remainProps)}/>
         </Form.Item>`;

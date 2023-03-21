@@ -2,7 +2,7 @@ import { cloneDeep } from "lodash";
 import { BaseOptions } from "../../../main/components/actor-setting/type";
 import {
   BaseActor,
-  baseColumns,
+  baseFormItemColumns,
   OptionLikeColumns,
   WidgetType,
 } from "../share/Widget";
@@ -18,7 +18,7 @@ export type SelectActor = BaseActor & {
   };
 };
 export const selectWidgetKit: FormWidgetKit = {
-  columns: [...baseColumns, ...OptionLikeColumns],
+  columns: [...baseFormItemColumns, ...OptionLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
     const formItemProps = clearFormItemProps(props);

@@ -10,7 +10,7 @@ import {
 } from "../share/Widget";
 import splitProps from "../share/splitProps";
 import { FormWidgetKit } from "../share/type";
-import { getFormProps } from "../../../../code-generator/splitPropsUtil";
+import { getFormItemProps } from "../../../../code-generator/splitPropsUtil";
 // TODO: icon-select
 // addonAfter	带标签的 input，设置后置标签	ReactNode	-
 // addonBefore	带标签的 input，设置前置标签	ReactNode	-
@@ -40,7 +40,7 @@ export const inputWidgetKit: FormWidgetKit = {
   columns: [...baseFormItemColumns, ...baseCompColumns, ...InputLikeColumns],
   generate(_props: any) {
     const props = cloneDeep(_props);
-    const { formItemProps, remainProps } = getFormProps(props);
+    const { formItemProps, remainProps } = getFormItemProps(props);
 
     return `<Form.Item ${splitProps(formItemProps)}>
           <Input ${splitProps(remainProps)}/>
@@ -48,7 +48,7 @@ export const inputWidgetKit: FormWidgetKit = {
   },
   createInstance: (props: any) => {
     const compProps = props.props;
-    const { remainProps } = getFormProps(compProps);
+    const { remainProps } = getFormItemProps(compProps);
     return <Input {...remainProps}></Input>;
   },
 };

@@ -11,6 +11,10 @@ import { widgetKitMap } from "../pages/main/constant";
 import actorStore from "@store/actorStore";
 import EmptyDivider from "./empty-divider";
 import RenderItemWrap from "./render-item-wrap";
+import {
+  getFormItemProps,
+  getFormProps,
+} from "src/code-generator/splitPropsUtil";
 
 // 留一个入口支持用户上传组件
 export function queryWidgetKit(type: WidgetType) {
@@ -45,15 +49,19 @@ function Render(node: Actor, activeActorId: string) {
   const widgetKit = queryWidgetKit(type);
   const nativeProps = cloneDeep(node.props);
   const InstanceComp = widgetKit.createInstance;
-  const formProps = clearFormItemProps(node.props);
+  // const formProps = clearFormItemProps(node.props);
+  const { remainProps, formItemProps } =
+    node.type !== WidgetType.Root
+      ? getFormItemProps(nativeProps)
+      : getFormProps(nativeProps);
   const instance = (
     <RenderItemWrap
       actorData={node}
       currentActiveId={activeActorId}
       key={node.id}
-      formProps={formProps}
+      formProps={formItemProps}
     >
-      <InstanceComp props={nativeProps} id={node.id!}>
+      <InstanceComp props={remainProps} id={node.id!}>
         {isFormWidget(type) ? null : childrenRenderResult}
       </InstanceComp>
     </RenderItemWrap>
